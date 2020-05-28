@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  wsUrl: 'https://auto-otto.herokuapp.com/' // http://localhost:300/
+     wsUrl: 'https://auto-otto.herokuapp.com/' // http://localhost:300/
 };
