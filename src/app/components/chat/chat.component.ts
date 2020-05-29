@@ -50,38 +50,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-
-
-     let s = function(e: any) {
-        return document.getElementById(e);
-    };
-
-
-    if (window.DeviceMotionEvent) {
-        alert('devicemotion supported');
-        window.addEventListener('devicemotion', function(ev) {
-            let acc = ev.accelerationIncludingGravity;
-            dmHdlr(acc.x, acc.y, acc.z);
-        }, false);
-    } else {
-        alert('devicemotion not supported on your device or browser.');
-    }
-
-
-    let lastDM = new Date().getTime();
-
-    function dmHdlr(aX: number, aY: number, aZ: number) {
-        let currDM = new Date().getTime();
-        // if (currDM < lastDM + 1000) {return;}
-        lastDM = currDM;
-
-        s('aX').innerHTML = aX ? aX.toFixed(3) : '?';
-        s('aY').innerHTML = aY ? aY.toFixed(3) : '?';
-        s('aZ').innerHTML = aZ ? aZ.toFixed(3) : '?';
-    }
-
-
-
     this.elemento = document.getElementById('divChatbox');
 
     this.mensajesSubscription = this._chatService.getMessages()
