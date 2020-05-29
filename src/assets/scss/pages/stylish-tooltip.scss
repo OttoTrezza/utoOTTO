@@ -7,8 +7,6 @@ File: scss
 
 @import '../variable';
 
-
-
 /*******************
 Stylish tooltip
 ******************/
@@ -20,11 +18,9 @@ $color_baltic_sea_approx: #2b2b2b;
 $color_charade_approx: #2a3035;
 $color_vivid_tangerine_approx: $themecolor;
 $color_cerulean_approx: #00aeef;
-
 //urls
-$url_0: url(../../../assets/images/tooltip/tooltip1.svg);
-$url_1: url(../../../assets/images/tooltip/shape1.svg);
-
+$url_0: url(../../../public/assets/images/tooltip/tooltip1.svg);
+$url_1: url(../../../public/assets/images/tooltip/shape1.svg);
 //@extend-elements
 //original selectors
 //.mytooltip:hover .tooltip-content2, .mytooltip:hover .tooltip-content2 i
@@ -42,7 +38,6 @@ $url_1: url(../../../assets/images/tooltip/shape1.svg);
     opacity: 1; //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
     transform: translate3d(0, 0, 0);
 }
-
 
 .mytooltip {
     display: inline;
