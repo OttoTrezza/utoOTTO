@@ -106,38 +106,112 @@
         </div>
     </div>
 </div>
-<canvas id="myCanvas" width="360" height="450" style="border:1px solid #d3d3d3;">
-</canvas>
+<span id="do-unsupported" class="api-support hidden">deviceorientation event not supported</span>
+<span id="dm-unsupported" class="api-support hidden">devicemotion event not supported</span>
+<span id="cnc-unsupported" class="api-support hidden">compassneedscalibration event not supported</span>
+
+<div id="do-results">
+    <div id="cube" class="cube">
+        <div class="face one">1</div>
+        <div class="face two">2</div>
+        <div class="face three">3</div>
+        <div class="face four">4</div>
+        <div class="face five">5</div>
+        <div class="face six">6</div>
+    </div>
+    <div id="do-info" class="hidden">
+        <p>
+            Coordinates: (
+            <span id="beta" class="value">null</span>,
+            <span id="gamma" class="value">null</span>,
+            <span id="alpha" class="value">null</span>)
+            <br /> Position absolute? <span id="is-absolute" class="value">unavailable</span>
+        </p>
+    </div>
+    <div id="dm-info" class="hidden">
+        <p>
+            Acceleration: (
+            <span id="acceleration-x" class="value">null</span>,
+            <span id="acceleration-y" class="value">null</span>,
+            <span id="acceleration-z" class="value">null</span>) m/s
+            <sup>2</sup>
+        </p>
+        <p>
+            Acceleration including gravity: (
+            <span id="acceleration-including-gravity-x" class="value">null</span>,
+            <span id="acceleration-including-gravity-y" class="value">null</span>,
+            <span id="acceleration-including-gravity-z" class="value">null</span>) m/s
+            <sup>2</sup>
+        </p>
+        <p>
+            Rotation rate: (
+            <span id="rotation-rate-beta" class="value">null</span>,
+            <span id="rotation-rate-gamma" class="value">null</span>,
+            <span id="rotation-rate-alpha" class="value">null</span>)
+        </p>
+        <p>
+            Interval: <span id="interval" class="value">0</span> milliseconds
+        </p>
+    </div>
+</div>
+
+<small class="author">
+         Demo created by <a href="https://www.audero.it">Aurelio De Rosa</a>
+         (<a href="https://twitter.com/AurelioDeRosa">@AurelioDeRosa</a>).<br />
+         This demo is part of the <a href="https://github.com/AurelioDeRosa/HTML5-API-demos">HTML5 API demos repository</a>.
+      </small>
+
 <script>
-    function deviceOrientationListener(event) {
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
+    if (!('ondeviceorientation' in window)) {
+        document.getElementById('do-unsupported').classList.remove('hidden');
+    } else {
+        document.getElementById('do-info').classList.remove('hidden');
 
-        ctx.clearRect(0, 0, c.width, c.height);
-        ctx.fillStyle = "#FF7777";
-        ctx.font = "14px Verdana";
-        ctx.fillText("Alpha: " + Math.Round(event.alpha), 10, 20);
-        ctx.beginPath();
-        ctx.moveTo(180, 75);
-        ctx.lineTo(210, 75);
-        ctx.arc(180, 75, 60, 0, event.alpha * Math.PI / 180);
-        ctx.fill();
+        window.addEventListener('deviceorientation', function(event) {
+            document.getElementById('cube').style.webkitTransform =
+                document.getElementById('cube').style.transform =
+                'rotateX(' + event.beta + 'deg) ' +
+                'rotateY(' + event.gamma + 'deg) ' +
+                'rotateZ(' + event.alpha + 'deg)';
 
-        ctx.fillStyle = "#FF6600";
-        ctx.fillText("Beta: " + Math.round(event.beta), 10, 140);
-        ctx.beginPath();
-        ctx.fillRect(180, 150, event.beta, 90);
-
-        ctx.fillStyle = "#FF0000";
-        ctx.fillText("Gamma: " + Math.round(event.gamma), 10, 270);
-        ctx.beginPath();
-        ctx.fillRect(90, 340, 180, event.gamma);
+            document.getElementById('beta').innerHTML = Math.round(event.beta);
+            document.getElementById('gamma').innerHTML = Math.round(event.gamma);
+            document.getElementById('alpha').innerHTML = Math.round(event.alpha);
+            document.getElementById('is-absolute').innerHTML = event.absolute ? "true" : "false";
+        });
     }
 
-    if (window.DeviceOrientationEvent) {
-        window.addEventListener("deviceorientation", deviceOrientationListener);
+    if (!('ondevicemotion' in window)) {
+        document.getElementById('dm-unsupported').classList.remove('hidden');
     } else {
-        alert("Sorry, your browser doesn't support Device Orientation");
+        document.getElementById('dm-info').classList.remove('hidden');
+
+        window.addEventListener('devicemotion', function(event) {
+            document.getElementById('acceleration-x').innerHTML = Math.round(event.acceleration.x);
+            document.getElementById('acceleration-y').innerHTML = Math.round(event.acceleration.y);
+            document.getElementById('acceleration-z').innerHTML = Math.round(event.acceleration.z);
+
+            document.getElementById('acceleration-including-gravity-x').innerHTML =
+                Math.round(event.accelerationIncludingGravity.x);
+            document.getElementById('acceleration-including-gravity-y').innerHTML =
+                Math.round(event.accelerationIncludingGravity.y);
+            document.getElementById('acceleration-including-gravity-z').innerHTML =
+                Math.round(event.accelerationIncludingGravity.z);
+
+            document.getElementById('rotation-rate-beta').innerHTML = Math.round(event.rotationRate.beta);
+            document.getElementById('rotation-rate-gamma').innerHTML = Math.round(event.rotationRate.gamma);
+            document.getElementById('rotation-rate-alpha').innerHTML = Math.round(event.rotationRate.alpha);
+
+            document.getElementById('interval').innerHTML = event.interval;
+        });
+    }
+
+    if (!('oncompassneedscalibration' in window)) {
+        document.getElementById('cnc-unsupported').classList.remove('hidden');
+    } else {
+        window.addEventListener('compassneedscalibration', function(event) {
+            alert('Compass needs calibrating! Wave your device in a figure-eight motion');
+        });
     }
 </script>
 <!-- <script>
