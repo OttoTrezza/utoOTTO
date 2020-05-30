@@ -1,3 +1,5 @@
+
+
 // GUARDS
 export { AdminGuard } from './guards/admin.guard';
 export { LoginGuardGuard } from './guards/login-guard.guard';
@@ -15,6 +17,7 @@ export { SidebarService } from './shared/sidebar.service';
 export { UsuarioService } from './usuario/usuario.service';
 export { HospitalService } from './hospital/hospital.service';
 export { MedicoService } from './medico/medico.service';
+export { WebsocketService } from './websocket/websocket.service';
+export { ChatService } from './chatservice/chat.service';
 
- export { WebsocketService } from './websocket/websocket.service';
- export { ChatService } from './chatservice/chat.service';
+export { DevicerefService } from './deviceref.service';

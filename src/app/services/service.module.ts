@@ -15,6 +15,7 @@ import {
   HospitalService,
   MedicoService,
   WebsocketService,
+  DevicerefService,
   ChatService
  } from './service.index';
 
@@ -38,6 +39,7 @@ import {
     HospitalService,
     MedicoService,
     ChatService,
+    DevicerefService,
     WebsocketService
   ],
   declarations: []
