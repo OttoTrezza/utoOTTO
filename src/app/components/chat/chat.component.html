@@ -106,53 +106,100 @@
         </div>
     </div>
 </div>
-<span id="do-unsupported" class="api-support hidden">deviceorientation event not supported</span>
-<span id="dm-unsupported" class="api-support hidden">devicemotion event not supported</span>
-<span id="cnc-unsupported" class="api-support hidden">compassneedscalibration event not supported</span>
 
-<div id="do-results">
-    <div id="cube" class="cube">
-        <div class="face one">1</div>
-        <div class="face two">2</div>
-        <div class="face three">3</div>
-        <div class="face four">4</div>
-        <div class="face five">5</div>
-        <div class="face six">6</div>
-    </div>
-    <div id="do-info" class="hidden">
-        <p>
-            Coordinates: (
-            <span id="beta" class="value">null</span>,
-            <span id="gamma" class="value">null</span>,
-            <span id="alpha" class="value">null</span>)
-            <br /> Position absolute? <span id="is-absolute" class="value">unavailable</span>
-        </p>
-    </div>
-    <div id="dm-info" class="hidden">
-        <p>
-            Acceleration: (
-            <span id="acceleration-x" class="value">null</span>,
-            <span id="acceleration-y" class="value">null</span>,
-            <span id="acceleration-z" class="value">null</span>) m/s
-            <sup>2</sup>
-        </p>
-        <p>
-            Acceleration including gravity: (
-            <span id="acceleration-including-gravity-x" class="value">null</span>,
-            <span id="acceleration-including-gravity-y" class="value">null</span>,
-            <span id="acceleration-including-gravity-z" class="value">null</span>) m/s
-            <sup>2</sup>
-        </p>
-        <p>
-            Rotation rate: (
-            <span id="rotation-rate-beta" class="value">null</span>,
-            <span id="rotation-rate-gamma" class="value">null</span>,
-            <span id="rotation-rate-alpha" class="value">null</span>)
-        </p>
-        <p>
-            Interval: <span id="interval" class="value">0</span> milliseconds
-        </p>
-    </div>
+<div id="do-results"></div>
+
+<div *ngIf=" !deviceorientation ; else elseBlock"></div>
+<span id="do-unsupported" class="api-support hidden">deviceorientation event not supported</span>
+<div id="do-info" class="hidden">
+    <p>
+        Coordinates: (
+        <span id="beta" class="value">null</span>,
+        <span id="gamma" class="value">null</span>,
+        <span id="alpha" class="value">null</span>)
+        <br /> Position absolute? <span id="is-absolute" class="value">unavailable</span>
+    </p>
+</div>
+
+<ng-template #elseBlock></ng-template>
+<div id="cube" class="cube">
+    <div class="face one">1</div>
+    <div class="face two">2</div>
+    <div class="face three">3</div>
+    <div class="face four">4</div>
+    <div class="face five">5</div>
+    <div class="face six">6</div>
+</div>
+<div id="do-info">
+    <p>
+        Coordinates: (
+        <span id="beta"></span>,
+        <span id="gamma"></span>,
+        <span id="alpha"></span>)
+        <br /> Position absolute? <span id="is-absolute" class="value">unavailable</span>
+    </p>
+</div>
+</ng-template>
+
+<div *ngIf=" !devicemotion ; else elseBlock"></div>
+<span id="dm-unsupported" class="api-support hidden">devicemotion event not supported</span>
+<div id="dm-info" class="hidden">
+    <p>
+        Acceleration: (
+        <span id="acceleration-x" class="value">null</span>,
+        <span id="acceleration-y" class="value">null</span>,
+        <span id="acceleration-z" class="value">null</span>) m/s
+        <sup>2</sup>
+    </p>
+    <p>
+        Acceleration including gravity: (
+        <span id="acceleration-including-gravity-x" class="value">null</span>,
+        <span id="acceleration-including-gravity-y" class="value">null</span>,
+        <span id="acceleration-including-gravity-z" class="value">null</span>) m/s
+        <sup>2</sup>
+    </p>
+    <p>
+        Rotation rate: (
+        <span id="rotation-rate-beta" class="value">null</span>,
+        <span id="rotation-rate-gamma" class="value">null</span>,
+        <span id="rotation-rate-alpha" class="value">null</span>)
+    </p>
+    <p>
+        Interval: <span id="interval" class="value">0</span> milliseconds
+    </p>
+</div>
+<ng-template #elseBlock></ng-template>
+<div id="dm-info">
+    <p>
+        Acceleration: (
+        <span id="acceleration-x"></span>,
+        <span id="acceleration-y"></span>,
+        <span id="acceleration-z"></span>) m/s
+        <sup>2</sup>
+    </p>
+    <p>
+        Acceleration including gravity: (
+        <span id="acceleration-including-gravity-x"></span>,
+        <span id="acceleration-including-gravity-y"></span>,
+        <span id="acceleration-including-gravity-z"></span>) m/s
+        <sup>2</sup>
+    </p>
+    <p>
+        Rotation rate: (
+        <span id="rotation-rate-beta"></span>,
+        <span id="rotation-rate-gamma"></span>,
+        <span id="rotation-rate-alpha"></span>)
+    </p>
+    <p>
+        Interval: <span id="interval" class="value">0</span> milliseconds
+    </p>
+</div>
+</ng-template>
+
+<div *ngIf=" !oncompassneedscalibration"></div>
+<span id="cnc-unsupported">compassneedscalibration event not supported</span>
+
+
 </div>
 
 <small class="author">

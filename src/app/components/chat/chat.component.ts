@@ -40,6 +40,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   msg: any;
   fecha: Date;
   hora: any;
+  devOr: boolean;
+  devMo: boolean;
 
   constructor(
     public _chatService: ChatService,
@@ -267,12 +269,17 @@ onChanges3( newValue: number ) {
 //    this.scrollBottom();
    });
 }
+
+
+
 disponible() {
-  if (!('ondeviceorientation' in window)) {
+ /* if (!('ondeviceorientation' in window)) {
+    this.devOr = true;
     document.getElementById('do-unsupported').classList.remove('hidden');
   } else {
+    this.devOr = false;
     document.getElementById('do-info').classList.remove('hidden');
-
+*/
     window.addEventListener('deviceorientation', function(event) {
             document.getElementById('cube').style.webkitTransform =
             document.getElementById('cube').style.transform =
@@ -288,12 +295,15 @@ disponible() {
             alp.value = JSON.stringify(Math.round(event.alpha));
             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
     });
-  }
-  if (!('ondevicemotion' in window)) {
+
+
+  /*if (!('ondevicemotion' in window)) {
+    this.devMo = true;
     document.getElementById('dm-unsupported').classList.remove('hidden');
   } else {
+    this.devMo = false;
     document.getElementById('dm-info').classList.remove('hidden');
-
+*/
     window.addEventListener('devicemotion', function(event) {
       let acx = document.getElementById('acceleration-x') as HTMLInputElement;
       acx.value = JSON.stringify(Math.round(event.acceleration.x));
@@ -334,6 +344,5 @@ disponible() {
         alert('Compass needs calibrating! Wave your device in a figure-eight motion');
     });
 }
-  }
 }
 }
