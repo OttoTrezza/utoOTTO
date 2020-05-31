@@ -107,17 +107,18 @@
     </div>
 </div>
 
-<div id="do-results">
+<div>
 
     <div *ngIf=" !deviceorientation ; else elseBlock">
-        <span id="do-unsupported" class="api-support hidden">deviceorientation event not supported</span>
-        <div id="do-info" class="hidden">
+        <span>deviceorientation event not supported</span>
+        <div>
             <p>
                 Coordinates: (
-                <span id="beta" class="value">null</span>,
-                <span id="gamma" class="value">null</span>,
-                <span id="alpha" class="value">null</span>)
-                <br /> Position absolute? <span id="is-absolute" class="value">unavailable</span>
+                <span id="beta">null</span>,
+                <span id="gamma">null</span>,
+                <span id="alpha">null</span>)
+                <br /> Position absolute?
+                <spa>unavailable</span>
             </p>
         </div>
     </div>
@@ -131,47 +132,47 @@
             <div class="face six">6</div>
         </div>
 
-        <div id="do-info">
+        <div>
             <p>
                 Coordinates: (
                 <span id="beta"></span>,
                 <span id="gamma"></span>,
                 <span id="alpha"></span>)
-                <br /> Position absolute? <span id="is-absolute" class="value">unavailable</span>
+                <br /> Position absolute? <span>unavailable</span>
             </p>
         </div>
     </ng-template>
 
     <div *ngIf=" !devicemotion ; else elseBlock">
-        <span id="dm-unsupported" class="api-support hidden">devicemotion event not supported</span>
-        <div id="dm-info" class="hidden">
+        <span>devicemotion event not supported</span>
+        <div>
             <p>
                 Acceleration: (
-                <span id="acceleration-x" class="value">null</span>,
-                <span id="acceleration-y" class="value">null</span>,
-                <span id="acceleration-z" class="value">null</span>) m/s
+                <span id="acceleration-x">null</span>,
+                <span id="acceleration-y">null</span>,
+                <span id="acceleration-z">null</span>) m/s
                 <sup>2</sup>
             </p>
             <p>
                 Acceleration including gravity: (
-                <span id="acceleration-including-gravity-x" class="value">null</span>,
-                <span id="acceleration-including-gravity-y" class="value">null</span>,
-                <span id="acceleration-including-gravity-z" class="value">null</span>) m/s
+                <span id="acceleration-including-gravity-x">null</span>,
+                <span id="acceleration-including-gravity-y">null</span>,
+                <span id="acceleration-including-gravity-z">null</span>) m/s
                 <sup>2</sup>
             </p>
             <p>
                 Rotation rate: (''
-                <span id="rotation-rate-beta" class="value">null</span>,
-                <span id="rotation-rate-gamma" class="value">null</span>,
-                <span id="rotation-rate-alpha" class="value">null</span>)
+                <span id="rotation-rate-beta">null</span>,
+                <span id="rotation-rate-gamma">null</span>,
+                <span id="rotation-rate-alpha">null</span>)
             </p>
             <p>
-                Interval: <span id="interval" class="value">0</span> milliseconds
+                Interval: <span>0</span> milliseconds
             </p>
         </div>
     </div>
     <ng-template #elseBlock>
-        <div id="dm-info">
+        <div>
             <p>
                 Acceleration: (
                 <span id="acceleration-x"></span>,
@@ -193,13 +194,13 @@
                 <span id="rotation-rate-alpha"></span>)
             </p>
             <p>
-                Interval: <span id="interval" class="value">0</span> milliseconds
+                Interval: <span>0</span> milliseconds
             </p>
         </div>
     </ng-template>
 
     <div *ngIf=" !oncompassneedscalibration">
-        <span id="cnc-unsupported">compassneedscalibration event not supported</span>
+        <span>compassneedscalibration event not supported</span>
     </div>
 </div>
 <small class="author">

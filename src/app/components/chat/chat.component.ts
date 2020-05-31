@@ -283,9 +283,7 @@ disponible() {
     window.addEventListener('deviceorientation', function(event) {
             document.getElementById('cube').style.webkitTransform =
             document.getElementById('cube').style.transform =
-            'rotateX(' + event.beta + 'deg) ' +
-            'rotateY(' + event.gamma + 'deg) ' +
-            'rotateZ(' + event.alpha + 'deg)';
+            `rotateX(${event.beta}deg) rotateY(${event.gamma}deg) rotateZ(${event.alpha}deg)`;
 
             let bet = document.getElementById('beta') as HTMLInputElement;
             bet.value = JSON.stringify(Math.round(event.beta));
@@ -337,12 +335,10 @@ disponible() {
 
     });
 
-    if (!('oncompassneedscalibration' in window)) {
-      document.getElementById('cnc-unsupported').classList.remove('hidden');
-  } else {
-    window.addEventListener('compassneedscalibration', function(event) {
+    if (('oncompassneedscalibration' in window)) {
+      window.addEventListener('compassneedscalibration', function(event) {
         alert('Compass needs calibrating! Wave your device in a figure-eight motion');
     });
-}
-}
+  }
+  }
 }
