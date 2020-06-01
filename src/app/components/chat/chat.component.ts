@@ -40,18 +40,18 @@ export class ChatComponent implements OnInit, OnDestroy {
   msg: any;
   fecha: Date;
   hora: any;
-  beta1: number ;
-  gamma1: number ;
-  alpha1: number ;
-  accelerationx: number ;
-  accelerationy: number ;
-  accelerationz: number ;
-  accelerationincludinggravityx: number ;
-  accelerationincludinggravityY: number ;
-  accelerationincludinggravityZ: number ;
-  rotationratebeta: number ;
-  rotationrategamma: number ;
-  rotationratealpha: number ;
+  beta1: number = 0;
+  gamma1: number = 0;
+  alpha1: number = 0;
+  accelerationx: number = 0;
+  accelerationy: number = 0;
+  accelerationz: number = 0;
+  accelerationincludinggravityx: number = 0;
+  accelerationincludinggravityY: number = 0;
+  accelerationincludinggravityZ: number = 0;
+  rotationratebeta: number = 0;
+  rotationrategamma: number = 0;
+  rotationratealpha: number = 0;
 
   constructor(
     public _chatService: ChatService,
@@ -285,13 +285,15 @@ onChanges3( newValue: number ) {
 disponible() {
 
     window.addEventListener('deviceorientation', function(event) {
+            let betas1 = JSON.stringify(Math.round(event.beta));
+            document.getElementById('beta1').setAttribute('beta1', betas1);
+            let gammas1 = JSON.stringify(Math.round(event.gamma));
+            document.getElementById('gamma1').setAttribute('gamma1', gammas1);
+            let alphas1 = JSON.stringify(Math.round(event.alpha));
+            document.getElementById('alfa1').setAttribute('alfa1', alphas1);
 
-            let beta1 = Math.round(event.beta);
-            let gamma1 = Math.round(event.gamma);
-            let alpha1 = Math.round(event.alpha);
             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
     });
-
     window.addEventListener('devicemotion', function(event) {
       let accelerationx = Math.round(event.acceleration.x);
 
