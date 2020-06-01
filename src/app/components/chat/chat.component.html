@@ -1,3 +1,70 @@
+<style>
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    .cube {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        margin: 30px auto;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+    
+    .face {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        font-size: 80px;
+        text-align: center;
+        line-height: 150px;
+        background-color: #999999;
+        box-shadow: inset 0 0 20px #333333;
+        opacity: 0.6;
+    }
+    
+    .cube .one {
+        -webkit-transform: translateZ(75px);
+        transform: translateZ(75px);
+    }
+    
+    .cube .two {
+        -webkit-transform: rotateY(90deg) translateZ(75px);
+        transform: rotateY(90deg) translateZ(75px);
+    }
+    
+    .cube .three {
+        -webkit-transform: rotateY(180deg) translateZ(75px);
+        transform: rotateY(180deg) translateZ(75px);
+    }
+    
+    .cube .four {
+        -webkit-transform: rotateY(-90deg) translateZ(75px);
+        transform: rotateY(-90deg) translateZ(75px);
+    }
+    
+    .cube .five {
+        -webkit-transform: rotateX(90deg) translateZ(75px);
+        transform: rotateX(90deg) translateZ(75px);
+    }
+    
+    .cube .six {
+        -webkit-transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
+        transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
+    }
+    
+    .value {
+        font-weight: bold;
+    }
+    
+    .author {
+        display: block;
+        margin-top: 1em;
+    }
+</style>
 <div class="w3-container">
     <div class="row animated fadeIn">
         <div class="col-12">
@@ -101,110 +168,19 @@
                 <input #txtDir type="range" class="striped" min="-90" max="90" value="dir" step="1" name="dir" [(ngModel)]="dir" (ngModelChange)="onChanges2($event)" id="customRange3">
                 <label form="customRange4">sentido</label>
                 <input #txtSen type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4">
-
+                <h4 class="card-title">beta = {{ beta1 }} </h4>
+                <h4 class="card-title">gamma = {{ gamma1 }} </h4>
+                <h4 class="card-title">alpha = {{ alpha1 }} </h4>
+                <h4 class="card-title">acceleration x = {{ accelerationx }} </h4>
+                <h4 class="card-title">acceleration y = {{ accelerationy }} </h4>
+                <h4 class="card-title">acceleration z = {{ accelerationz }} </h4>
+                <h4 class="card-title">accelerationincludinggravity x = {{ accelerationincludinggravityx }} </h4>
+                <h4 class="card-title">accelerationincludinggravity y = {{ accelerationincludinggravityy }} </h4>
+                <h4 class="card-title">accelerationincludinggravity z = {{ accelerationincludinggravityz }} </h4>
+                <h4 class="card-title">rotationrate beta = {{ rotationratebeta }} </h4>
+                <h4 class="card-title">rotationrate gamma = {{ rotationrategamma }} </h4>
+                <h4 class="card-title">rotationrate alpha = {{ rotationratealpha }} </h4>
             </div>
         </div>
     </div>
 </div>
-
-<div>
-
-    <div *ngIf=" !deviceorientation ; else elseBlock">
-        <span>deviceorientation event not supported</span>
-        <div>
-            <p>
-                Coordinates: (
-                <span id="beta">null</span>,
-                <span id="gamma">null</span>,
-                <span id="alpha">null</span>)
-                <br /> Position absolute?
-                <spa>unavailable</span>
-            </p>
-        </div>
-    </div>
-    <ng-template #elseBlock>
-        <div id="cube" class="cube">
-            <div class="face one">1</div>
-            <div class="face two">2</div>
-            <div class="face three">3</div>
-            <div class="face four">4</div>
-            <div class="face five">5</div>
-            <div class="face six">6</div>
-        </div>
-
-        <div>
-            <p>
-                Coordinates: (
-                <span id="beta"></span>,
-                <span id="gamma"></span>,
-                <span id="alpha"></span>)
-                <br /> Position absolute? <span>unavailable</span>
-            </p>
-        </div>
-    </ng-template>
-
-    <div *ngIf=" !devicemotion ; else elseBlock">
-        <span>devicemotion event not supported</span>
-        <div>
-            <p>
-                Acceleration: (
-                <span id="acceleration-x">null</span>,
-                <span id="acceleration-y">null</span>,
-                <span id="acceleration-z">null</span>) m/s
-                <sup>2</sup>
-            </p>
-            <p>
-                Acceleration including gravity: (
-                <span id="acceleration-including-gravity-x">null</span>,
-                <span id="acceleration-including-gravity-y">null</span>,
-                <span id="acceleration-including-gravity-z">null</span>) m/s
-                <sup>2</sup>
-            </p>
-            <p>
-                Rotation rate: (''
-                <span id="rotation-rate-beta">null</span>,
-                <span id="rotation-rate-gamma">null</span>,
-                <span id="rotation-rate-alpha">null</span>)
-            </p>
-            <p>
-                Interval: <span>0</span> milliseconds
-            </p>
-        </div>
-    </div>
-    <ng-template #elseBlock>
-        <div>
-            <p>
-                Acceleration: (
-                <span id="acceleration-x"></span>,
-                <span id="acceleration-y"></span>,
-                <span id="acceleration-z"></span>) m/s
-                <sup>2</sup>
-            </p>
-            <p>
-                Acceleration including gravity: (
-                <span id="acceleration-including-gravity-x"></span>,
-                <span id="acceleration-including-gravity-y"></span>,
-                <span id="acceleration-including-gravity-z"></span>) m/s
-                <sup>2</sup>
-            </p>
-            <p>
-                Rotation rate: (
-                <span id="rotation-rate-beta"></span>,
-                <span id="rotation-rate-gamma"></span>,
-                <span id="rotation-rate-alpha"></span>)
-            </p>
-            <p>
-                Interval: <span>0</span> milliseconds
-            </p>
-        </div>
-    </ng-template>
-
-    <div *ngIf=" !oncompassneedscalibration">
-        <span>compassneedscalibration event not supported</span>
-    </div>
-</div>
-<small class="author">
-         Demo created by <a href="https://www.audero.it">Aurelio De Rosa</a>
-         (<a href="https://twitter.com/AurelioDeRosa">@AurelioDeRosa</a>).<br />
-         This demo is part of the <a href="https://github.com/AurelioDeRosa/HTML5-API-demos">HTML5 API demos repository</a>.
-</small>
