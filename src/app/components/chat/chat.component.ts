@@ -22,18 +22,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('txtDir', {static: false}) txtDir: ElementRef;
   @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
-  @ViewChild('txtbeta1', {static: false}) txtbeta1: ElementRef;
-  @ViewChild('txtgamma1', {static: false}) txtgamma1: ElementRef;
-  @ViewChild('txtalpha1', {static: false}) txtalpha1: ElementRef;
-  @ViewChild('txtaccelerationx1', {static: false}) txtaccelerationx1: ElementRef;
-  @ViewChild('txtaccelerationy1', {static: false}) txtaccelerationy1: ElementRef;
-  @ViewChild('txtaccelerationz1', {static: false}) txtaccelerationz1: ElementRef;
-  @ViewChild('txtaccelerationincludinggravityx1', {static: false}) txtaccelerationincludinggravityx1: ElementRef;
-  @ViewChild('txtaccelerationincludinggravityy1', {static: false}) txtaccelerationincludinggravityy1: ElementRef;
-  @ViewChild('txtaccelerationincludinggravityz1', {static: false}) txtaccelerationincludinggravityz1: ElementRef;
-  @ViewChild('txtrotationratebeta1', {static: false}) txtrotationratebeta1: ElementRef;
-  @ViewChild('txtrotationrategamma1', {static: false}) txtrotationrategamma1: ElementRef;
-  @ViewChild('txtrotationratealpha1', {static: false}) txtrotationratealpha1: ElementRef;
+
   [x: string]: any;
   frecuencia: number;
   dir: number;
@@ -356,67 +345,61 @@ disponible() {
 
     window.addEventListener('deviceorientation', function(event) {
             let betas1 = JSON.stringify(Math.round(event.beta));
-            document.getElementById('beta').setAttribute('value', betas1);
+            document.getElementById('beta').setAttribute('placeholder', betas1);
 
             let gammas1 = JSON.stringify(Math.round(event.gamma));
-            document.getElementById('gamma').setAttribute('value', gammas1);
+            document.getElementById('gamma').setAttribute('placeholder', gammas1);
 
             let alphas1 = JSON.stringify(Math.round(event.alpha));
-            document.getElementById('alpha').setAttribute('value', alphas1);
-
-
-            document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
-
+            document.getElementById('alpha').setAttribute('placeholder', alphas1);
     });
-this.beta1 = document.getElementById('beta').getAttribute('value');
 
-this.gamma1 = document.getElementById('gamma').getAttribute('value');
+this.beta1 = document.getElementById('beta').getAttribute('placeholder');
 
-this.alpha1 = document.getElementById('alpha').getAttribute('value');
+this.gamma1 = document.getElementById('gamma').getAttribute('placeholder');
+
+this.alpha1 = document.getElementById('alpha').getAttribute('placeholder');
 
 
     window.addEventListener('devicemotion', function(event) {
       let accelerationx = JSON.stringify(Math.round(event.acceleration.x));
-      document.getElementById('ax').setAttribute('value', accelerationx );
+      document.getElementById('ax').setAttribute('placeholder', accelerationx );
 
       let accelerationy = JSON.stringify(Math.round(event.acceleration.y));
-      document.getElementById('ay').setAttribute('value', accelerationy );
+      document.getElementById('ay').setAttribute('placeholder', accelerationy );
 
       let accelerationz = JSON.stringify(Math.round(event.acceleration.z));
-      document.getElementById('az').setAttribute('value', accelerationz );
+      document.getElementById('az').setAttribute('placeholder', accelerationz );
 
       let accelerationincludinggravityx = JSON.stringify( Math.round(event.accelerationIncludingGravity.x));
-      document.getElementById('aigx').setAttribute('value', accelerationincludinggravityx );
+      document.getElementById('aigx').setAttribute('placeholder', accelerationincludinggravityx );
 
       let accelerationincludinggravityy = JSON.stringify( Math.round(event.accelerationIncludingGravity.y));
-      document.getElementById('aigy').setAttribute('value', accelerationincludinggravityy );
+      document.getElementById('aigy').setAttribute('placeholder', accelerationincludinggravityy );
 
       let accelerationincludinggravityz = JSON.stringify( Math.round(event.accelerationIncludingGravity.z));
-      document.getElementById('aigz').setAttribute('value', accelerationincludinggravityz );
+      document.getElementById('aigz').setAttribute('placeholder', accelerationincludinggravityz );
 
       let rotationratebeta = JSON.stringify(Math.round(event.rotationRate.beta));
-      document.getElementById('rrb').setAttribute('value', rotationratebeta);
+      document.getElementById('rrb').setAttribute('placeholder', rotationratebeta);
 
       let rotationrategamma = JSON.stringify(Math.round(event.rotationRate.gamma));
-      document.getElementById('rrg').setAttribute('value', rotationrategamma);
+      document.getElementById('rrg').setAttribute('placeholder', rotationrategamma);
 
       let rotationratealpha = JSON.stringify(Math.round(event.rotationRate.alpha));
-      document.getElementById('rra').setAttribute('value', rotationratealpha);
-
-      // let interval = document.getElementById('interval') as HTMLInputElement;
-      // interval.value = JSON.stringify(Math.round(event.interval));
+      document.getElementById('rra').setAttribute('placeholder', rotationratealpha);
 
     });
-    this.accelerationx1 = document.getElementById('ax').getAttribute('value');
-    this.accelerationy1 = document.getElementById('ay').getAttribute('value');
-    this.accelerationz1 = document.getElementById('az').getAttribute('value');
+    this.accelerationx1 = document.getElementById('ax').getAttribute('placeholder');
+    this.accelerationy1 = document.getElementById('ay').getAttribute('placeholder');
+    this.accelerationz1 = document.getElementById('az').getAttribute('placeholder');
 
-    this.accelerationincludinggravityx1 = document.getElementById('aigx').getAttribute('value');
-    this.accelerationincludinggravityy1 = document.getElementById('aigy').getAttribute('value');
-    this.accelerationincludinggravityz1 = document.getElementById('aigz').getAttribute('value');
+    this.accelerationincludinggravityx1 = document.getElementById('aigx').getAttribute('placeholder');
+    this.accelerationincludinggravityy1 = document.getElementById('aigy').getAttribute('placeholder');
+    this.accelerationincludinggravityz1 = document.getElementById('aigz').getAttribute('placeholder');
 
-    this.rotationratebeta1 = document.getElementById('rrb').getAttribute('value');
-    this.rotationrategamma1 = document.getElementById('rrg').getAttribute('value');
-    this.rotationratealpha1 = document.getElementById('rra').getAttribute('value');
+    this.rotationratebeta1 = document.getElementById('rrb').getAttribute('placeholder');
+    this.rotationrategamma1 = document.getElementById('rrg').getAttribute('placeholder');
+    this.rotationratealpha1 = document.getElementById('rra').getAttribute('placeholder');
   }
 }

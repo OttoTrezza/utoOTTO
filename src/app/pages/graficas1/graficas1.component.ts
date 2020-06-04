@@ -80,7 +80,6 @@ export class Graficas1Component implements OnInit {
   this.graficos[this.num].data[11] = msg.rotationratealpha1;
   let sala: string = msg.sala;
   this.graficos[this.num].leyenda = msg.de;
-
   });
   }
   }

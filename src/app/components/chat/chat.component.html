@@ -154,9 +154,10 @@
 
                 <label form="customRange1">Frecuencia</label>
                 <input #txtFrecuencia type="range" class="striped" min="45" max="150" value="frecuencia" step="1" name="frecuencia" [(ngModel)]="frecuencia" (ngModelChange)="onChanges($event)" id="customRange1">
-
+                <br>
                 <label form="customRange2">LongPulse</label>
                 <input #txtLongPulse type="range" class="striped" min="1" max="99" value="LongPulse" step="1" name="LongPulse" [(ngModel)]="LongPulse" (ngModelChange)="onChanges1($event)" id="customRange2">
+                <br>
                 <h4 class="card-title">Sensor 2 = {{ progreso2 }} </h4>
                 <br>
                 <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="progreso2 - 600" aria-valuenow="50" aria-valuemin="0" aria-valuemax="600" [style.width]="progreso2 + '%'"></div>
@@ -166,9 +167,10 @@
                 <br>
                 <label form="customRange3">marcha</label>
                 <input #txtDir type="range" class="striped" min="-90" max="90" value="dir" step="1" name="dir" [(ngModel)]="dir" (ngModelChange)="onChanges2($event)" id="customRange3">
+                <br>
                 <label form="customRange4">sentido</label>
                 <input #txtSen type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4">
-
+                <br>
                 <!-- <input id="beta1" placeholder="beta1">
                 <input id="gamma1" placeholder="gamma1">
                 <input id="alpha1" placeholder="alpha1">
@@ -176,36 +178,48 @@
                 <input id="aigy" placeholder="aigy">
                 <input id="aigz" placeholder="aigz"> -->
                 <!-- <input #txtElSarmiento type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4"> // <input #txtclass="card-title" id="beta" placeholder="beta1"> -->
-                <label form="beta">Beta</label>
-                <input #txtbeta1 type="range" class="striped" min="-90" max="90" value="beta1" step="1" name="beta1" [(ngModel)]="beta1" (ngModelChange)="onChanges4($event)" id="beta">
-                <label form="gamma">Gamma</label>
-                <input #txtgamma1 type="range" class="striped" min="-90" max="90" value="gamma1" step="1" name="gamma1" [(ngModel)]="gamma1" (ngModelChange)="onChanges5($event)" id="gamma">
-                <label form="alpha">Alpha</label>
-                <input #txtalpha1 type="range" class="striped" min="-90" max="90" value="alpha1" step="1" name="alpha1" [(ngModel)]="alpha1" (ngModelChange)="onChanges6($event)" id="alpha">
 
-                <label form="accelerationx">Accelerationx</label>
-                <input #txtaccelerationx1 type="range" class="striped" min="-90" max="90" value="accelerationx1" step="1" name="accelerationx1" [(ngModel)]="accelerationx1" (ngModelChange)="onChanges7($event)" id="ax">
-                <label form="accelerationy">Accelerationy</label>
-                <input #txtaccelerationy1 type="range" class="striped" min="-90" max="90" value="accelerationy1" step="1" name="accelerationy1" [(ngModel)]="accelerationy1" (ngModelChange)="onChanges8($event)" id="ay">
-                <label form="accelerationz">Accelerationz</label>
-                <input #txtaccelerationz1 type="range" class="striped" min="-90" max="90" value="accelerationz1" step="1" name="accelerationz1" [(ngModel)]="accelerationz1" (ngModelChange)="onChanges9($event)" id="az">
+                <h4 id="beta" placeholder="beta1" class="card-title">Beta = {{ beta1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="beta1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="beta1 + '%'"></div>
+                <h4 id="gamma" placeholder="gamma1" class="card-title">Gamma = {{ gamma1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="gamma1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="gamma1 + '%'"></div>
+                <h4 id="alpha" placeholder="alpha1" class="card-title">Alpha = {{ alpha1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="alpha1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="alpha1 + '%'"></div>
 
-                <label form="accelerationincludinggravityx">Accelerationincludinggravityx</label>
-                <input #txtaccelerationincludinggravityx1 type="range" class="striped" min="-90" max="90" value="accelerationincludinggravityx1" step="1" name="accelerationincludinggravityx1" [(ngModel)]="accelerationincludinggravityx1" (ngModelChange)="onChanges10($event)"
-                    id="aigx">
-                <label form="accelerationincludinggravityy">Accelerationincludinggravityy</label>
-                <input #txtaccelerationincludinggravityy1 type="range" class="striped" min="-90" max="90" value="accelerationincludinggravityy1" step="1" name="accelerationincludinggravityy1" [(ngModel)]="accelerationincludinggravityy1" (ngModelChange)="onChanges11($event)"
-                    id="aigy">
-                <label form="accelerationincludinggravityz">Accelerationincludinggravityz</label>
-                <input #txtaccelerationincludinggravityz1 type="range" class="striped" min="-90" max="90" value="accelerationincludinggravityz1" step="1" name="accelerationincludinggravityz1" [(ngModel)]="accelerationincludinggravityz1" (ngModelChange)="onChanges12($event)"
-                    id="aigz">
+                <h4 id="ax" placeholder="accelerationx1" class="card-title">Accelerationx = {{ accelerationx1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="accelerationx1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationx1 + '%'"></div>
+                <h4 id="ay" placeholder="accelerationy1" class="card-title">Accelerationy = {{ accelerationy1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="accelerationy" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationy + '%'"></div>
+                <h4 id="az" placeholder="accelerationz1" class="card-title">Accelerationz = {{ accelerationz1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="accelerationz" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationz + '%'"></div>
 
-                <label form="rotationratebeta">Rotationratebeta</label>
-                <input #txtrotationratebeta1 type="range" class="striped" min="-90" max="90" value="rotationratebeta1" step="1" name="rotationratebeta1" [(ngModel)]="rotationratebeta1" (ngModelChange)="onChanges13($event)" id="rrb">
-                <label form="rotationrategamma">Rotationrategamma</label>
-                <input #txtrotationrategamma1 type="range" class="striped" min="-90" max="90" value="rotationrategamma1" step="1" name="rotationrategamma1" [(ngModel)]="rotationrategamma1" (ngModelChange)="onChanges14($event)" id="rrg">
-                <label form="rotationratealpha">Rotationratealpha</label>
-                <input #txtrotationratealpha1 type="range" class="striped" min="-90" max="90" value="rotationratealpha1" step="1" name="rotationratealpha1" [(ngModel)]="rotationratealpha1" (ngModelChange)="onChanges15($event)" id="rra">
+
+                <h4 id="aigx" placeholder="accelerationincludinggravityx1" class="card-title">Accelerationincludinggravityx = {{ accelerationincludinggravityx1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityx1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationincludinggravityx1 + '%'"></div>
+                <h4 id="aigy" placeholder="accelerationincludinggravityy1" class="card-title">Accelerationincludinggravityy = {{ accelerationincludinggravityy1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityy1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationincludinggravityy1 + '%'"></div>
+                <h4 id="aigz" placeholder="accelerationincludinggravityz1" class="card-title">Accelerationincludinggravityz = {{ accelerationincludinggravityz1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityz1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationincludinggravityz1 + '%'"></div>
+
+                <h4 id="rrb" placeholder="rotationratebeta1" class="card-title">Rotationratebeta = {{ rotationratebeta1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="rotationratebeta1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="rotationratebeta1 + '%'"></div>
+                <h4 id="rrg" placeholder=" rotationrategamma1" class="card-title">Rotationrategamma = {{ rotationrategamma1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="rotationrategamma1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="rotationrategamma1 + '%'"></div>
+                <h4 id="rra" placeholder=" rotationratealpha1" class="card-title">Rotationratealpha = {{ rotationratealpha1 }} </h4>
+                <br>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="rotationratealpha1" aria-valuenow="0" aria-valuemin="-180" aria-valuemax="180" [style.width]="rotationratealpha1 + '%'"></div>
+
 
             </div>
         </div>
