@@ -80,6 +80,5 @@ export class Graficas1Component implements OnInit {
   this.graficos[this.num].leyenda = msg.de;
 
   });
-
   }
-
+  }
