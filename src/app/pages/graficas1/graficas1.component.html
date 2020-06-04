@@ -1,5 +1,5 @@
 <div class="row">
-    <div *ngIf=" msg.de === 'testa16' ; else elseBlock">
+    <div *ngIf=" graficos[0].leyenda === 'testa16' ; else elseBlock">
 
         <div class="col-6">
             <div class="card">
@@ -25,41 +25,38 @@
         </div>
     </ng-template>
 
-</div>
 
+    <div *ngIf="graficos[1].leyenda === 'ignacio1' ; else elseBlock">
 
-<div *ngIf=" msg.de === 'ignacio1' ; else elseBlock">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ graficos[1].leyenda }} </h4>
 
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{ graficos[1].leyenda }} </h4>
+                    <app-grafico-dona [chartLabels]="graficos[1].labels" [chartData]="graficos[1].data" chartType="doughnut"></app-grafico-dona>
 
-                <app-grafico-dona [chartLabels]="graficos[1].labels" [chartData]="graficos[1].data" chartType="doughnut"></app-grafico-dona>
-
+                </div>
             </div>
         </div>
     </div>
-</div>
-<ng-template #elseBlock>
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{ graficos[1].leyendaDefault }} </h4>
+    <ng-template #elseBlock>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ graficos[1].leyendaDefault }} </h4>
 
-                <app-grafico-dona [chartLabels]="graficos[1].labels" [chartData]="graficos[1].dataDefault" chartType="doughnut"></app-grafico-dona>
+                    <app-grafico-dona [chartLabels]="graficos[1].labels" [chartData]="graficos[1].dataDefault" chartType="doughnut"></app-grafico-dona>
 
+                </div>
             </div>
         </div>
-    </div>
-</ng-template>
+    </ng-template>
 
 </div>
 
-</div>
 
 <div class="row">
-    <div *ngIf=" msg.de === 'ignacio1' ; else elseBlock">
+    <div *ngIf=" graficos[2].leyenda === 'ignacio1' ; else elseBlock">
 
         <div class="col-6">
             <div class="card">
@@ -85,33 +82,31 @@
         </div>
     </ng-template>
 
-</div>
 
+    <div *ngIf=" graficos[3].leyenda === 'ignacio1' ; else elseBlock">
 
-<div *ngIf=" msg.de === 'ignacio1' ; else elseBlock">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ graficos[3].leyenda }} </h4>
 
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{ graficos[3].leyenda }} </h4>
+                    <app-grafico-dona [chartLabels]="graficos[3].labels" [chartData]="graficos[3].data" chartType="doughnut"></app-grafico-dona>
 
-                <app-grafico-dona [chartLabels]="graficos[3].labels" [chartData]="graficos[3].data" chartType="doughnut"></app-grafico-dona>
-
+                </div>
             </div>
         </div>
     </div>
-</div>
-<ng-template #elseBlock>
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{ graficos[3].leyendaDefault }} </h4>
+    <ng-template #elseBlock>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ graficos[3].leyendaDefault }} </h4>
 
-                <app-grafico-dona [chartLabels]="graficos[3].labels" [chartData]="graficos[3].dataDefault" chartType="doughnut"></app-grafico-dona>
+                    <app-grafico-dona [chartLabels]="graficos[3].labels" [chartData]="graficos[3].dataDefault" chartType="doughnut"></app-grafico-dona>
 
+                </div>
             </div>
         </div>
-    </div>
-</ng-template>
+    </ng-template>
 
 </div>

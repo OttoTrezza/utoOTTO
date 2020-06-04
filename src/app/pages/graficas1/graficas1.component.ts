@@ -10,8 +10,10 @@ import { Subscription } from 'rxjs/Subscription';
 
 
 export class Graficas1Component implements OnInit {
+
   ElSarmientoSubscription: Subscription;
   num: number;
+  msg: any;
   graficos: any = {
     'grafico1': {
       // tslint:disable-next-line:max-line-length
