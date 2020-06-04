@@ -22,6 +22,18 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('txtDir', {static: false}) txtDir: ElementRef;
   @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
+  @ViewChild('txtbeta1', {static: false}) txtbeta1: ElementRef;
+  @ViewChild('txtgamma1', {static: false}) txtgamma1: ElementRef;
+  @ViewChild('txtalpha1', {static: false}) txtalpha1: ElementRef;
+  @ViewChild('txtaccelerationx1', {static: false}) txtaccelerationx1: ElementRef;
+  @ViewChild('txtaccelerationy1', {static: false}) txtaccelerationy1: ElementRef;
+  @ViewChild('txtaccelerationz1', {static: false}) txtaccelerationz1: ElementRef;
+  @ViewChild('txtaccelerationincludinggravityx1', {static: false}) txtaccelerationincludinggravityx1: ElementRef;
+  @ViewChild('txtaccelerationincludinggravityy1', {static: false}) txtaccelerationincludinggravityy1: ElementRef;
+  @ViewChild('txtaccelerationincludinggravityz1', {static: false}) txtaccelerationincludinggravityz1: ElementRef;
+  @ViewChild('txtrotationratebeta1', {static: false}) txtrotationratebeta1: ElementRef;
+  @ViewChild('txtrotationrategamma1', {static: false}) txtrotationrategamma1: ElementRef;
+  @ViewChild('txtrotationratealpha1', {static: false}) txtrotationratealpha1: ElementRef;
   [x: string]: any;
   frecuencia: number;
   dir: number;
@@ -44,15 +56,16 @@ export class ChatComponent implements OnInit, OnDestroy {
   beta1: any ;
   gamma1: any;
   alpha1: any;
-  accelerationx: any;
-  accelerationy: any;
-  accelerationz: any;
-  accelerationincludinggravityx: any;
-  accelerationincludinggravityY: any;
-  accelerationincludinggravityZ: any;
-  rotationratebeta: any;
-  rotationrategamma: any;
-  rotationratealpha: any;
+  accelerationx1: any;
+  accelerationy1: any;
+  accelerationz1: any;
+  accelerationincludinggravityx1: any;
+  accelerationincludinggravityy1: any;
+  accelerationincludinggravityz1: any;
+  rotationratebeta1: any;
+  rotationrategamma1: any;
+  rotationratealpha1: any;
+  leer: boolean = false;
 
   constructor(
     public _chatService: ChatService,
@@ -280,9 +293,65 @@ onChanges3( newValue: number ) {
 //    this.scrollBottom();
    });
 }
+onchanges4(newValue: number) { // desde aca puedo despertar distintos servicios.. segun cual es el valor que cambia...a
+  // por ejemplo..onchanges4...si cambia beta1... si lo movio hacia arriba, comienzo una busqueda de secuencia,,por ejemplo..
+  // tslint:disable-next-line:max-line-length
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges5(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges6(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges7(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges8(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges9(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges10(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges11(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges12(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges13(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges14(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges15(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
 
-
-
+senElsarmiento(leer: boolean ) {
+if ( leer === true ) {
+  // tslint:disable-next-line:max-line-length
+  this._chatService.sendElSarmiento(this._usuarioService.usuario.sala, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityY1, this.accelerationincludinggravityZ1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, (resp: any) => {
+  });
+}
+leer = false;
+}
 disponible() {
 
     window.addEventListener('deviceorientation', function(event) {
@@ -293,14 +362,16 @@ disponible() {
             document.getElementById('gamma').setAttribute('value', gammas1);
 
             let alphas1 = JSON.stringify(Math.round(event.alpha));
-            document.getElementById('alfa').setAttribute('value', alphas1);
+            document.getElementById('alpha').setAttribute('value', alphas1);
 
 
             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
 
     });
 this.beta1 = document.getElementById('beta').getAttribute('value');
+
 this.gamma1 = document.getElementById('gamma').getAttribute('value');
+
 this.alpha1 = document.getElementById('alpha').getAttribute('value');
 
 
@@ -315,13 +386,13 @@ this.alpha1 = document.getElementById('alpha').getAttribute('value');
       document.getElementById('az').setAttribute('value', accelerationz );
 
       let accelerationincludinggravityx = JSON.stringify( Math.round(event.accelerationIncludingGravity.x));
-      document.getElementById('aigx').setAttribute('placeholder', accelerationincludinggravityx );
+      document.getElementById('aigx').setAttribute('value', accelerationincludinggravityx );
 
       let accelerationincludinggravityy = JSON.stringify( Math.round(event.accelerationIncludingGravity.y));
-      document.getElementById('aigy').setAttribute('placeholder', accelerationincludinggravityy );
+      document.getElementById('aigy').setAttribute('value', accelerationincludinggravityy );
 
       let accelerationincludinggravityz = JSON.stringify( Math.round(event.accelerationIncludingGravity.z));
-      document.getElementById('aigz').setAttribute('placeholder', accelerationincludinggravityz );
+      document.getElementById('aigz').setAttribute('value', accelerationincludinggravityz );
 
       let rotationratebeta = JSON.stringify(Math.round(event.rotationRate.beta));
       document.getElementById('rrb').setAttribute('value', rotationratebeta);
@@ -336,17 +407,16 @@ this.alpha1 = document.getElementById('alpha').getAttribute('value');
       // interval.value = JSON.stringify(Math.round(event.interval));
 
     });
-    this.accelerationx = document.getElementById('ax').getAttribute('value');
-    this.accelerationy = document.getElementById('ay').getAttribute('value');
-    this.accelerationz = document.getElementById('az').getAttribute('value');
+    this.accelerationx1 = document.getElementById('ax').getAttribute('value');
+    this.accelerationy1 = document.getElementById('ay').getAttribute('value');
+    this.accelerationz1 = document.getElementById('az').getAttribute('value');
 
-    this.accelerationincludinggravityx = document.getElementById('aigx').getAttribute('value');
-    this.accelerationincludinggravityy = document.getElementById('aigy').getAttribute('value');
-    this.accelerationincludinggravityz = document.getElementById('aigz').getAttribute('value');
+    this.accelerationincludinggravityx1 = document.getElementById('aigx').getAttribute('value');
+    this.accelerationincludinggravityy1 = document.getElementById('aigy').getAttribute('value');
+    this.accelerationincludinggravityz1 = document.getElementById('aigz').getAttribute('value');
 
-    this.rotationratebeta = document.getElementById('rrb').getAttribute('value');
-    this.rotationrategamma = document.getElementById('rrg').getAttribute('value');
-    this.rotationratealpha = document.getElementById('rra').getAttribute('value');
-    this.accelerationx = document.getElementById('ax').getAttribute('value');
+    this.rotationratebeta1 = document.getElementById('rrb').getAttribute('value');
+    this.rotationrategamma1 = document.getElementById('rrg').getAttribute('value');
+    this.rotationratealpha1 = document.getElementById('rra').getAttribute('value');
   }
 }

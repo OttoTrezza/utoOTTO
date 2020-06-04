@@ -89,6 +89,35 @@ img: string;
        // console.log(resp);
       });
       }
+      // tslint:disable-next-line:max-line-length
+      sendElSarmiento(sala: string, beta1: any, gamma1: any, alpha1: any, accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any, callback: any) {
+        this.name = this.usuarioService.usuario.nombre;
+        // this.name = this.wsService.getUsuario().nombre;
+        const payload = {
+          de: this.name,
+          sala: sala,
+          beta1: beta1,
+          gamma1: gamma1,
+          alpha1: alpha1,
+          accelerationx1: accelerationx1,
+          accelerationy1: accelerationy1,
+          accelerationz1: accelerationz1,
+          accelerationincludinggravityx1: accelerationincludinggravityx1,
+          accelerationincludinggravityy1: accelerationincludinggravityy1,
+          accelerationincludinggravityz1: accelerationincludinggravityz1,
+          rotationratebeta1: rotationratebeta1,
+          rotationrategamma1: rotationrategamma1,
+          rotationratealpha1: rotationratealpha1,
+          };
+        this.wsService.emit( 'ElSarmiento' , payload, (resp: any) => {
+          callback(resp);
+         // console.log(resp);
+        });
+
+
+      }
+
+
     getMessages1() {
        return this.wsService.listen( 'mensajeDeServidor' );
       }

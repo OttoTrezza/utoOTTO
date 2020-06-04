@@ -175,24 +175,55 @@
                 <input id="aigx" placeholder="aigx">
                 <input id="aigy" placeholder="aigy">
                 <input id="aigz" placeholder="aigz"> -->
+                <!-- <input #txtElSarmiento type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4"> // <input #txtclass="card-title" id="beta" placeholder="beta1"> -->
+                <label form="beta">Beta</label>
+                <input #txtbeta1 type="range" class="striped" min="-90" max="90" value="beta1" step="1" name="beta1" [(ngModel)]="beta1" (ngModelChange)="onChanges4($event)" id="beta">
+                <label form="gamma">Gamma</label>
+                <input #txtgamma1 type="range" class="striped" min="-90" max="90" value="gamma1" step="1" name="gamma1" [(ngModel)]="gamma1" (ngModelChange)="onChanges5($event)" id="gamma">
+                <label form="alpha">Alpha</label>
+                <input #txtalpha1 type="range" class="striped" min="-90" max="90" value="alpha1" step="1" name="alpha1" [(ngModel)]="alpha1" (ngModelChange)="onChanges6($event)" id="alpha">
 
-                <h4 class="card-title" id="beta" value="beta1">beta = {{ beta1 }} </h4>
-                <h4 class="card-title" id="gamma" value="gamma1">gamma = {{gamma1}}</h4>
-                <h4 class="card-title" id="alpha" value="alpha1">alpha = {{ alpha1 }} </h4>
+                <label form="accelerationx">Accelerationx</label>
+                <input #txtaccelerationx1 type="range" class="striped" min="-90" max="90" value="accelerationx1" step="1" name="accelerationx1" [(ngModel)]="accelerationx1" (ngModelChange)="onChanges7($event)" id="ax">
+                <label form="accelerationy">Accelerationy</label>
+                <input #txtaccelerationy1 type="range" class="striped" min="-90" max="90" value="accelerationy1" step="1" name="accelerationy1" [(ngModel)]="accelerationy1" (ngModelChange)="onChanges8($event)" id="ay">
+                <label form="accelerationz">Accelerationz</label>
+                <input #txtaccelerationz1 type="range" class="striped" min="-90" max="90" value="accelerationz1" step="1" name="accelerationz1" [(ngModel)]="accelerationz1" (ngModelChange)="onChanges9($event)" id="az">
 
+                <label form="accelerationincludinggravityx">Accelerationincludinggravityx</label>
+                <input #txtaccelerationincludinggravityx1 type="range" class="striped" min="-90" max="90" value="accelerationincludinggravityx1" step="1" name="accelerationincludinggravityx1" [(ngModel)]="accelerationincludinggravityx1" (ngModelChange)="onChanges10($event)"
+                    id="aigx">
+                <label form="accelerationincludinggravityy">Accelerationincludinggravityy</label>
+                <input #txtaccelerationincludinggravityy1 type="range" class="striped" min="-90" max="90" value="accelerationincludinggravityy1" step="1" name="accelerationincludinggravityy1" [(ngModel)]="accelerationincludinggravityy1" (ngModelChange)="onChanges11($event)"
+                    id="aigy">
+                <label form="accelerationincludinggravityz">Accelerationincludinggravityz</label>
+                <input #txtaccelerationincludinggravityz1 type="range" class="striped" min="-90" max="90" value="accelerationincludinggravityz1" step="1" name="accelerationincludinggravityz1" [(ngModel)]="accelerationincludinggravityz1" (ngModelChange)="onChanges12($event)"
+                    id="aigz">
 
-                <h4 class="card-title" id="ax" value="accelerationx">acceleration x = {{ accelerationx }} </h4>
-                <h4 class="card-title" id="ay" value="accelerationy">acceleration y = {{ accelerationy }} </h4>
-                <h4 class="card-title" id="az" value="accelerationz">acceleration z = {{ accelerationz }} </h4>
+                <label form="rotationratebeta">Rotationratebeta</label>
+                <input #txtrotationratebeta1 type="range" class="striped" min="-90" max="90" value="rotationratebeta1" step="1" name="rotationratebeta1" [(ngModel)]="rotationratebeta1" (ngModelChange)="onChanges13($event)" id="rrb">
+                <label form="rotationrategamma">Rotationrategamma</label>
+                <input #txtrotationrategamma1 type="range" class="striped" min="-90" max="90" value="rotationrategamma1" step="1" name="rotationrategamma1" [(ngModel)]="rotationrategamma1" (ngModelChange)="onChanges14($event)" id="rrg">
+                <label form="rotationratealpha">Rotationratealpha</label>
+                <input #txtrotationratealpha1 type="range" class="striped" min="-90" max="90" value="rotationratealpha1" step="1" name="rotationratealpha1" [(ngModel)]="rotationratealpha1" (ngModelChange)="onChanges15($event)" id="rra">
 
-                <h4 class="card-title" id="aigx" value="accelerationincludinggravityx">accelerationincludinggravity x = {{ accelerationincludinggravityx }} </h4>
-                <h4 class="card-title" id="aigy" value="accelerationincludinggravityy">accelerationincludinggravity y = {{ accelerationincludinggravityy }} </h4>
-                <h4 class="card-title" id="aigz" value="accelerationincludinggravityz">accelerationincludinggravity z = {{ accelerationincludinggravityz }} </h4>
-
-                <h4 class="card-title" id="rrb" value="rotationratebeta">rotationrate beta = {{ rotationratebeta }} </h4>
-                <h4 class="card-title" id="rrg" value="rotationrategamma">rotationrate gamma = {{ rotationrategamma }} </h4>
-                <h4 class="card-title" id="rra" value="rotationratealpha">rotationrate alpha = {{ rotationratealpha }} </h4>
             </div>
         </div>
     </div>
 </div>
+<!-- <h4 class="card-title" id="beta" value="beta1">beta = {{ beta1 }} </h4>
+<h4 class="card-title" id="gamma" value="gamma1">gamma = {{ gamma1 }}</h4>
+<h4 class="card-title" id="alpha" value="alpha1">alpha = {{ alpha1 }} </h4>
+
+
+<h4 class="card-title" id="ax" value="accelerationx">acceleration x = {{ accelerationx }} </h4>
+<h4 class="card-title" id="ay" value="accelerationy">acceleration y = {{ accelerationy }} </h4>
+<h4 class="card-title" id="az" value="accelerationz">acceleration z = {{ accelerationz }} </h4>
+
+<h4 class="card-title" id="aigx" value="accelerationincludinggravityx">accelerationincludinggravity x = {{ accelerationincludinggravityx }} </h4>
+<h4 class="card-title" id="aigy" value="accelerationincludinggravityy">accelerationincludinggravity y = {{ accelerationincludinggravityy }} </h4>
+<h4 class="card-title" id="aigz" value="accelerationincludinggravityz">accelerationincludinggravity z = {{ accelerationincludinggravityz }} </h4>
+
+<h4 class="card-title" id="rrb" value="rotationratebeta">rotationrate beta = {{ rotationratebeta }} </h4>
+<h4 class="card-title" id="rrg" value="rotationrategamma">rotationrate gamma = {{ rotationrategamma }} </h4>
+<h4 class="card-title" id="rra" value="rotationratealpha">rotationrate alpha = {{ rotationratealpha }} </h4> -->
