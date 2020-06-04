@@ -128,6 +128,9 @@ img: string;
     getMessagesp() {
       return this.wsService.listen( 'mensajesp-nuevo' );
   }
+  getElSarmiento() {
+    return this.wsService.listen( 'ElSarmiento-nuevo' );
+}
 
     getUsuariosActivos() {
         return this.wsService.listen( 'usuarios-activos' );
