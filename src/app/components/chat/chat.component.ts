@@ -66,7 +66,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-  this.listener = this.renderer.listen( this.Beta1.nativeElement, 'deviceorientation', (value) => {
+  this.listener = this.renderer.listen( this.Beta1.nativeElement, 'deviceorientation', (value: any) => {
 console.log('vslue1', value);
 this.Beta1.nativeElement.value = value.beta;
 
@@ -140,7 +140,8 @@ this.Beta1.nativeElement.value = value.beta;
 
 }
   ngOnDestroy() {
-   this.mensajesSubscription.unsubscribe();
+   // this.mensajesSubscription.unsubscribe();
+   this.mensajespSubscription.unsubscribe();
   }
   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios', id );
