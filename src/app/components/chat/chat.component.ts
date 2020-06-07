@@ -48,8 +48,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   accelerationy: number = 0;
   accelerationz: number = 0;
   accelerationincludinggravityx: number = 0;
-  accelerationincludinggravityY: number = 0;
-  accelerationincludinggravityZ: number = 0;
+  accelerationincludinggravityy: number = 0;
+  accelerationincludinggravityz: number = 0;
   rotationratebeta: number = 0;
   rotationrategamma: number = 0;
   rotationratealpha: number = 0;
@@ -62,7 +62,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private renderer1: Renderer2
     ) { }
-
+// tslint:disable-next-line:max-line-length
+// gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
 
   ngOnInit() {
 
@@ -71,6 +72,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(value.beta);
       this.gamma1 = Math.round(value.gamma);
       this.alpha1 = Math.round(value.alpha);
+      this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
 
 
@@ -191,6 +193,14 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
      this.texto = '';
 
+  }
+  sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
+    // tslint:disable-next-line:max-line-length
+    this._chatService.sendElSarmiento( this._usuarioService.usuario.sala, beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this.msg = resp;
+    console.log('this.msg = ', this.msg);
+//    this.scrollBottom();
+   });
   }
 
   cambiarValor1( valor: number ) {
@@ -357,3 +367,4 @@ onChanges3( newValue: number ) {
 //       // interval.value = JSON.stringify(Math.round(event.interval));
 
 }
+
