@@ -4,7 +4,7 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    
+
     .cube {
         width: 150px;
         height: 150px;
@@ -13,7 +13,7 @@
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
     }
-    
+
     .face {
         width: 150px;
         height: 150px;
@@ -25,41 +25,41 @@
         box-shadow: inset 0 0 20px #333333;
         opacity: 0.6;
     }
-    
+
     .cube .one {
         -webkit-transform: translateZ(75px);
         transform: translateZ(75px);
     }
-    
+
     .cube .two {
         -webkit-transform: rotateY(90deg) translateZ(75px);
         transform: rotateY(90deg) translateZ(75px);
     }
-    
+
     .cube .three {
         -webkit-transform: rotateY(180deg) translateZ(75px);
         transform: rotateY(180deg) translateZ(75px);
     }
-    
+
     .cube .four {
         -webkit-transform: rotateY(-90deg) translateZ(75px);
         transform: rotateY(-90deg) translateZ(75px);
     }
-    
+
     .cube .five {
         -webkit-transform: rotateX(90deg) translateZ(75px);
         transform: rotateX(90deg) translateZ(75px);
     }
-    
+
     .cube .six {
         -webkit-transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
         transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
     }
-    
+
     .value {
         font-weight: bold;
     }
-    
+
     .author {
         display: block;
         margin-top: 1em;
@@ -170,23 +170,21 @@
                 <input #txtSen type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4">
 
 
+                <h4 id="beta1" type="text" class="card-title"> {{ beta1 }} </h4>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="beta1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="beta1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="gamma1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="gamma1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="alpha1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="alpha1 + '%'"></div>
 
-                <input #Beta1 type="text" id="beta1" value="">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationx1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationx1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationy1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationy1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationz1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationy1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityx1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationincludinggravityx1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityY1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationincludinggravityY1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityZ1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="accelerationincludinggravityZ1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="rotationratebeta1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="rotationratebeta1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="rotationrategamma1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="rotationrategamma1 + '%'"></div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="rotationratealpha1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="180" [style.width]="rotationratealpha1 + '%'"></div>
 
-
-                <!-- <label form="customRange15">beta1</label> -->
-                <!-- <input #txtBeta1 type="range" class="striped" min="-300" max="300" value="beta1" step="1" name="beta1" [(ngModel)]="beta1" (ngModelChange)="onChanges1($event)" id="customRange15"> -->
-
-
-                <!-- <h4 class="card-title">acceleration x = {{ accelerationx }} </h4>
-                <h4 class="card-title">acceleration y = {{ accelerationy }} </h4>
-                <h4 class="card-title">acceleration z = {{ accelerationz }} </h4>
-                <h4 class="card-title">accelerationincludinggravity x = {{ accelerationincludinggravityx }} </h4>
-                <h4 class="card-title">accelerationincludinggravity y = {{ accelerationincludinggravityy }} </h4>
-                <h4 class="card-title">accelerationincludinggravity z = {{ accelerationincludinggravityz }} </h4>
-                <h4 class="card-title">rotationrate beta = {{ rotationratebeta }} </h4>
-                <h4 class="card-title">rotationrate gamma = {{ rotationrategamma }} </h4>
-                <h4 class="card-title">rotationrate alpha = {{ rotationratealpha }} </h4> -->
             </div>
         </div>
     </div>

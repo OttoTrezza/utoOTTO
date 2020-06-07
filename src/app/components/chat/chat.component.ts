@@ -3,7 +3,7 @@ import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Usuario } from '../../models/usuario.model';
-import { callbackify } from 'util';
+
 // import { DevicerefService } from '../../services/service.index';
 // import * as $ from 'jquery';
 
@@ -22,7 +22,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('txtDir', {static: false}) txtDir: ElementRef;
   @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
-  @ViewChild('Beta1', {static: false}) Beta1: ElementRef;
   [x: string]: any;
   frecuencia: number;
   dir: number;
@@ -42,7 +41,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   msg: any;
   fecha: Date;
   hora: any;
-  beta1: number = 0;
+  beta1: number = 2;
   gamma1: number = 0;
   alpha1: number = 0;
   accelerationx: number = 0;
@@ -66,11 +65,26 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-  this.listener = this.renderer.listen( this.Beta1.nativeElement, 'deviceorientation', (value: any) => {
-console.log('vslue1', value);
-this.Beta1.nativeElement.value = value.beta;
+    this.listener = this.renderer.listen( window , 'deviceorientation', (value) => {
 
-  });
+      this.beta1 = Math.round(value.beta);
+      this.gamma1 = Math.round(value.gamma);
+      this.alpha1 = Math.round(value.alpha);
+    });
+
+
+    this.listener = this.renderer.listen( window , 'devicemotion', (value) => {
+
+      this.accelerationx1 = Math.round(value.accelerationx);
+      this.accelerationy1 = Math.round(value.accelerationy);
+      this.accelerationz1 = Math.round(value.accelerationz);
+      this.accelerationincludinggravityx1 = Math.round(value.accelerationincludinggravityx);
+      this.accelerationincludinggravityy1 = Math.round(value.accelerationincludinggravityy);
+      this.accelerationincludinggravityz1 = Math.round(value.accelerationincludinggravityz);
+      this.rotationratebeta1 = Math.round(value.rotationratebeta);
+      this.rotationrategamma1 = Math.round(value.rotationrategamma);
+      this.rotationratealpha1 = Math.round(value.rotationratealpha);
+    });
 
 
 
@@ -341,12 +355,4 @@ onChanges3( newValue: number ) {
 //       // let interval = document.getElementById('interval') as HTMLInputElement;
 //       // interval.value = JSON.stringify(Math.round(event.interval));
 
-//     });
-//     const resp = {
-// beta1: this.beta1,
-// gamma1: this.gamma1,
-// alpha1: this.alpha1
-//     };
-// callback(resp);
-//    }
 }
