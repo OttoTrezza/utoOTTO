@@ -168,14 +168,17 @@
                 <input #txtDir type="range" class="striped" min="-90" max="90" value="dir" step="1" name="dir" [(ngModel)]="dir" (ngModelChange)="onChanges2($event)" id="customRange3">
                 <label form="customRange4">sentido</label>
                 <input #txtSen type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4">
-                <h4 class="card-title" id="beta1" value="beta1">value = {{ beta1 }} </h4>
-                <h4 class="card-title" id="beta1" value="beta1">value beta1</h4>
-                <h4 class="card-title" id="gamma1" value="gamma1">value = {{ gamma1 }} </h4>
-                <h4 class="card-title" id="gamma1" value="gamma1">value gamma1</h4>
-                <h4 class="card-title" id="alpha1" value="alpha1">value = {{ alpha1 }} </h4>
-                <h4 class="card-title" id="alpha1" value="alpha1">value alpha1</h4>
 
-                <h4 class="card-title">acceleration x = {{ accelerationx }} </h4>
+
+
+                <input #Beta1 type="text" id="beta1" value="beta1">
+
+
+                <!-- <label form="customRange15">beta1</label> -->
+                <!-- <input #txtBeta1 type="range" class="striped" min="-300" max="300" value="beta1" step="1" name="beta1" [(ngModel)]="beta1" (ngModelChange)="onChanges1($event)" id="customRange15"> -->
+
+
+                <!-- <h4 class="card-title">acceleration x = {{ accelerationx }} </h4>
                 <h4 class="card-title">acceleration y = {{ accelerationy }} </h4>
                 <h4 class="card-title">acceleration z = {{ accelerationz }} </h4>
                 <h4 class="card-title">accelerationincludinggravity x = {{ accelerationincludinggravityx }} </h4>
@@ -183,7 +186,7 @@
                 <h4 class="card-title">accelerationincludinggravity z = {{ accelerationincludinggravityz }} </h4>
                 <h4 class="card-title">rotationrate beta = {{ rotationratebeta }} </h4>
                 <h4 class="card-title">rotationrate gamma = {{ rotationrategamma }} </h4>
-                <h4 class="card-title">rotationrate alpha = {{ rotationratealpha }} </h4>
+                <h4 class="card-title">rotationrate alpha = {{ rotationratealpha }} </h4> -->
             </div>
         </div>
     </div>

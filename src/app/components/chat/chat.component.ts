@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, ElementRef , ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef , ViewChild, Renderer2 } from '@angular/core';
 import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Usuario } from '../../models/usuario.model';
+import { callbackify } from 'util';
 // import { DevicerefService } from '../../services/service.index';
 // import * as $ from 'jquery';
 
@@ -21,6 +22,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('txtDir', {static: false}) txtDir: ElementRef;
   @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
+  @ViewChild('Beta1', {static: false}) Beta1: ElementRef;
   [x: string]: any;
   frecuencia: number;
   dir: number;
@@ -52,16 +54,26 @@ export class ChatComponent implements OnInit, OnDestroy {
   rotationratebeta: number = 0;
   rotationrategamma: number = 0;
   rotationratealpha: number = 0;
+  listener: any;
 
   constructor(
     public _chatService: ChatService,
     public _usuarioService: UsuarioService,
-    public _modalUploadService: ModalUploadService
+    public _modalUploadService: ModalUploadService,
+    private renderer: Renderer2
     ) { }
 
 
   ngOnInit() {
-    this.disponible();
+
+  this.listener = this.renderer.listen( this.Beta1.nativeElement, 'deviceorientation', (value) => {
+console.log('vslue1', value);
+this.Beta1.nativeElement.value = value.beta;
+
+  });
+
+
+
     this.elemento = document.getElementById('divChatbox');
 
     this.mensajesSubscription = this._chatService.getMessages()
@@ -282,40 +294,58 @@ onChanges3( newValue: number ) {
 
 
 
-disponible() {
+//  disponible() {
 
-    window.addEventListener('deviceorientation', function(event) {
-            let betas1 = JSON.stringify(Math.round(event.beta));
-            document.getElementById('beta1').setAttribute('beta1', betas1);
-            let gammas1 = JSON.stringify(Math.round(event.gamma));
-            document.getElementById('gamma1').setAttribute('gamma1', gammas1);
-            let alphas1 = JSON.stringify(Math.round(event.alpha));
-            document.getElementById('alfa1').setAttribute('alfa1', alphas1);
+//     window.addEventListener('deviceorientation', function(event) {
+//             let betas1 = JSON.stringify(Math.round(event.beta));
+//             document.getElementById('beta1').setAttribute('placeholder', betas1);
+//             let gammas1 = JSON.stringify(Math.round(event.gamma));
+//             document.getElementById('gamma1').setAttribute('placeholder', gammas1);
+//             let alphas1 = JSON.stringify(Math.round(event.alpha));
+//             document.getElementById('alpha1').setAttribute('placeholder', alphas1);
 
-            document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
-    });
-    window.addEventListener('devicemotion', function(event) {
-      let accelerationx = Math.round(event.acceleration.x);
+//             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
+//     });
 
-      let accelerationy = Math.round(event.acceleration.y);
+//     let betasa1: string = document.getElementById('beta1').getAttribute('placeholder');
 
-      let accelerationz = Math.round(event.acceleration.z);
+//     document.getElementById('caca').setAttribute('value', betasa1);
 
-      let accelerationincludinggravityx = Math.round(event.accelerationIncludingGravity.x);
 
-      let accelerationincludinggravityy = Math.round(event.accelerationIncludingGravity.y);
+//     let gammaa1 = document.getElementById('gamma1').getAttribute('placeholder');
+//     this.gamma1 = Number(gammaa1);
 
-      let accelerationincludinggravityz = Math.round(event.accelerationIncludingGravity.z);
+//     let alphaa1 = document.getElementById('alpha1').getAttribute('placeholder');
+//     this.alpha1 = Number(alphaa1);
 
-      let rotationratebeta = Math.round(event.rotationRate.beta);
+//     window.addEventListener('devicemotion', function(event) {
+//       let accelerationx = Math.round(event.acceleration.x);
 
-      let rotationrategamma = Math.round(event.rotationRate.gamma);
+//       let accelerationy = Math.round(event.acceleration.y);
 
-      let rotationratealpha = Math.round(event.rotationRate.alpha);
+//       let accelerationz = Math.round(event.acceleration.z);
 
-      // let interval = document.getElementById('interval') as HTMLInputElement;
-      // interval.value = JSON.stringify(Math.round(event.interval));
+//       let accelerationincludinggravityx = Math.round(event.accelerationIncludingGravity.x);
 
-    });
-  }
+//       let accelerationincludinggravityy = Math.round(event.accelerationIncludingGravity.y);
+
+//       let accelerationincludinggravityz = Math.round(event.accelerationIncludingGravity.z);
+
+//       let rotationratebeta = Math.round(event.rotationRate.beta);
+
+//       let rotationrategamma = Math.round(event.rotationRate.gamma);
+
+//       let rotationratealpha = Math.round(event.rotationRate.alpha);
+
+//       // let interval = document.getElementById('interval') as HTMLInputElement;
+//       // interval.value = JSON.stringify(Math.round(event.interval));
+
+//     });
+//     const resp = {
+// beta1: this.beta1,
+// gamma1: this.gamma1,
+// alpha1: this.alpha1
+//     };
+// callback(resp);
+//    }
 }
