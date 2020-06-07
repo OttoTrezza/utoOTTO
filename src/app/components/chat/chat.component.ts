@@ -59,7 +59,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     public _chatService: ChatService,
     public _usuarioService: UsuarioService,
     public _modalUploadService: ModalUploadService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private renderer1: Renderer2
     ) { }
 
 
@@ -73,17 +74,17 @@ export class ChatComponent implements OnInit, OnDestroy {
     });
 
 
-    this.listener = this.renderer.listen( window , 'devicemotion', (value) => {
+    this.listener1 = this.renderer1.listen( window , 'devicemotion', (value) => {
 
-      this.accelerationx1 = Math.round(value.accelerationx);
-      this.accelerationy1 = Math.round(value.accelerationy);
-      this.accelerationz1 = Math.round(value.accelerationz);
-      this.accelerationincludinggravityx1 = Math.round(value.accelerationincludinggravityx);
-      this.accelerationincludinggravityy1 = Math.round(value.accelerationincludinggravityy);
-      this.accelerationincludinggravityz1 = Math.round(value.accelerationincludinggravityz);
-      this.rotationratebeta1 = Math.round(value.rotationratebeta);
-      this.rotationrategamma1 = Math.round(value.rotationrategamma);
-      this.rotationratealpha1 = Math.round(value.rotationratealpha);
+      this.accelerationx1 = Math.round(value.acceleration.x);
+      this.accelerationy1 = Math.round(value.acceleration.y);
+      this.accelerationz1 = Math.round(value.acceleration.z);
+      this.accelerationincludinggravityx1 = Math.round(value.accelerationincludinggravity.x);
+      this.accelerationincludinggravityy1 = Math.round(value.accelerationincludinggravity.y);
+      this.accelerationincludinggravityz1 = Math.round(value.accelerationincludinggravity.z);
+      this.rotationratebeta1 = Math.round(value.rotationrate.beta);
+      this.rotationrategamma1 = Math.round(value.rotationrate.gamma);
+      this.rotationratealpha1 = Math.round(value.rotationrate.alpha);
     });
 
 
