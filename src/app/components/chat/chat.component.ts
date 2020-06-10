@@ -3,7 +3,6 @@ import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Usuario } from '../../models/usuario.model';
-import { callbackify } from 'util';
 // import { DevicerefService } from '../../services/service.index';
 // import * as $ from 'jquery';
 
@@ -42,15 +41,15 @@ export class ChatComponent implements OnInit, OnDestroy {
   msg: any;
   fecha: Date;
   hora: any;
-  beta1: number = 0;
+  beta1: number = 2;
   gamma1: number = 0;
   alpha1: number = 0;
   accelerationx: number = 0;
   accelerationy: number = 0;
   accelerationz: number = 0;
   accelerationincludinggravityx: number = 0;
-  accelerationincludinggravityY: number = 0;
-  accelerationincludinggravityZ: number = 0;
+  accelerationincludinggravityy: number = 0;
+  accelerationincludinggravityz: number = 0;
   rotationratebeta: number = 0;
   rotationrategamma: number = 0;
   rotationratealpha: number = 0;
@@ -60,17 +59,35 @@ export class ChatComponent implements OnInit, OnDestroy {
     public _chatService: ChatService,
     public _usuarioService: UsuarioService,
     public _modalUploadService: ModalUploadService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private renderer1: Renderer2
     ) { }
-
+// tslint:disable-next-line:max-line-length
+// gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
 
   ngOnInit() {
 
-  this.listener = this.renderer.listen( this.Beta1.nativeElement, 'deviceorientation', (value: any) => {
-console.log('vslue1', value);
-this.Beta1.nativeElement.value = value.beta;
+    this.listener = this.renderer.listen( window , 'deviceorientation', (value) => {
 
-  });
+      this.beta1 = Math.round(value.beta);
+      this.gamma1 = Math.round(value.gamma);
+      this.alpha1 = Math.round(value.alpha);
+      this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+    });
+
+
+    this.listener1 = this.renderer1.listen( window , 'devicemotion', (value) => {
+
+      this.accelerationx1 = Math.round(value.acceleration.x);
+      this.accelerationy1 = Math.round(value.acceleration.y);
+      this.accelerationz1 = Math.round(value.acceleration.z);
+      this.accelerationincludinggravityx1 = Math.round(value.accelerationincludinggravity.x);
+      this.accelerationincludinggravityy1 = Math.round(value.accelerationincludinggravity.y);
+      this.accelerationincludinggravityz1 = Math.round(value.accelerationincludinggravity.z);
+      this.rotationratebeta1 = Math.round(value.rotationrate.beta);
+      this.rotationrategamma1 = Math.round(value.rotationrate.gamma);
+      this.rotationratealpha1 = Math.round(value.rotationrate.alpha);
+    });
 
 
 
@@ -176,6 +193,14 @@ this.Beta1.nativeElement.value = value.beta;
       });
      this.texto = '';
 
+  }
+  sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
+    // tslint:disable-next-line:max-line-length
+    this._chatService.sendElSarmiento( this._usuarioService.usuario.sala, beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this.msg = resp;
+    console.log('this.msg = ', this.msg);
+//    this.scrollBottom();
+   });
   }
 
   cambiarValor1( valor: number ) {
@@ -341,12 +366,5 @@ onChanges3( newValue: number ) {
 //       // let interval = document.getElementById('interval') as HTMLInputElement;
 //       // interval.value = JSON.stringify(Math.round(event.interval));
 
-//     });
-//     const resp = {
-// beta1: this.beta1,
-// gamma1: this.gamma1,
-// alpha1: this.alpha1
-//     };
-// callback(resp);
-//    }
 }
+
