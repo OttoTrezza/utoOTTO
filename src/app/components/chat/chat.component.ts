@@ -182,7 +182,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
   sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( this._usuarioService.usuario.sala, beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this._chatService.sendElSarmiento( 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
