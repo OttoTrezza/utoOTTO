@@ -3,7 +3,11 @@ import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Usuario } from '../../models/usuario.model';
+<<<<<<< HEAD
 
+=======
+import { Parser } from '@angular/compiler/src/ml_parser/parser';
+>>>>>>> e8b417cc2fca839d6322d113c804a3b8c86d2626
 // import { DevicerefService } from '../../services/service.index';
 // import * as $ from 'jquery';
 
@@ -22,6 +26,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('txtDir', {static: false}) txtDir: ElementRef;
   @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
+
   [x: string]: any;
   frecuencia: number;
   dir: number;
@@ -41,6 +46,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   msg: any;
   fecha: Date;
   hora: any;
+<<<<<<< HEAD
   beta1: number = 2;
   gamma1: number = 0;
   alpha1: number = 0;
@@ -54,6 +60,21 @@ export class ChatComponent implements OnInit, OnDestroy {
   rotationrategamma: number = 0;
   rotationratealpha: number = 0;
   listener: any;
+=======
+  beta1: any ;
+  gamma1: any;
+  alpha1: any;
+  accelerationx1: any;
+  accelerationy1: any;
+  accelerationz1: any;
+  accelerationincludinggravityx1: any;
+  accelerationincludinggravityy1: any;
+  accelerationincludinggravityz1: any;
+  rotationratebeta1: any;
+  rotationrategamma1: any;
+  rotationratealpha1: any;
+  leer: boolean = false;
+>>>>>>> e8b417cc2fca839d6322d113c804a3b8c86d2626
 
   constructor(
     public _chatService: ChatService,
@@ -302,6 +323,56 @@ onChanges3( newValue: number ) {
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
    });
+}
+onchanges4(newValue: number) { // desde aca puedo despertar distintos servicios.. segun cual es el valor que cambia...a
+  // por ejemplo..onchanges4...si cambia beta1... si lo movio hacia arriba, comienzo una busqueda de secuencia,,por ejemplo..
+  // tslint:disable-next-line:max-line-length
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges5(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges6(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges7(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges8(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges9(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges10(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges11(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges12(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges13(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges14(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
+}
+onchanges15(newValue: number) {
+  this.leer = true;
+  this.senElsarmiento(this.leer);
 }
 
 
