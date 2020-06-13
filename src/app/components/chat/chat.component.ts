@@ -164,21 +164,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this._modalUploadService.mostrarModal( 'usuarios', id );
     // this.scrollBottom();
   }
-//  scrollBottom() {
 
-//     // selectors
-//      let newMessage = this.divChatbox.children('li:last-child');
-//      // let heights;
-//      let clientHeight = this.divChatbox.prop('clientHeight');
-//      let scrollTop = this.divChatbox.prop('scrollTop');
-//      let scrollHeight = this.divChatbox.prop('scrollHeight');
-//      let newMessageHeight = newMessage.innerHeight();
-//      let lastMessageHeight = newMessage.prev().innerHeight() || 0;
-
-//     if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
-//         this.divChatbox.scrollTop(scrollHeight);
-//     }
-// }
   enviar() {
 
     if ( this.texto.trim().length === 0 ) {
