@@ -72,9 +72,10 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(value.beta);
       this.gamma1 = Math.round(value.gamma);
       this.alpha1 = Math.round(value.alpha);
-      this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
-    });
 
+      console.log('beta, gamma, alpha: ', value.beta, value.gamma, value.alpha);
+    });
+    this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
 
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (value) => {
 
@@ -194,6 +195,7 @@ export class ChatComponent implements OnInit, OnDestroy {
      this.texto = '';
 
   }
+
   sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
     // tslint:disable-next-line:max-line-length
     this._chatService.sendElSarmiento( this._usuarioService.usuario.sala, beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
@@ -317,53 +319,5 @@ onChanges3( newValue: number ) {
 //    this.scrollBottom();
    });
 }
-
-
-
-//  disponible() {
-
-//     window.addEventListener('deviceorientation', function(event) {
-//             let betas1 = JSON.stringify(Math.round(event.beta));
-//             document.getElementById('beta1').setAttribute('placeholder', betas1);
-//             let gammas1 = JSON.stringify(Math.round(event.gamma));
-//             document.getElementById('gamma1').setAttribute('placeholder', gammas1);
-//             let alphas1 = JSON.stringify(Math.round(event.alpha));
-//             document.getElementById('alpha1').setAttribute('placeholder', alphas1);
-
-//             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
-//     });
-
-//     let betasa1: string = document.getElementById('beta1').getAttribute('placeholder');
-
-//     document.getElementById('caca').setAttribute('value', betasa1);
-
-
-//     let gammaa1 = document.getElementById('gamma1').getAttribute('placeholder');
-//     this.gamma1 = Number(gammaa1);
-
-//     let alphaa1 = document.getElementById('alpha1').getAttribute('placeholder');
-//     this.alpha1 = Number(alphaa1);
-
-//     window.addEventListener('devicemotion', function(event) {
-//       let accelerationx = Math.round(event.acceleration.x);
-
-//       let accelerationy = Math.round(event.acceleration.y);
-
-//       let accelerationz = Math.round(event.acceleration.z);
-
-//       let accelerationincludinggravityx = Math.round(event.accelerationIncludingGravity.x);
-
-//       let accelerationincludinggravityy = Math.round(event.accelerationIncludingGravity.y);
-
-//       let accelerationincludinggravityz = Math.round(event.accelerationIncludingGravity.z);
-
-//       let rotationratebeta = Math.round(event.rotationRate.beta);
-
-//       let rotationrategamma = Math.round(event.rotationRate.gamma);
-
-//       let rotationratealpha = Math.round(event.rotationRate.alpha);
-
-//       // let interval = document.getElementById('interval') as HTMLInputElement;
-//       // interval.value = JSON.stringify(Math.round(event.interval));
 
 }

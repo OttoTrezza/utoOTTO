@@ -65,7 +65,7 @@ this.graficos.grafico1.lablels = ['beta1', 'gamma1', 'alpha1']; // , 'accelerati
 // tslint:disable-next-line:max-line-length
 this.graficos.grafico1.data = [beta1, gamma1, alpha1]; // , msg.acelerationx1, msg.acelerationy1, msg.acelerationz1, msg.accelerationincludinggravityx1, msg.accelerationincludinggravityy1, msg.accelerationincludinggravityz1, msg.rotationratebeta1, msg.rotationrategamma1, msg.rotationratealpha1
 
-this.graficos.grafico1.leyenda = 'ignacio';
+this.graficos[0].leyenda = 'ignacio';
 
         // if ( msg.de === 'ignacio1' ) {
         //   console.log('ignacio1');
