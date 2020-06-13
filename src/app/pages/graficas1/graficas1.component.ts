@@ -51,6 +51,9 @@ export class Graficas1Component implements OnInit {
         let beta1: number = msg.beta1;
         let gamma1: number = msg.gamma1;
         let alpha1: number = msg.alpha1;
+        this.graficos[0].data[0] = beta1;
+        this.graficos[0].data[1] = gamma1;
+        this.graficos[0].data[2] = alpha1;
         // let accelerationx: number = msg.accelerationx;
         // let accelerationy: number = msg.accelerationy;
         // let accelerationz: number = msg.accelerationz;
