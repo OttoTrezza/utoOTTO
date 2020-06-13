@@ -72,7 +72,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(value.beta);
       this.gamma1 = Math.round(value.gamma);
       this.alpha1 = Math.round(value.alpha);
-      this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+      // this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
 
 

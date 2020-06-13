@@ -46,8 +46,8 @@ export class Graficas1Component implements OnInit {
         console.log('ESPmsg', msg);
        // let sala: string = msg.sala;
        // if (sala === this._usuarioService.usuario.sala) {
-        let de: string = msg.de;
-        let cuerpo: string = msg.cuerpo;
+        // let de: string = msg.de;
+        // let cuerpo: string = msg.cuerpo;
         let beta1: number = msg.beta1;
         let gamma1: number = msg.gamma1;
         let alpha1: number = msg.alpha1;
@@ -61,11 +61,11 @@ export class Graficas1Component implements OnInit {
         // let rotationrategamma: number = msg.rotationrategamma;
         // let rotationratealpha: number = msg.rotationratealpha;
 // tslint:disable-next-line:max-line-length
-this.graficos.grafico1.lablels = ['beta1', 'gamma1', 'alpha1']; // , 'accelerationx', 'accelerationy', 'accelerationz', 'accelerationincludinggravityx', 'accelerationincludinggravityy', 'accelerationincludinggravityz', 'rotationratebeta', 'rotationrategamma', 'rotationratealpha'
+// this.graficos.grafico1.lablels = ['beta1', 'gamma1', 'alpha1']; // , 'accelerationx', 'accelerationy', 'accelerationz', 'accelerationincludinggravityx', 'accelerationincludinggravityy', 'accelerationincludinggravityz', 'rotationratebeta', 'rotationrategamma', 'rotationratealpha'
 // tslint:disable-next-line:max-line-length
-this.graficos.grafico1.data = [beta1, gamma1, alpha1]; // , msg.acelerationx1, msg.acelerationy1, msg.acelerationz1, msg.accelerationincludinggravityx1, msg.accelerationincludinggravityy1, msg.accelerationincludinggravityz1, msg.rotationratebeta1, msg.rotationrategamma1, msg.rotationratealpha1
+// this.graficos.grafico1.data = [beta1, gamma1, alpha1]; // , msg.acelerationx1, msg.acelerationy1, msg.acelerationz1, msg.accelerationincludinggravityx1, msg.accelerationincludinggravityy1, msg.accelerationincludinggravityz1, msg.rotationratebeta1, msg.rotationrategamma1, msg.rotationratealpha1
 
-this.graficos.grafico1.leyenda = 'ignacio';
+// this.graficos.grafico1.leyenda = 'ignacio';
 
         // if ( msg.de === 'ignacio1' ) {
         //   console.log('ignacio1');
