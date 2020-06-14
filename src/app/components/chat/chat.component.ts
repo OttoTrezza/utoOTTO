@@ -4,13 +4,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Usuario } from '../../models/usuario.model';
 
-// import { DevicerefService } from '../../services/service.index';
-// import * as $ from 'jquery';
-
-// var params = new URLSearchParams(window.location.search);ng serve-o
-
-// var nombre = params.get('nombre');
-// var sala = params.get('sala');
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -41,7 +34,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   msg: any;
   fecha: Date;
   hora: any;
-  beta1: number = 2;
+  beta1: number = 1;
   gamma1: number = 0;
   alpha1: number = 0;
   accelerationx: number = 0;
@@ -67,26 +60,32 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.listener = this.renderer.listen( window , 'deviceorientation', (value) => {
+    this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
 
-      this.beta1 = Math.round(value.beta);
-      this.gamma1 = Math.round(value.gamma);
-      this.alpha1 = Math.round(value.alpha);
+      console.log('eventdeviceorientation', event);
+      console.log('eventdeviceorientationbets', event.beta);
+      console.log('eventdeviceorientationgammalph', event.gamma, event.alpha);
+      this.beta1 = Math.round(event.beta);
+      this.gamma1 = Math.round(event.gamma);
+      this.alpha1 = Math.round(event.alpha);
+
      // this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
 
 
-    this.listener1 = this.renderer1.listen( window , 'devicemotion', (value) => {
-
-      this.accelerationx1 = Math.round(value.acceleration.x);
-      this.accelerationy1 = Math.round(value.acceleration.y);
-      this.accelerationz1 = Math.round(value.acceleration.z);
-      this.accelerationincludinggravityx1 = Math.round(value.accelerationincludinggravity.x);
-      this.accelerationincludinggravityy1 = Math.round(value.accelerationincludinggravity.y);
-      this.accelerationincludinggravityz1 = Math.round(value.accelerationincludinggravity.z);
-      this.rotationratebeta1 = Math.round(value.rotationrate.beta);
-      this.rotationrategamma1 = Math.round(value.rotationrate.gamma);
-      this.rotationratealpha1 = Math.round(value.rotationrate.alpha);
+    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
+console.log('eventdevicemmotion', event);
+console.log('eventdevicemmotion.accele', event.acceleration);
+console.log('eventdevicemmotion.accele.x', event.acceleration.x);
+      // this.accelerationx = Math.round(event.acceleration.x);
+      // this.accelerationy = Math.round(event.acceleration.y);
+      // this.accelerationz = Math.round(event.acceleration.z);
+      // this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
+      // this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
+      // this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
+      // this.rotationratebeta = Math.round(event.rotationrate.beta);
+      // this.rotationrategamma = Math.round(event.rotationrate.gamma);
+      // this.rotationratealpha = Math.round(event.rotationrate.alpha);
     });
 
 
@@ -196,7 +195,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
   sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( this._usuarioService.usuario.sala, beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this._chatService.sendElSarmiento( 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
