@@ -11,38 +11,28 @@ export class Graficas1Component implements OnInit {
   ElSarmientoSubscription: Subscription;
   graficos: any = {
     'grafico1': {
-      // tslint:disable-next-line:max-line-length
-      'labels': ['beta1', 'gamma1', 'alpha1', 'accelerationx', 'accelerationy', 'accelerationz', 'accelerationincludinggravityx', 'accelerationincludinggravityY', 'accelerationincludinggravityZ', 'rotationratebeta', 'rotationrategamma', 'rotationratealpha'],
-      'data':  [],
+      'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
+      'data':  [24, 30, 46],
       'type': 'doughnut',
       'leyenda': 'nacho'
     },
     'grafico2': {
-      // tslint:disable-next-line:max-line-length
-      'labels': ['beta1', 'gamma1', 'alpha1', 'accelerationx', 'accelerationy', 'accelerationz', 'accelerationincludinggravityx', 'accelerationincludinggravityY', 'accelerationincludinggravityZ', 'rotationratebeta', 'rotationrategamma', 'rotationratealpha'],
-      'data':  [],
+      'labels': ['Hombres', 'Mujeres'],
+      'data':  [4500, 6000],
       'type': 'doughnut',
-      'leyenda': 'nombre',
-      'dataDefault':  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      'leyendaDefault': 'NO HAY NADIE'
+      'leyenda': 'Entrevistados'
     },
     'grafico3': {
-      // tslint:disable-next-line:max-line-length
-      'labels': ['beta1', 'gamma1', 'alpha1', 'accelerationx', 'accelerationy', 'accelerationz', 'accelerationincludinggravityx', 'accelerationincludinggravityY', 'accelerationincludinggravityZ', 'rotationratebeta', 'rotationrategamma', 'rotationratealpha'],
-      'data':  [],
+      'labels': ['Si', 'No'],
+      'data':  [95, 5],
       'type': 'doughnut',
-      'leyenda': 'nombre',
-      'dataDefault':  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      'leyendaDefault': 'NO HAY NADIE'
+      'leyenda': '¿Le dan gases los frijoles?'
     },
     'grafico4': {
-      // tslint:disable-next-line:max-line-length
-      'labels': ['beta1', 'gamma1', 'alpha1', 'accelerationx', 'accelerationy', 'accelerationz', 'accelerationincludinggravityx', 'accelerationincludinggravityY', 'accelerationincludinggravityZ', 'rotationratebeta', 'rotationrategamma', 'rotationratealpha'],
-      'data':  [],
+      'labels': ['No', 'Si'],
+      'data':  [85, 15],
       'type': 'doughnut',
-      'leyenda': 'nombre',
-      'dataDefault':  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      'leyendaDefault': 'NO HAY NADIE'
+      'leyenda': '¿Le importa que le den gases?'
     },
   };
 
@@ -61,9 +51,9 @@ export class Graficas1Component implements OnInit {
         let beta1: number = msg.beta1;
         let gamma1: number = msg.gamma1;
         let alpha1: number = msg.alpha1;
-        this.graficos.grafico1.data = beta1;
-        this.graficos.grafico1.data = gamma1;
-        this.graficos.grafico1.data = alpha1;
+        this.graficos.grafico1.data[0] = beta1;
+        this.graficos.grafico1.data[1] = gamma1;
+        this.graficos.grafico1.data[2] = alpha1;
         // let accelerationx: number = msg.accelerationx;
         // let accelerationy: number = msg.accelerationy;
         // let accelerationz: number = msg.accelerationz;
@@ -93,20 +83,4 @@ export class Graficas1Component implements OnInit {
        });
   }
 
-  // this.graficos[this.num].data[0] = msg.beta1;
-  // this.graficos[this.num].data[1] = msg.gamma1;
-  // this.graficos[this.num].data[2] = msg.alpha1;
-  // this.graficos[this.num].data[3] = msg.accelerationx1;
-  // this.graficos[this.num].data[4] = msg.accelerationy1;
-  // this.graficos[this.num].data[5] = msg.accelerationz1;
-  // this.graficos[this.num].data[6] = msg.accelerationincludinggravityx1;
-  // this.graficos[this.num].data[7] = msg.accelerationincludinggravityy1;
-  // this.graficos[this.num].data[8] = msg.accelerationincludinggravityz1;
-  // this.graficos[this.num].data[9] = msg.rotationratebeta1;
-  // this.graficos[this.num].data[10] = msg.rotationrategamma1;
-  // this.graficos[this.num].data[11] = msg.rotationratealpha1;
-  // let sala: string = msg.sala;
-  // this.graficos[this.num].leyenda = msg.de;
-  // });
-  // }
-  }
+}
