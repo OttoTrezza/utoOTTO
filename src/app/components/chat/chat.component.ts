@@ -60,14 +60,14 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
+    this.listener = this.renderer.listen( window , 'deviceorientation', (value) => {
 
-      console.log('eventdeviceorientation', event);
-      console.log('eventdeviceorientationbets', event.beta);
-      console.log('eventdeviceorientationgammalph', event.gamma, event.alpha);
-      this.beta1 = Math.round(event.beta);
-      this.gamma1 = Math.round(event.gamma);
-      this.alpha1 = Math.round(event.alpha);
+      console.log('eventdeviceorientation', value);
+      console.log('eventdeviceorientationbets', value.beta);
+      console.log('eventdeviceorientationgammalph', value.gamma, value.alpha);
+      this.beta1 = Math.round(value.beta);
+      this.gamma1 = Math.round(value.gamma);
+      this.alpha1 = Math.round(value.alpha);
 
      // this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
