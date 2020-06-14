@@ -77,15 +77,15 @@ export class ChatComponent implements OnInit, OnDestroy {
 console.log('eventdevicemmotion', event);
 console.log('eventdevicemmotion.accele', event.acceleration);
 console.log('eventdevicemmotion.accele.x', event.acceleration.x);
-      // this.accelerationx = Math.round(event.acceleration.x);
-      // this.accelerationy = Math.round(event.acceleration.y);
-      // this.accelerationz = Math.round(event.acceleration.z);
-      // this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
-      // this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
-      // this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
-      // this.rotationratebeta = Math.round(event.rotationrate.beta);
-      // this.rotationrategamma = Math.round(event.rotationrate.gamma);
-      // this.rotationratealpha = Math.round(event.rotationrate.alpha);
+      this.accelerationx = Math.round(event.acceleration.x);
+      this.accelerationy = Math.round(event.acceleration.y);
+      this.accelerationz = Math.round(event.acceleration.z);
+      this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
+      this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
+      this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
+      this.rotationratebeta = Math.round(event.rotationrate.beta);
+      this.rotationrategamma = Math.round(event.rotationrate.gamma);
+      this.rotationratealpha = Math.round(event.rotationrate.alpha);
     });
 
 
