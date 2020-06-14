@@ -72,22 +72,22 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(value.beta);
       this.gamma1 = Math.round(value.gamma);
       this.alpha1 = Math.round(value.alpha);
-      this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+     // this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
 
 
-    // this.listener1 = this.renderer1.listen( window , 'devicemotion', (value) => {
+    this.listener1 = this.renderer1.listen( window , 'devicemotion', (value) => {
 
-    //   this.accelerationx1 = Math.round(value.acceleration.x);
-    //   this.accelerationy1 = Math.round(value.acceleration.y);
-    //   this.accelerationz1 = Math.round(value.acceleration.z);
-    //   this.accelerationincludinggravityx1 = Math.round(value.accelerationincludinggravity.x);
-    //   this.accelerationincludinggravityy1 = Math.round(value.accelerationincludinggravity.y);
-    //   this.accelerationincludinggravityz1 = Math.round(value.accelerationincludinggravity.z);
-    //   this.rotationratebeta1 = Math.round(value.rotationrate.beta);
-    //   this.rotationrategamma1 = Math.round(value.rotationrate.gamma);
-    //   this.rotationratealpha1 = Math.round(value.rotationrate.alpha);
-    // });
+      this.accelerationx1 = Math.round(value.acceleration.x);
+      this.accelerationy1 = Math.round(value.acceleration.y);
+      this.accelerationz1 = Math.round(value.acceleration.z);
+      this.accelerationincludinggravityx1 = Math.round(value.accelerationincludinggravity.x);
+      this.accelerationincludinggravityy1 = Math.round(value.accelerationincludinggravity.y);
+      this.accelerationincludinggravityz1 = Math.round(value.accelerationincludinggravity.z);
+      this.rotationratebeta1 = Math.round(value.rotationrate.beta);
+      this.rotationrategamma1 = Math.round(value.rotationrate.gamma);
+      this.rotationratealpha1 = Math.round(value.rotationrate.alpha);
+    });
 
 
 
