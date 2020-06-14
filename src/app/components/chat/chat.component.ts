@@ -1,15 +1,9 @@
-import { Component, OnInit, OnDestroy, ElementRef , ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef , ViewChild, Renderer2 } from '@angular/core';
 import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Usuario } from '../../models/usuario.model';
 
-// import * as $ from 'jquery';
-
-// var params = new URLSearchParams(window.location.search);ng serve-o
-
-// var nombre = params.get('nombre');
-// var sala = params.get('sala');
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -40,15 +34,61 @@ export class ChatComponent implements OnInit, OnDestroy {
   msg: any;
   fecha: Date;
   hora: any;
+  beta1: number = 1;
+  gamma1: number = 0;
+  alpha1: number = 0;
+  accelerationx: number = 0;
+  accelerationy: number = 0;
+  accelerationz: number = 0;
+  accelerationincludinggravityx: number = 0;
+  accelerationincludinggravityy: number = 0;
+  accelerationincludinggravityz: number = 0;
+  rotationratebeta: number = 0;
+  rotationrategamma: number = 0;
+  rotationratealpha: number = 0;
+  listener: any;
 
   constructor(
     public _chatService: ChatService,
     public _usuarioService: UsuarioService,
-    public _modalUploadService: ModalUploadService
-  ) { }
-
+    public _modalUploadService: ModalUploadService,
+    private renderer: Renderer2,
+    private renderer1: Renderer2
+    ) { }
+// tslint:disable-next-line:max-line-length
+// gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
 
   ngOnInit() {
+
+    this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
+
+      console.log('eventdeviceorientation', event);
+      console.log('eventdeviceorientationbets', event.beta);
+      console.log('eventdeviceorientationgammalph', event.gamma, event.alpha);
+      this.beta1 = Math.round(event.beta);
+      this.gamma1 = Math.round(event.gamma);
+      this.alpha1 = Math.round(event.alpha);
+
+     // this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+    });
+
+
+    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
+console.log('eventdevicemmotion', event);
+console.log('eventdevicemmotion.accele', event.acceleration);
+console.log('eventdevicemmotion.accele.x', event.acceleration.x);
+      // this.accelerationx = Math.round(event.acceleration.x);
+      // this.accelerationy = Math.round(event.acceleration.y);
+      // this.accelerationz = Math.round(event.acceleration.z);
+      // this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
+      // this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
+      // this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
+      // this.rotationratebeta = Math.round(event.rotationrate.beta);
+      // this.rotationrategamma = Math.round(event.rotationrate.gamma);
+      // this.rotationratealpha = Math.round(event.rotationrate.alpha);
+    });
+
+
 
     this.elemento = document.getElementById('divChatbox');
 
@@ -116,7 +156,8 @@ export class ChatComponent implements OnInit, OnDestroy {
 
 }
   ngOnDestroy() {
-   this.mensajesSubscription.unsubscribe();
+   // this.mensajesSubscription.unsubscribe();
+   this.mensajespSubscription.unsubscribe();
   }
   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios', id );
@@ -151,6 +192,14 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
      this.texto = '';
 
+  }
+  sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
+    // tslint:disable-next-line:max-line-length
+    this._chatService.sendElSarmiento( 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this.msg = resp;
+    console.log('this.msg = ', this.msg);
+//    this.scrollBottom();
+   });
   }
 
   cambiarValor1( valor: number ) {
@@ -267,4 +316,54 @@ onChanges3( newValue: number ) {
 //    this.scrollBottom();
    });
 }
+
+
+
+//  disponible() {
+
+//     window.addEventListener('deviceorientation', function(event) {
+//             let betas1 = JSON.stringify(Math.round(event.beta));
+//             document.getElementById('beta1').setAttribute('placeholder', betas1);
+//             let gammas1 = JSON.stringify(Math.round(event.gamma));
+//             document.getElementById('gamma1').setAttribute('placeholder', gammas1);
+//             let alphas1 = JSON.stringify(Math.round(event.alpha));
+//             document.getElementById('alpha1').setAttribute('placeholder', alphas1);
+
+//             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
+//     });
+
+//     let betasa1: string = document.getElementById('beta1').getAttribute('placeholder');
+
+//     document.getElementById('caca').setAttribute('value', betasa1);
+
+
+//     let gammaa1 = document.getElementById('gamma1').getAttribute('placeholder');
+//     this.gamma1 = Number(gammaa1);
+
+//     let alphaa1 = document.getElementById('alpha1').getAttribute('placeholder');
+//     this.alpha1 = Number(alphaa1);
+
+//     window.addEventListener('devicemotion', function(event) {
+//       let accelerationx = Math.round(event.acceleration.x);
+
+//       let accelerationy = Math.round(event.acceleration.y);
+
+//       let accelerationz = Math.round(event.acceleration.z);
+
+//       let accelerationincludinggravityx = Math.round(event.accelerationIncludingGravity.x);
+
+//       let accelerationincludinggravityy = Math.round(event.accelerationIncludingGravity.y);
+
+//       let accelerationincludinggravityz = Math.round(event.accelerationIncludingGravity.z);
+
+//       let rotationratebeta = Math.round(event.rotationRate.beta);
+
+//       let rotationrategamma = Math.round(event.rotationRate.gamma);
+
+//       let rotationratealpha = Math.round(event.rotationRate.alpha);
+
+//       // let interval = document.getElementById('interval') as HTMLInputElement;
+//       // interval.value = JSON.stringify(Math.round(event.interval));
+
 }
+
