@@ -72,37 +72,8 @@ export class ChatComponent implements OnInit, OnDestroy {
         console.log('this.msg = ', this.msg);
       });
 
-<<<<<<< HEAD
-      console.log('eventdeviceorientation', value);
-      console.log('eventdeviceorientationbets', value.beta);
-      console.log('eventdeviceorientationgammalph', value.gamma, value.alpha);
-      this.beta1 = Math.round(value.beta);
-      this.gamma1 = Math.round(value.gamma);
-      this.alpha1 = Math.round(value.alpha);
-=======
-    });
->>>>>>> mefui
-
-     // this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
 
-<<<<<<< HEAD
-
-    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
-console.log('eventdevicemmotion', event);
-console.log('eventdevicemmotion.accele', event.acceleration);
-console.log('eventdevicemmotion.accele.x', event.acceleration.x);
-      // this.accelerationx = Math.round(event.acceleration.x);
-      // this.accelerationy = Math.round(event.acceleration.y);
-      // this.accelerationz = Math.round(event.acceleration.z);
-      // this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
-      // this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
-      // this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
-      // this.rotationratebeta = Math.round(event.rotationrate.beta);
-      // this.rotationrategamma = Math.round(event.rotationrate.gamma);
-      // this.rotationratealpha = Math.round(event.rotationrate.alpha);
-    });
-=======
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
 
        let acceleGral: any = event.acceleration;
@@ -110,7 +81,6 @@ console.log('eventdevicemmotion.accele.x', event.acceleration.x);
        this.accelerationx = acceleGral.x;
        this.accelerationy = acceleGral.y;
        this.accelerationz = acceleGral.z;
->>>>>>> mefui
 
       // let acelgrav: any = event.accelerationincludinggravity;
       // console.log('accelerationincludinggravity x', event.accelerationincludinggravity.x);
@@ -367,5 +337,5 @@ onChanges3( newValue: number ) {
    });
 }
 
-
 }
+
