@@ -28,6 +28,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   texto = '';
   mensajesSubscription: Subscription;
   mensajespSubscription: Subscription;
+  ElSarmientoSubscription: Subscription;
   elemento: HTMLElement;
   usuario: Usuario;
   mensajes: any[] = [];
@@ -60,18 +61,32 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.listener = this.renderer.listen( window , 'deviceorientation', (value) => {
+    this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
 
+      this.beta1 = Math.round(event.beta);
+      this.gamma1 = Math.round(event.gamma);
+      this.alpha1 = Math.round(event.alpha);
+      // console.log('beta, gamma, alpha: ', this.beta1, this.gamma1, this.alpha1);
+      this._chatService.sendElSarmiento('juegos', this.beta1, this.gamma1, this.alpha1, (resp: any) => {
+        this.msg = resp;
+        console.log('this.msg = ', this.msg);
+      });
+
+<<<<<<< HEAD
       console.log('eventdeviceorientation', value);
       console.log('eventdeviceorientationbets', value.beta);
       console.log('eventdeviceorientationgammalph', value.gamma, value.alpha);
       this.beta1 = Math.round(value.beta);
       this.gamma1 = Math.round(value.gamma);
       this.alpha1 = Math.round(value.alpha);
+=======
+    });
+>>>>>>> mefui
 
      // this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
 
+<<<<<<< HEAD
 
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
 console.log('eventdevicemmotion', event);
@@ -87,8 +102,40 @@ console.log('eventdevicemmotion.accele.x', event.acceleration.x);
       // this.rotationrategamma = Math.round(event.rotationrate.gamma);
       // this.rotationratealpha = Math.round(event.rotationrate.alpha);
     });
+=======
+    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
 
+       let acceleGral: any = event.acceleration;
+      // console.log('acceleration x', event.acceleration.x);
+       this.accelerationx = acceleGral.x;
+       this.accelerationy = acceleGral.y;
+       this.accelerationz = acceleGral.z;
+>>>>>>> mefui
 
+      // let acelgrav: any = event.accelerationincludinggravity;
+      // console.log('accelerationincludinggravity x', event.accelerationincludinggravity.x);
+      // this.accelerationincludinggravityx = acelgrav.x ;
+      // this.accelerationincludinggravityy = acelgrav.y ;
+      // this.accelerationincludinggravityz = acelgrav.z ;
+
+      // let rotrat: any = event.rotationrate;
+      // console.log('rotationrate beta',  event.rotationrate.beta);
+      // this.rotationrategamma =  rotrat.gamma;
+      // this.rotationratebeta =  rotrat.beta;
+      // this.rotationratealpha =  rotrat.alpha;
+
+    });
+
+    this.ElSarmientoSubscription = this._chatService.getElSarmiento()
+    .subscribe( (msg: any) => {
+      console.log('ESPmsgasaxsxsxsxsx', msg);
+       let de: string = msg.de;
+      this.graficos.grafico1.leyenda = de;
+      this.beta = msg.beta1;
+      this.gamma = msg.gamma1;
+      this.alpha = msg.alpha1;
+      this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
+    });
 
     this.elemento = document.getElementById('divChatbox');
 
@@ -134,16 +181,17 @@ console.log('eventdevicemmotion.accele.x', event.acceleration.x);
         let sala: string = msg.sala;
        // if (sala === this._usuarioService.usuario.sala) {
         let de: string = msg.de;
-        let cuerpo: string = msg.cuerpo;
+        let cuerpo: any = msg.cuerpo;
+        let cuerpo1: any = msg.cuerpo1;
         if ( msg.de === 'ignacio1' ) {
           console.log('ignacio1');
-          this.progreso1 = msg.cuerpo;
-          this.progreso1r = msg.cuerpo1;
+          this.progreso1 = cuerpo;
+          this.progreso1r = cuerpo1;
         }
         if ( msg.de === 'ignacio2' ) {
           console.log('ignacio2');
-          this.progreso2 = msg.cuerpo;
-          this.progreso2r = msg.cuerpo1;
+          this.progreso2 = cuerpo;
+          this.progreso2r = cuerpo1;
         }
        });
 
@@ -153,11 +201,12 @@ console.log('eventdevicemmotion.accele.x', event.acceleration.x);
           .subscribe( resp => this._usuarioService.cargarUsuarios() );
          // this.scrollBottom();
 
-
 }
+
   ngOnDestroy() {
    // this.mensajesSubscription.unsubscribe();
    this.mensajespSubscription.unsubscribe();
+   this.ElSarmientoSubscription.unsubscribe();
   }
   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios', id );
@@ -193,6 +242,7 @@ console.log('eventdevicemmotion.accele.x', event.acceleration.x);
      this.texto = '';
 
   }
+
   sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
     // tslint:disable-next-line:max-line-length
     this._chatService.sendElSarmiento( 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
@@ -317,52 +367,5 @@ onChanges3( newValue: number ) {
    });
 }
 
-
-
-//  disponible() {
-
-//     window.addEventListener('deviceorientation', function(event) {
-//             let betas1 = JSON.stringify(Math.round(event.beta));
-//             document.getElementById('beta1').setAttribute('placeholder', betas1);
-//             let gammas1 = JSON.stringify(Math.round(event.gamma));
-//             document.getElementById('gamma1').setAttribute('placeholder', gammas1);
-//             let alphas1 = JSON.stringify(Math.round(event.alpha));
-//             document.getElementById('alpha1').setAttribute('placeholder', alphas1);
-
-//             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
-//     });
-
-//     let betasa1: string = document.getElementById('beta1').getAttribute('placeholder');
-
-//     document.getElementById('caca').setAttribute('value', betasa1);
-
-
-//     let gammaa1 = document.getElementById('gamma1').getAttribute('placeholder');
-//     this.gamma1 = Number(gammaa1);
-
-//     let alphaa1 = document.getElementById('alpha1').getAttribute('placeholder');
-//     this.alpha1 = Number(alphaa1);
-
-//     window.addEventListener('devicemotion', function(event) {
-//       let accelerationx = Math.round(event.acceleration.x);
-
-//       let accelerationy = Math.round(event.acceleration.y);
-
-//       let accelerationz = Math.round(event.acceleration.z);
-
-//       let accelerationincludinggravityx = Math.round(event.accelerationIncludingGravity.x);
-
-//       let accelerationincludinggravityy = Math.round(event.accelerationIncludingGravity.y);
-
-//       let accelerationincludinggravityz = Math.round(event.accelerationIncludingGravity.z);
-
-//       let rotationratebeta = Math.round(event.rotationRate.beta);
-
-//       let rotationrategamma = Math.round(event.rotationRate.gamma);
-
-//       let rotationratealpha = Math.round(event.rotationRate.alpha);
-
-//       // let interval = document.getElementById('interval') as HTMLInputElement;
-//       // interval.value = JSON.stringify(Math.round(event.interval));
 
 }
