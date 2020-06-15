@@ -44,7 +44,9 @@ export class Graficas1Component implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha'];
+    this.graficos.grafico1.leyenda = 'pepe';
     this.ElSarmientoSubscription = this._chatService.getElSarmiento()
       .subscribe( (msg: any) => {
         console.log('ESPmsg', msg);
@@ -55,9 +57,7 @@ export class Graficas1Component implements OnInit {
         this.beta = msg.beta1;
         this.gamma = msg.gamma1;
         this.alpha = msg.alpha1;
-        this.graficos.grafico1.data[0] = this.beta;
-        this.graficos.grafico1.data[1] = this.gamma;
-        this.graficos.grafico1.data[2] = this.alpha;
+        this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
         // let accelerationx: number = msg.accelerationx;
         // let accelerationy: number = msg.accelerationy;
         // let accelerationz: number = msg.accelerationz;
