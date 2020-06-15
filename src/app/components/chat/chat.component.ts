@@ -74,6 +74,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     });
 
+
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
 
        let acceleGral: any = event.acceleration;
@@ -337,5 +338,5 @@ onChanges3( newValue: number ) {
    });
 }
 
-}
 
+}
