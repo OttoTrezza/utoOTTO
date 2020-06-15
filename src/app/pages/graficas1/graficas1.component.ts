@@ -49,7 +49,7 @@ export class Graficas1Component implements OnInit, OnDestroy {
 
     this.ElSarmientoSubscription = this._chatService.getElSarmiento()
       .subscribe( (msg: any) => {
-        console.log('ESPmsgasaxsxsxsxsx', msg);
+        console.log('ESPaaaaaaaaaaaa', msg);
          let de: string = msg.de;
         // let cuerpo: string = msg.cuerpo;
         this.graficos.grafico1.leyenda = de;

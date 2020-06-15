@@ -63,32 +63,22 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
 
-      // console.log('eventdeviceorientation', event);
-      // console.log('eventdeviceorientationbets', event.beta);
-      // console.log('eventdeviceorientationgammalph', event.gamma, event.alpha);
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
-      console.log('beta, gamma, alpha: ', this.beta1, this.gamma1, this.alpha1);
-    //  this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+      // console.log('beta, gamma, alpha: ', this.beta1, this.gamma1, this.alpha1);
+      this._chatService.sendElSarmiento('juegos', this.beta1, this.gamma1, this.alpha1, (resp: any) => {
+        this.msg = resp;
+        console.log('this.msg = ', this.msg);
+      });
 
-     this._chatService.sendElSarmiento('juegos', this.beta1, this.gamma1, this.alpha1, (resp: any) => {
-      this.msg = resp;
-      console.log('this.msg = ', this.msg);
-     });
-     let beta1o: string = JSON.stringify(this.beta1);
-     this._chatService.sendMessage( beta1o, this._usuarioService.usuario.sala, (resp: any) => {
-      this.msg = resp;
-      console.log('this.msg = ', this.msg);
-  //    this.scrollBottom();
-     });
     });
 
 
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
 
        let acceleGral: any = event.acceleration;
-       console.log('acceleration x', event.acceleration.x);
+      // console.log('acceleration x', event.acceleration.x);
        this.accelerationx = acceleGral.x;
        this.accelerationy = acceleGral.y;
        this.accelerationz = acceleGral.z;
@@ -111,7 +101,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     .subscribe( (msg: any) => {
       console.log('ESPmsgasaxsxsxsxsx', msg);
        let de: string = msg.de;
-      // let cuerpo: string = msg.cuerpo;
       this.graficos.grafico1.leyenda = de;
       this.beta = msg.beta1;
       this.gamma = msg.gamma1;
