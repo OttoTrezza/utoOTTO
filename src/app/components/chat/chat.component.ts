@@ -28,6 +28,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   texto = '';
   mensajesSubscription: Subscription;
   mensajespSubscription: Subscription;
+  ElSarmientoSubscription: Subscription;
   elemento: HTMLElement;
   usuario: Usuario;
   mensajes: any[] = [];
@@ -69,7 +70,18 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
       console.log('beta, gamma, alpha: ', this.beta1, this.gamma1, this.alpha1);
-     this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+    //  this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+
+     this._chatService.sendElSarmiento('juegos', this.beta1, this.gamma1, this.alpha1, (resp: any) => {
+      this.msg = resp;
+      console.log('this.msg = ', this.msg);
+     });
+     let beta1o: string = JSON.stringify(this.beta1);
+     this._chatService.sendMessage( beta1o, this._usuarioService.usuario.sala, (resp: any) => {
+      this.msg = resp;
+      console.log('this.msg = ', this.msg);
+  //    this.scrollBottom();
+     });
     });
 
 
@@ -81,21 +93,31 @@ export class ChatComponent implements OnInit, OnDestroy {
        this.accelerationy = acceleGral.y;
        this.accelerationz = acceleGral.z;
 
-      let acelgrav: any = event.accelerationincludinggravity;
-      console.log('accelerationincludinggravity x', event.accelerationincludinggravity.x);
-      this.accelerationincludinggravityx = acelgrav.x ;
-      this.accelerationincludinggravityy = acelgrav.y ;
-      this.accelerationincludinggravityz = acelgrav.z ;
+      // let acelgrav: any = event.accelerationincludinggravity;
+      // console.log('accelerationincludinggravity x', event.accelerationincludinggravity.x);
+      // this.accelerationincludinggravityx = acelgrav.x ;
+      // this.accelerationincludinggravityy = acelgrav.y ;
+      // this.accelerationincludinggravityz = acelgrav.z ;
 
-      let rotrat: any = event.rotationrate;
-      console.log('rotationrate beta',  event.rotationrate.beta);
-      this.rotationrategamma =  rotrat.gamma;
-      this.rotationratebeta =  rotrat.beta;
-      this.rotationratealpha =  rotrat.alpha;
+      // let rotrat: any = event.rotationrate;
+      // console.log('rotationrate beta',  event.rotationrate.beta);
+      // this.rotationrategamma =  rotrat.gamma;
+      // this.rotationratebeta =  rotrat.beta;
+      // this.rotationratealpha =  rotrat.alpha;
 
     });
 
-
+    this.ElSarmientoSubscription = this._chatService.getElSarmiento()
+    .subscribe( (msg: any) => {
+      console.log('ESPmsgasaxsxsxsxsx', msg);
+       let de: string = msg.de;
+      // let cuerpo: string = msg.cuerpo;
+      this.graficos.grafico1.leyenda = de;
+      this.beta = msg.beta1;
+      this.gamma = msg.gamma1;
+      this.alpha = msg.alpha1;
+      this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
+    });
 
     this.elemento = document.getElementById('divChatbox');
 
@@ -141,16 +163,17 @@ export class ChatComponent implements OnInit, OnDestroy {
         let sala: string = msg.sala;
        // if (sala === this._usuarioService.usuario.sala) {
         let de: string = msg.de;
-        let cuerpo: string = msg.cuerpo;
+        let cuerpo: any = msg.cuerpo;
+        let cuerpo1: any = msg.cuerpo1;
         if ( msg.de === 'ignacio1' ) {
           console.log('ignacio1');
-          this.progreso1 = msg.cuerpo;
-          this.progreso1r = msg.cuerpo1;
+          this.progreso1 = cuerpo;
+          this.progreso1r = cuerpo1;
         }
         if ( msg.de === 'ignacio2' ) {
           console.log('ignacio2');
-          this.progreso2 = msg.cuerpo;
-          this.progreso2r = msg.cuerpo1;
+          this.progreso2 = cuerpo;
+          this.progreso2r = cuerpo1;
         }
        });
 
@@ -165,6 +188,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
    // this.mensajesSubscription.unsubscribe();
    this.mensajespSubscription.unsubscribe();
+   this.ElSarmientoSubscription.unsubscribe();
   }
   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios', id );
@@ -203,7 +227,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( 'juegos', this.beta1, this.gamma1, this.alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this._chatService.sendElSarmiento( 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();

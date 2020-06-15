@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChatService } from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './graficas1.component.html',
   styles: []
 })
-export class Graficas1Component implements OnInit {
+export class Graficas1Component implements OnInit, OnDestroy {
   ElSarmientoSubscription: Subscription;
   beta: number;
   gamma: number;
@@ -17,13 +17,13 @@ export class Graficas1Component implements OnInit {
       'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
       'data':  [10, 20, 30],
       'type': 'doughnut',
-      'leyenda': 'nacho'
+      'leyenda': 'Orientacion'
     },
     'grafico2': {
       'labels': ['Hombres', 'Mujeres'],
       'data':  [4500, 6000],
       'type': 'doughnut',
-      'leyenda': 'Entrevistados'
+      'leyenda': 'Movimiento'
     },
     'grafico3': {
       'labels': ['Si', 'No'],
@@ -45,13 +45,11 @@ export class Graficas1Component implements OnInit {
 
   ngOnInit() {
 
-    this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha', 'vacio'];
+    this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha'];
 
     this.ElSarmientoSubscription = this._chatService.getElSarmiento()
       .subscribe( (msg: any) => {
-        console.log('ESPmsg', msg);
-       // let sala: string = msg.sala;
-       // if (sala === this._usuarioService.usuario.sala) {
+        console.log('ESPmsgasaxsxsxsxsx', msg);
          let de: string = msg.de;
         // let cuerpo: string = msg.cuerpo;
         this.graficos.grafico1.leyenda = de;
@@ -87,5 +85,7 @@ export class Graficas1Component implements OnInit {
         // }
        });
   }
-
+  ngOnDestroy() {
+    this.ElSarmientoSubscription.unsubscribe();
+  }
 }
