@@ -15,7 +15,7 @@ export class Graficas1Component implements OnInit {
   graficos: any = {
     'grafico1': {
       'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
-      'data':  [24, 30, 46],
+      'data':  [10, 20, 30],
       'type': 'doughnut',
       'leyenda': 'nacho'
     },
@@ -45,15 +45,16 @@ export class Graficas1Component implements OnInit {
 
   ngOnInit() {
 
-    this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha'];
-    this.graficos.grafico1.leyenda = 'pepe';
+    this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha', 'vacio'];
+
     this.ElSarmientoSubscription = this._chatService.getElSarmiento()
       .subscribe( (msg: any) => {
         console.log('ESPmsg', msg);
        // let sala: string = msg.sala;
        // if (sala === this._usuarioService.usuario.sala) {
-        // let de: string = msg.de;
+         let de: string = msg.de;
         // let cuerpo: string = msg.cuerpo;
+        this.graficos.grafico1.leyenda = de;
         this.beta = msg.beta1;
         this.gamma = msg.gamma1;
         this.alpha = msg.alpha1;

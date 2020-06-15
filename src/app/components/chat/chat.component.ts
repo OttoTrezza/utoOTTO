@@ -62,36 +62,37 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
 
-      console.log('eventdeviceorientation', event);
-      console.log('eventdeviceorientationbets', event.beta);
-      console.log('eventdeviceorientationgammalph', event.gamma, event.alpha);
+      // console.log('eventdeviceorientation', event);
+      // console.log('eventdeviceorientationbets', event.beta);
+      // console.log('eventdeviceorientationgammalph', event.gamma, event.alpha);
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
-
+      console.log('beta, gamma, alpha: ', this.beta1, this.gamma1, this.alpha1);
      this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
     });
 
 
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
 
-       let acceleGral: any = Math.round(event.acceleration);
-       console.log('eventdevicemmotion.accele', event.acceleration);
+       let acceleGral: any = event.acceleration;
+       console.log('acceleration x', event.acceleration.x);
        this.accelerationx = acceleGral.x;
        this.accelerationy = acceleGral.y;
        this.accelerationz = acceleGral.z;
 
-      let acelgrav: any = Math.round(event.accelerationincludinggravity);
-      console.log('accelerationincludinggravity', this.acelgrav);
+      let acelgrav: any = event.accelerationincludinggravity;
+      console.log('accelerationincludinggravity x', event.accelerationincludinggravity.x);
       this.accelerationincludinggravityx = acelgrav.x ;
       this.accelerationincludinggravityy = acelgrav.y ;
       this.accelerationincludinggravityz = acelgrav.z ;
 
-      let rotrate: any =  Math.round(event.rotationrate);
-      console.log('rotationrate', this.rotrate);
-      this.rotationratebeta = rotrate.beta;
-      this.rotationrategamma = rotrate.gamma;
-      this.rotationratebeta = rotrate.alpha;
+      let rotrat: any = event.rotationrate;
+      console.log('rotationrate beta',  event.rotationrate.beta);
+      this.rotationrategamma =  rotrat.gamma;
+      this.rotationratebeta =  rotrat.beta;
+      this.rotationratealpha =  rotrat.alpha;
+
     });
 
 
@@ -159,8 +160,8 @@ export class ChatComponent implements OnInit, OnDestroy {
           .subscribe( resp => this._usuarioService.cargarUsuarios() );
          // this.scrollBottom();
 
-
 }
+
   ngOnDestroy() {
    // this.mensajesSubscription.unsubscribe();
    this.mensajespSubscription.unsubscribe();
@@ -199,9 +200,10 @@ export class ChatComponent implements OnInit, OnDestroy {
      this.texto = '';
 
   }
+
   sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this._chatService.sendElSarmiento( 'juegos', this.beta1, this.gamma1, this.alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
