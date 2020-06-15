@@ -9,6 +9,9 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class Graficas1Component implements OnInit {
   ElSarmientoSubscription: Subscription;
+  beta: number;
+  gamma: number;
+  alpha: number;
   graficos: any = {
     'grafico1': {
       'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
@@ -41,6 +44,7 @@ export class Graficas1Component implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha'];
     this.ElSarmientoSubscription = this._chatService.getElSarmiento()
       .subscribe( (msg: any) => {
         console.log('ESPmsg', msg);
@@ -48,12 +52,12 @@ export class Graficas1Component implements OnInit {
        // if (sala === this._usuarioService.usuario.sala) {
         // let de: string = msg.de;
         // let cuerpo: string = msg.cuerpo;
-        let beta1: number = msg.beta1;
-        let gamma1: number = msg.gamma1;
-        let alpha1: number = msg.alpha1;
-        this.graficos.grafico1.data[0] = beta1;
-        this.graficos.grafico1.data[1] = gamma1;
-        this.graficos.grafico1.data[2] = alpha1;
+        this.beta = msg.beta1;
+        this.gamma = msg.gamma1;
+        this.alpha = msg.alpha1;
+        this.graficos.grafico1.data[0] = this.beta;
+        this.graficos.grafico1.data[1] = this.gamma;
+        this.graficos.grafico1.data[2] = this.alpha;
         // let accelerationx: number = msg.accelerationx;
         // let accelerationy: number = msg.accelerationy;
         // let accelerationz: number = msg.accelerationz;

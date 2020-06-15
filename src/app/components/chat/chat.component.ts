@@ -318,52 +318,5 @@ onChanges3( newValue: number ) {
 }
 
 
-
-//  disponible() {
-
-//     window.addEventListener('deviceorientation', function(event) {
-//             let betas1 = JSON.stringify(Math.round(event.beta));
-//             document.getElementById('beta1').setAttribute('placeholder', betas1);
-//             let gammas1 = JSON.stringify(Math.round(event.gamma));
-//             document.getElementById('gamma1').setAttribute('placeholder', gammas1);
-//             let alphas1 = JSON.stringify(Math.round(event.alpha));
-//             document.getElementById('alpha1').setAttribute('placeholder', alphas1);
-
-//             document.getElementById('is-absolute').innerHTML = event.absolute ? 'true' : 'false';
-//     });
-
-//     let betasa1: string = document.getElementById('beta1').getAttribute('placeholder');
-
-//     document.getElementById('caca').setAttribute('value', betasa1);
-
-
-//     let gammaa1 = document.getElementById('gamma1').getAttribute('placeholder');
-//     this.gamma1 = Number(gammaa1);
-
-//     let alphaa1 = document.getElementById('alpha1').getAttribute('placeholder');
-//     this.alpha1 = Number(alphaa1);
-
-//     window.addEventListener('devicemotion', function(event) {
-//       let accelerationx = Math.round(event.acceleration.x);
-
-//       let accelerationy = Math.round(event.acceleration.y);
-
-//       let accelerationz = Math.round(event.acceleration.z);
-
-//       let accelerationincludinggravityx = Math.round(event.accelerationIncludingGravity.x);
-
-//       let accelerationincludinggravityy = Math.round(event.accelerationIncludingGravity.y);
-
-//       let accelerationincludinggravityz = Math.round(event.accelerationIncludingGravity.z);
-
-//       let rotationratebeta = Math.round(event.rotationRate.beta);
-
-//       let rotationrategamma = Math.round(event.rotationRate.gamma);
-
-//       let rotationratealpha = Math.round(event.rotationRate.alpha);
-
-//       // let interval = document.getElementById('interval') as HTMLInputElement;
-//       // interval.value = JSON.stringify(Math.round(event.interval));
-
 }
 

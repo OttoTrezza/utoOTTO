@@ -19,6 +19,7 @@ img: string;
     public router: Router
     ) { }
 
+
       sendMessage( mensaje: string, sala: string, callback: any ) {
         this.name = this.usuarioService.usuario.nombre;
       this.img = this.usuarioService.usuario.img;
@@ -37,6 +38,8 @@ img: string;
       });
       console.log('Mensaje', payload );
       }
+
+
       sendFrecuencia( frecuencia: number, sala: string, callback: any ) {
         this.name = this.usuarioService.usuario.nombre;
       // this.name = this.wsService.getUsuario().nombre;
@@ -50,6 +53,8 @@ img: string;
        // console.log(resp);
       });
       }
+
+
       sendLongPulse( LongPulse: number, sala: string, callback: any ) {
         this.name = this.usuarioService.usuario.nombre;
       // this.name = this.wsService.getUsuario().nombre;
@@ -63,6 +68,8 @@ img: string;
        // console.log(resp);
       });
       }
+
+
       sendDir( dir: number, sala: string, callback: any ) {
         this.name = this.usuarioService.usuario.nombre;
       // this.name = this.wsService.getUsuario().nombre;
@@ -76,6 +83,8 @@ img: string;
        // console.log(resp);
       });
       }
+
+
       sendSen( sen: number, sala: string, callback: any ) {
         this.name = this.usuarioService.usuario.nombre;
       // this.name = this.wsService.getUsuario().nombre;
@@ -89,12 +98,14 @@ img: string;
        // console.log(resp);
       });
       }
+
+
       // tslint:disable-next-line:max-line-length
       sendElSarmiento(sala: string, beta1: number, gamma1: number, alpha1: number, callback: any) { // , accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any
         this.name = this.usuarioService.usuario.nombre;
         // this.name = this.wsService.getUsuario().nombre;
         const payload = {
-          de: this.name,
+          de: 'pepemujica',
           sala: sala,
           beta1: beta1,
           gamma1: gamma1,
