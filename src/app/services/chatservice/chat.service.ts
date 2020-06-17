@@ -131,6 +131,9 @@ img: string;
       getElSarmiento() {
         return this.wsService.listen( 'ElSarmiento-nuevo' );
        }
+       getElSarmiento1() {
+        return this.wsService.listen( 'ElSarmiento-nuevo1' );
+       }
     getMessages() {
         return this.wsService.listen( 'mensaje-nuevo' );
     }

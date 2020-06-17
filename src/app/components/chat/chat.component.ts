@@ -28,7 +28,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   texto = '';
   mensajesSubscription: Subscription;
   mensajespSubscription: Subscription;
-  ElSarmientoSubscription: Subscription;
+  // ElSarmientoSubscription: Subscription;
   elemento: HTMLElement;
   usuario: Usuario;
   mensajes: any[] = [];
@@ -97,16 +97,16 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     });
 
-    this.ElSarmientoSubscription = this._chatService.getElSarmiento()
-    .subscribe( (msg: any) => {
-      console.log('ESPmsgasaxsxsxsxsx', msg);
-       let de: string = msg.de;
-      this.graficos.grafico1.leyenda = de;
-      this.beta = msg.beta1;
-      this.gamma = msg.gamma1;
-      this.alpha = msg.alpha1;
-      this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-    });
+    // this.ElSarmientoSubscription = this._chatService.getElSarmiento()
+    // .subscribe( (msg: any) => {
+    //   console.log('ESPmsgasaxsxsxsxsx', msg);
+    //    let de: string = msg.de;
+    //   this.graficos.grafico1.leyenda = de;
+    //   this.beta = msg.beta1;
+    //   this.gamma = msg.gamma1;
+    //   this.alpha = msg.alpha1;
+    //   this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
+    // });
 
     this.elemento = document.getElementById('divChatbox');
 
@@ -175,9 +175,9 @@ export class ChatComponent implements OnInit, OnDestroy {
 }
 
   ngOnDestroy() {
-   // this.mensajesSubscription.unsubscribe();
-   this.mensajespSubscription.unsubscribe();
-   this.ElSarmientoSubscription.unsubscribe();
+    this.mensajesSubscription.unsubscribe();
+    this.mensajespSubscription.unsubscribe();
+   // this.ElSarmientoSubscription.unsubscribe();
   }
   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios', id );
@@ -212,15 +212,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
      this.texto = '';
 
-  }
-
-  sendElSarmiento(beta1: number, gamma1: number, alpha1: number) {
-    // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
-    this.msg = resp;
-    console.log('this.msg = ', this.msg);
-//    this.scrollBottom();
-   });
   }
 
   cambiarValor1( valor: number ) {
