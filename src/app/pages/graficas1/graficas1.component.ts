@@ -89,7 +89,7 @@ export class Graficas1Component implements OnInit, OnDestroy {
        this.ElSarmiento1Subscription = this._chatService.getElSarmiento1()
        .subscribe( (msg1: any) => {
          console.log('Elsarmiento1', msg1);
-   this.elsar1 = msg1;
+   this.elsar1 = msg1.Sarmiento;
        });
   }
   ngOnDestroy() {
