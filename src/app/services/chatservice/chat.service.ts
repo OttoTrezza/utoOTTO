@@ -107,9 +107,9 @@ img: string;
         const payload = {
           de: 'pepemujica',
           sala: sala,
-          beta1: beta1,
-          gamma1: gamma1,
-          alpha1: alpha1
+          beta1,
+          gamma1,
+          alpha1
           // accelerationx1: accelerationx1,
           // accelerationy1: accelerationy1,
           // accelerationz1: accelerationz1,
@@ -131,9 +131,9 @@ img: string;
       getElSarmiento() {
         return this.wsService.listen( 'ElSarmiento-nuevo' );
        }
-       getElSarmiento1() {
-        return this.wsService.listen( 'ElSarmiento-nuevo1' );
-       }
+      //  getElSarmiento1() {
+      //   return this.wsService.listen( 'ElSarmiento1-nuevo' );
+      //  }
     getMessages() {
         return this.wsService.listen( 'mensaje-nuevo' );
     }

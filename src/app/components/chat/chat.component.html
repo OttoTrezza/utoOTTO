@@ -91,13 +91,13 @@
                                     <ng-template #elseBlock>
                                         <li class="animated fadeIn">
                                             <!--   <div *ngIf="msg.de === 'Administrador'; else elseBlock">
-                                                <div class="chat-img"><img src="assets/images/big/img2.jpg" alt="user" /></div>
-                                                <div class="chat-content">
-                                                    <h5> {{msg.de}} </h5>
-                                                    <div class="box bg-light-danger"> {{msg.cuerpo}} </div>
-                                                </div>
+                                            <div class="chat-img"><img src="assets/images/big/img2.jpg" alt="user" /></div>
+                                            <div class="chat-content">
+                                                <h5> {{msg.de}} </h5>
+                                                <div class="box bg-light-danger"> {{msg.cuerpo}} </div>
                                             </div>
-                                            <ng-template #elseBlock> -->
+                                        </div>
+                                        <ng-template #elseBlock> -->
                                             <div class="chat-img"><img [src]="msg.img | imagen:'usuario'" class="img-50 img-circle"></div>
                                             <div class="chat-content">
                                                 <h5> {{msg.de}} </h5>
@@ -169,6 +169,7 @@
                 <label form="customRange4">sentido</label>
                 <input #txtSen type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4">
 
+
                 <h4 type="text" class="card-title">beta1: {{ beta1 }} </h4>
                 <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="beta1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="beta1 + '%'"></div>
                 <h4 type="text" class="card-title">gamma1: {{ gamma1 }} </h4>
@@ -200,4 +201,3 @@
             </div>
         </div>
     </div>
-</div>

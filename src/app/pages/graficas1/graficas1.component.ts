@@ -9,11 +9,11 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class Graficas1Component implements OnInit, OnDestroy {
   ElSarmientoSubscription: Subscription;
-  ElSarmiento1Subscription: Subscription;
+  // ElSarmiento1Subscription: Subscription;
   beta: number;
   gamma: number;
   alpha: number;
-  elsar1: any;
+
   graficos: any = {
     'grafico1': {
       'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
@@ -86,14 +86,14 @@ export class Graficas1Component implements OnInit, OnDestroy {
         //   this.progreso2r = msg.cuerpo1;
         // }
        });
-       this.ElSarmiento1Subscription = this._chatService.getElSarmiento1()
-       .subscribe( (msg1: any) => {
-         console.log('Elsarmiento1', msg1);
-   this.elsar1 = msg1.Sarmiento;
-       });
+  //      this.ElSarmiento1Subscription = this._chatService.getElSarmiento1()
+  //      .subscribe( (msg1: any) => {
+  //        console.log('Elsarmiento1', msg1);
+  //  this.elsar1 = msg1.Sarmiento;
+  //      });
   }
   ngOnDestroy() {
     this.ElSarmientoSubscription.unsubscribe();
-    this.ElSarmiento1Subscription.unsubscribe();
+   // this.ElSarmiento1Subscription.unsubscribe();
   }
 }
