@@ -97,16 +97,16 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     });
 
-    this.ElSarmientoSubscription = this._chatService.getElSarmiento()
-    .subscribe( (msg: any) => {
-      console.log('ESPmsgasaxsxsxsxsx', msg);
-       let de: string = msg.de;
-      this.graficos.grafico1.leyenda = de;
-      this.beta = msg.beta1;
-      this.gamma = msg.gamma1;
-      this.alpha = msg.alpha1;
-      this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-    });
+    // this.ElSarmientoSubscription = this._chatService.getElSarmiento()
+    // .subscribe( (msg: any) => {
+    //   console.log('ESPmsgasaxsxsxsxsx', msg);
+    //    let de: string = msg.de;
+    //   this.graficos.grafico1.leyenda = de;
+    //   this.beta = msg.beta1;
+    //   this.gamma = msg.gamma1;
+    //   this.alpha = msg.alpha1;
+    //   this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
+    // });
 
     this.elemento = document.getElementById('divChatbox');
 
@@ -177,7 +177,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
    // this.mensajesSubscription.unsubscribe();
    this.mensajespSubscription.unsubscribe();
-   this.ElSarmientoSubscription.unsubscribe();
+  //  this.ElSarmientoSubscription.unsubscribe();
   }
   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios', id );
