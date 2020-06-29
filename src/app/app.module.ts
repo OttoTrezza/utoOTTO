@@ -51,7 +51,7 @@ import { FooterComponent } from './components/footer/footer.component';
     RegisterComponent,
     PromesasComponent,
     PagesComponent,
-    FooterComponent
+    FooterComponent,
     // BusquedaComponent,
     // DashboardComponent,
     // Graficas1Component,

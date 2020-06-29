@@ -63,7 +63,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
     } );
 
 
-    this.elemento = document.getElementById('divUsuarios');
+    this.elemento = document.getElementById('chat-usuarios');
 
     this._chatService.emitirUsuariosActivos(this.sala);
     this.usuariosSubscription = this._chatService.getUsuariosActivos()

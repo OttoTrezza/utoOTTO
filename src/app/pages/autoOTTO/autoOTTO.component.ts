@@ -4,18 +4,18 @@ import { UsuarioService, ModalUploadService } from '../../services/service.index
 import { Usuario } from '../../models/usuario.model';
 import { WebsocketService } from '../../services/service.index';
 import { Subscription } from 'rxjs';
-
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-auto-otto',
-  templateUrl: './auto-otto.component.html',
-  styleUrls: ['./auto-otto.component.css']
+  // tslint:disable-next-line:component-selector
+  selector: 'app-autoOTTO',
+  templateUrl: './autoOTTO.component.html',
+  styleUrls: []
 })
 export class AutoOTTOComponent implements OnInit, OnDestroy {
-  [x: string]: any;
 
-  textoUser = '';
+  [x: string]: any;
   usuariosSubscription: Subscription;
   elemento: HTMLElement;
   usuarios: Usuario[] = [];
@@ -27,9 +27,7 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
   img: string;
   cargando: boolean = true;
   totalRegistros: number = 0;
-  progreso: number = 20;
-  progreso1: number = 20;
-  hexString: string;
+
 
   constructor(
     public _chatService: ChatService,
@@ -45,6 +43,7 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+
     this.nombre = this._usuarioService.usuario.nombre;
     this.sala = this._usuarioService.usuario.sala;
     this.img = this._usuarioService.usuario.img;
@@ -61,7 +60,7 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
     } );
 
 
-    this.elemento = document.getElementById('divUsuarios');
+    this.elemento = document.getElementById('divChat-auto');
 
     this._chatService.emitirUsuariosActivos(this.sala);
     this.usuariosSubscription = this._chatService.getUsuariosActivos()
@@ -75,12 +74,9 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
    this.usuariosSubscription.unsubscribe();
-   // this.salasSubscription.unsubscribe();
    }
 
-
-      // this._usuarioService.actualizarSala(this.usuariosala);
-  mostrarModal( id: string) {
+   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios1', id );
   }
   buscar() {
@@ -94,13 +90,31 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
 
   }
 
-   salir() {
-   this._chatService.logoutChatS();
-   }
+    seleccionSala(f1: NgForm) {
+      console.log( f1.value );
 
+      if ( !f1.value ) {
+        return;
+      }
+      console.log('this.usuariosala', this.usuariosala);
+      this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f1.value.sala })
+            .subscribe( (sala: any) => {
+              this.sala = sala;
+              console.log('sañla:', this.sala, f1.value.sala);
+            });
+
+  }
+  cambioSala( sala: string ) {
+    console.log('Usuarios de sala:', sala );
+    this._chatService.emitirUsuariosActivos(sala);
+    this.usuariosSubscription = this._chatService.getUsuariosActivos()
+          .subscribe( (respu: Usuario[]= []) => {
+            this.usuarios = respu;
+            console.log('usuarios', this.usuarios);
+          } );
 }
 
-
+}
 // ** TO DO THING...
 // HACER UNA LISTA CON SALAS POSIBLES
 // ENCAPSULAR VALUE1/2/3 EN ESA LISTA

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-3">
         <div class="card">
-            <div id="chat-usuarios" class="card-body">
+            <div id="divChat-auto" class="card-body">
 
                 <table class="table table-hover">
                     <thead>
@@ -39,11 +39,7 @@
             </div>
         </div>
 
-
-        <!-- <h1>
-          Nombre: {{nombre}} Sala: {{sala}}
-      </h1> -->
-        <form #f="ngForm" (ngSubmit)="seleccionSala(f)">
+        <form #f1="ngForm" (ngSubmit)="seleccionSala(f1)">
 
             <div class="form-group">
                 <select (change)="cambioSala( $event.target.value )" [(ngModel)]="sala" name="sala" class="form-control" required>
@@ -61,41 +57,15 @@
     </div>
 
 
-    <!-- <app-lista-usuarios></app-lista-usuarios> -->
 
 
     <div class="col-9">
         <div class="card">
             <div class="card-body">
-                <app-chat></app-chat>
+
+                <app-auto-otto></app-auto-otto>
+
             </div>
         </div>
     </div>
-    <!-- <div class="footerInput">
-      Super Chat - Ignacio Trezza
-  </div> -->
-
-
-    <script>
-        var hexString = '#' + this.progreso.toString(16) + this.progreso1.toString(16) + 'ff';
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("demo");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function() {
-            output.innerHTML = this.value;
-            this.progreso = this.value;
-
-        }
-    </script>
-    <!-- <script>
-  var slider = document.getElementById("myRange1");
-  var output = document.getElementById("demo1");
-  output.innerHTML = slider.value;
-
-  slider.oninput = function() {
-      output.innerHTML = this.value;
-      this.progreso1 = this.value;
-
-  }
-</script> -->
+</div>
