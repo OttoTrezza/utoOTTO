@@ -34,7 +34,7 @@ Custom-select
 ******************/
 
 .custom-select {
-    background: url(../../public/assets/images/custom-select.png) right 0.75rem center no-repeat;
+    background: url(../..//assets/images/custom-select.png) right 0.75rem center no-repeat;
 }
 
 
@@ -182,7 +182,7 @@ Form summernote
 }
 
 
-/*============================================================== 
+/*==============================================================
 Form addons page
 ============================================================== */
 
@@ -227,7 +227,7 @@ Form addons page
 }
 
 
-/*============================================================== 
+/*==============================================================
 Form Material page
  ============================================================== */
 
@@ -289,7 +289,7 @@ Form Material page
 
 
 /*******************
-File Upload 
+File Upload
 ******************/
 
 .fileupload {

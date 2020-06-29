@@ -4,7 +4,7 @@ import { UsuarioService, ModalUploadService } from '../../services/service.index
 import { Usuario } from '../../models/usuario.model';
 import { WebsocketService } from '../../services/service.index';
 import { Subscription } from 'rxjs';
-import { NgForm } from '@angular/forms';
+
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -58,7 +58,6 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
           this.salas = respu;
 
           console.log('salas en mens.comp', this.salas);
-         // console.log(this.salas[0]);
     } );
 
 
@@ -71,23 +70,9 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
             console.log('usuarios en mens.comp', this.usuarios);
           } );
 
-    // this._chatService.emitirSalasActivas();
-    // this.salasSubscription = this._chatService.getSalasActivas()
-    //       .subscribe((respu: []) => {
-    //       this.salas = respu;
-    //       });
-    // this.output = document.getElementById('demo1');
-    // console.log('innerHTML', this.output.innerHTML);
   }
 
-//  onChange(newValue: number) {
-//    // console.log('thisoutpuit', this.output.innerHTML);
-//    // this.progreso1 = this.output.innerHTML;
-//    this.hexString = '#' +  this.progreso1.toString(16) + this.progreso1.toString(16) + this.progreso1.toString(16) ;
-//    this._chatService.sendMessage( this.hexString, this._usuarioService.usuario.sala, (resp: any) => {
-//     console.log('this.msg = ', this.hexString, resp);
-//    });
-//  }
+
   ngOnDestroy() {
    this.usuariosSubscription.unsubscribe();
    // this.salasSubscription.unsubscribe();
@@ -109,41 +94,6 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
 
   }
 
-    seleccionSala(f: NgForm) {
-      console.log( f.value );
-
-      if ( !f.value ) {
-        return;
-      }
-      console.log('this.usuariosala', this.usuariosala);
-      this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f.value.sala })
-            .subscribe( (sala: any) => {
-              this.sala = sala;
-              console.log('sañla:', this.sala, f.value.sala);
-            });
-
-  }
-  cambioSala( sala: string ) {
-    console.log('Usuarios de sala:', sala );
-    this._chatService.emitirUsuariosActivos(sala);
-    this.usuariosSubscription = this._chatService.getUsuariosActivos()
-          .subscribe( (respu: Usuario[]= []) => {
-            this.usuarios = respu;
-            console.log('usuarios', this.usuarios);
-          } );
-
-  }
-
-
-// obtenerUsuario( id: string ) {
-//   this._usuarioService.obtenerUsuario( id )
-//         .subscribe( (usuario: Usuario) => {
-//           console.log('obtUsu:', usuario);
-//        //   this.usuario = usuario;
-//        //  this.usuario.sala = usuario.sala;
-//           // this.cambioSala( this.usuario.sala);
-//         });
-//   }
    salir() {
    this._chatService.logoutChatS();
    }
