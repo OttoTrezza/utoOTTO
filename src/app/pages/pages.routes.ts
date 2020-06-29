@@ -18,6 +18,7 @@ import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { MensajesComponent } from './mensajes/mensajes.component';
+import { AutoOTTOComponent } from './autoOTTO/autoOTTO.component';
 
 
 
@@ -29,6 +30,7 @@ const pagesRoutes: Routes = [
     { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
     { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
     { path: 'mensajes', component: MensajesComponent, data: { titulo: 'Mensajes' } },
+    { path: 'autoOTTO', component: AutoOTTOComponent, data: { titulo: 'AutoOTTO' } },
     { path: 'account-settings', component: AccoutSettingsComponent, data: { titulo: 'Ajustes' } },
     { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil' } },
     { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' } },

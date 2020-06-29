@@ -91,10 +91,11 @@
                                     <ng-template #elseBlock>
                                         <li class="animated fadeIn">
                                             <!--   <div *ngIf="msg.de === 'Administrador'; else elseBlock">
-                                            <div class="chat-img"><img src="assets/images/big/img2.jpg" alt="user" /></div>
-                                            <div class="chat-content">
-                                                <h5> {{msg.de}} </h5>
-                                                <div class="box bg-light-danger"> {{msg.cuerpo}} </div>
+                                                <div class="chat-img"><img src="/assets/images/big/img2.jpg" alt="user" /></div>
+                                                <div class="chat-content">
+                                                    <h5> {{msg.de}} </h5>
+                                                    <div class="box bg-light-danger"> {{msg.cuerpo}} </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <ng-template #elseBlock> -->
@@ -138,66 +139,3 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-8">
-        <div class="card">
-            <div class="card-body">
-
-                <h4 class="card-title">Sensor 1 = {{ progreso1 }} </h4>
-                <br>
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="progreso1 - 600" aria-valuenow="50" aria-valuemin="0" aria-valuemax="600" [style.width]="progreso1 + '%'"></div>
-
-                <h4 class="card-title">Long Pulse 1 = {{ progreso1r }} </h4>
-                <br>
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="progreso1r - 90" aria-valuenow="50" aria-valuemin="0" aria-valuemax="99" [style.width]="progreso1r + '%'"></div>
-
-
-                <label form="customRange1">Frecuencia</label>
-                <input #txtFrecuencia type="range" class="striped" min="45" max="150" value="frecuencia" step="1" name="frecuencia" [(ngModel)]="frecuencia" (ngModelChange)="onChanges($event)" id="customRange1">
-
-                <label form="customRange2">LongPulse</label>
-                <input #txtLongPulse type="range" class="striped" min="1" max="99" value="LongPulse" step="1" name="LongPulse" [(ngModel)]="LongPulse" (ngModelChange)="onChanges1($event)" id="customRange2">
-                <h4 class="card-title">Sensor 2 = {{ progreso2 }} </h4>
-                <br>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="progreso2 - 600" aria-valuenow="50" aria-valuemin="0" aria-valuemax="600" [style.width]="progreso2 + '%'"></div>
-                <h4 class="card-title">LongPulse 2 = {{ progreso2r }} </h4>
-                <br>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="progreso2r - 90" aria-valuenow="50" aria-valuemin="0" aria-valuemax="99" [style.width]="progreso2r + '%'"></div>
-                <br>
-                <label form="customRange3">marcha</label>
-                <input #txtDir type="range" class="striped" min="-90" max="90" value="dir" step="1" name="dir" [(ngModel)]="dir" (ngModelChange)="onChanges2($event)" id="customRange3">
-                <label form="customRange4">sentido</label>
-                <input #txtSen type="range" class="striped" min="-90" max="90" value="sen" step="1" name="sen" [(ngModel)]="sen" (ngModelChange)="onChanges3($event)" id="customRange4">
-
-
-                <h4 type="text" class="card-title">beta1: {{ beta1 }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="beta1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="beta1 + '%'"></div>
-                <h4 type="text" class="card-title">gamma1: {{ gamma1 }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="gamma1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="gamma1 + '%'"></div>
-                <h4 type="text" class="card-title">alpha1: {{ alpha1 }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="alpha1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="alpha1 + '%'"></div>
-                <br>
-                <h4 type="text" class="card-title">accelerationx {{ accelerationx }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationx" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="accelerationx + '%'"></div>
-                <h4 type="text" class="card-title">accelerationy {{ accelerationy }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationy" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="accelerationy + '%'"></div>
-                <h4 type="text" class="card-title">accelerationz {{ accelerationz }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationz" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="accelerationy + '%'"></div>
-                <br>
-                <h4 type="text" class="card-title">accelerationincludinggravityx {{ accelerationincludinggravityx }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityx" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="accelerationincludinggravityx + '%'"></div>
-                <h4 type="text" class="card-title">accelerationincludinggravityy {{ accelerationincludinggravityy }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityy" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="accelerationincludinggravityy + '%'"></div>
-                <h4 type="text" class="card-title">accelerationincludinggravityz {{ accelerationincludinggravityz }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationincludinggravityz" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="accelerationincludinggravityz + '%'"></div>
-                <br>
-                <h4 type="text" class="card-title">rotationratebeta {{ rotationratebeta }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="rotationratebeta" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="rotationratebeta + '%'"></div>
-                <h4 type="text" class="card-title">rotationrategamma {{ rotationrategamma }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="rotationrategamma" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="rotationrategamma + '%'"></div>
-                <h4 type="text" class="card-title">rotationratealpha {{ rotationratealpha }} </h4>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="rotationratealpha" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="rotationratealpha + '%'"></div>
-
-            </div>
-        </div>
-    </div>

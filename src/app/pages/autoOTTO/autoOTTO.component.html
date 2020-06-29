@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-3">
         <div class="card">
-            <div id="chat-usuarios" class="card-body">
+            <div id="divChat-auto" class="card-body">
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -12,6 +13,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         <tr *ngFor="let usuario of usuarios">
                             <td class="w70">
                                 <img [src]="usuario.img | imagen:'usuario'" class="img-50 img-circle">
@@ -22,34 +24,48 @@
                             <td>
                                 {{usuario.sala}}
                             </td>
+
+                            <!-- <td>   ACA LA IDEA ES SELECCIONAR USUARIOS PARA ESCRIBILES, TAMBIEN MEDICOS Y HOSPITALES
+                          <button [routerLink]="['/medico', medico._id]" class="btn btn-primary">
+                          <i class="fa fa-edit"></i>
+                        </button>
+                          <button (click)="borrarMedico( medico )" class="btn btn-primary">
+                            <i class="fa fa-trash-o"></i>
+                          </button>
+                          </td> -->
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <form #f="ngForm" (ngSubmit)="seleccionSala(f)">
+        <form #f1="ngForm" (ngSubmit)="seleccionSala(f1)">
+
             <div class="form-group">
                 <select (change)="cambioSala( $event.target.value )" [(ngModel)]="sala" name="sala" class="form-control" required>
-                    <option value="">Selecione la sala</option>
-                    <option *ngFor="let sala of salas" [value]="sala">{{sala}}</option>
-                  </select>
+                        <option value="">Selecione la sala</option>
+                        <option *ngFor="let sala of salas" [value]="sala">{{sala}}</option>
+                      </select>
             </div>
 
             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
-                Guardar
-              <i class="fa fa-save"></i>
-      </button>
-
+                    Guardar
+                  <i class="fa fa-save"></i>
+          </button>
+            <!-- <a routerLink="/medicos" class="btn btn-inverse waves-effect waves-light">Cancelar</a> -->
         </form>
     </div>
+
+
+
 
     <div class="col-9">
         <div class="card">
             <div class="card-body">
-                <app-chat></app-chat>
+
+                <app-auto-otto></app-auto-otto>
+
             </div>
         </div>
     </div>
-
 </div>

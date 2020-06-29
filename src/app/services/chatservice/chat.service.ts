@@ -40,6 +40,23 @@ img: string;
       }
 
 
+      sendMessageAutoOTTO( mensaje: string, sala: string, callback: any ) {
+        this.name = this.usuarioService.usuario.nombre;
+      this.img = this.usuarioService.usuario.img;
+      // this.name = this.wsService.getUsuario().nombre;
+      // this.img = this.wsService.getUsuario().img;
+      console.log('name img', this.name, this.img);
+      const payload = {
+        de: this.name,
+        cuerpo: mensaje,
+        img: this.img,
+        sala: sala
+        };
+      this.wsService.emit( 'mensaje-autoOTTO' , payload, (resp: any) => {
+        callback(resp);
+      });
+      }
+
       sendFrecuencia( frecuencia: number, sala: string, callback: any ) {
         this.name = this.usuarioService.usuario.nombre;
       // this.name = this.wsService.getUsuario().nombre;
@@ -103,7 +120,6 @@ img: string;
       // tslint:disable-next-line:max-line-length
       sendElSarmiento(sala: string, beta1: number, gamma1: number, alpha1: number, callback: any) { // , accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any
         this.name = this.usuarioService.usuario.nombre;
-        // this.name = this.wsService.getUsuario().nombre;
         const payload = {
           de: 'pepemujica',
           sala: sala,
@@ -135,6 +151,12 @@ img: string;
     getMessages() {
         return this.wsService.listen( 'mensaje-nuevo' );
     }
+    getMessagesAutoOTTO() {
+      return this.wsService.listen( 'mensaje-nuevo-auto' );
+  }
+    getMessagesAuto() {
+      return this.wsService.listen( 'mensaje-auto' );
+  }
     getMessagesp() {
       return this.wsService.listen( 'mensajesp-nuevo' );
   }

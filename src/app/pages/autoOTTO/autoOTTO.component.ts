@@ -8,15 +8,14 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-mensajes',
-  templateUrl: './mensajes.component.html',
-  styleUrls: ['./mensajes.component.css']
+  // tslint:disable-next-line:component-selector
+  selector: 'app-autoOTTO',
+  templateUrl: './autoOTTO.component.html',
+  styleUrls: []
 })
+export class AutoOTTOComponent implements OnInit, OnDestroy {
 
-export class MensajesComponent implements OnInit, OnDestroy {
   [x: string]: any;
-
-  textoUser = '';
   usuariosSubscription: Subscription;
   elemento: HTMLElement;
   usuarios: Usuario[] = [];
@@ -28,9 +27,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
   img: string;
   cargando: boolean = true;
   totalRegistros: number = 0;
-  progreso: number = 20;
-  progreso1: number = 20;
-  hexString: string;
+
 
   constructor(
     public _chatService: ChatService,
@@ -46,6 +43,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+
     this.nombre = this._usuarioService.usuario.nombre;
     this.sala = this._usuarioService.usuario.sala;
     this.img = this._usuarioService.usuario.img;
@@ -59,11 +57,10 @@ export class MensajesComponent implements OnInit, OnDestroy {
           this.salas = respu;
 
           console.log('salas en mens.comp', this.salas);
-         // console.log(this.salas[0]);
     } );
 
 
-    this.elemento = document.getElementById('chat-usuarios');
+    this.elemento = document.getElementById('divChat-auto');
 
     this._chatService.emitirUsuariosActivos(this.sala);
     this.usuariosSubscription = this._chatService.getUsuariosActivos()
@@ -72,31 +69,14 @@ export class MensajesComponent implements OnInit, OnDestroy {
             console.log('usuarios en mens.comp', this.usuarios);
           } );
 
-    // this._chatService.emitirSalasActivas();
-    // this.salasSubscription = this._chatService.getSalasActivas()
-    //       .subscribe((respu: []) => {
-    //       this.salas = respu;
-    //       });
-    // this.output = document.getElementById('demo1');
-    // console.log('innerHTML', this.output.innerHTML);
   }
 
-//  onChange(newValue: number) {
-//    // console.log('thisoutpuit', this.output.innerHTML);
-//    // this.progreso1 = this.output.innerHTML;
-//    this.hexString = '#' +  this.progreso1.toString(16) + this.progreso1.toString(16) + this.progreso1.toString(16) ;
-//    this._chatService.sendMessage( this.hexString, this._usuarioService.usuario.sala, (resp: any) => {
-//     console.log('this.msg = ', this.hexString, resp);
-//    });
-//  }
+
   ngOnDestroy() {
    this.usuariosSubscription.unsubscribe();
-   // this.salasSubscription.unsubscribe();
    }
 
-
-      // this._usuarioService.actualizarSala(this.usuariosala);
-  mostrarModal( id: string) {
+   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios1', id );
   }
   buscar() {
@@ -110,17 +90,17 @@ export class MensajesComponent implements OnInit, OnDestroy {
 
   }
 
-    seleccionSala(f: NgForm) {
-      console.log( f.value );
+    seleccionSala(f1: NgForm) {
+      console.log( f1.value );
 
-      if ( !f.value ) {
+      if ( !f1.value ) {
         return;
       }
       console.log('this.usuariosala', this.usuariosala);
-      this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f.value.sala })
+      this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f1.value.sala })
             .subscribe( (sala: any) => {
               this.sala = sala;
-              console.log('sañla:', this.sala, f.value.sala);
+              console.log('sañla:', this.sala, f1.value.sala);
             });
 
   }
@@ -132,26 +112,9 @@ export class MensajesComponent implements OnInit, OnDestroy {
             this.usuarios = respu;
             console.log('usuarios', this.usuarios);
           } );
-
-  }
-
-
-// obtenerUsuario( id: string ) {
-//   this._usuarioService.obtenerUsuario( id )
-//         .subscribe( (usuario: Usuario) => {
-//           console.log('obtUsu:', usuario);
-//        //   this.usuario = usuario;
-//        //  this.usuario.sala = usuario.sala;
-//           // this.cambioSala( this.usuario.sala);
-//         });
-//   }
-   salir() {
-   this._chatService.logoutChatS();
-   }
-
 }
 
-
+}
 // ** TO DO THING...
 // HACER UNA LISTA CON SALAS POSIBLES
 // ENCAPSULAR VALUE1/2/3 EN ESA LISTA
