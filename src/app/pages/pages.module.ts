@@ -34,6 +34,7 @@ import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { MensajesComponent } from './mensajes/mensajes.component';
 import { ChatComponent } from '../components/chat/chat.component';
+import { AutoOTTOComponent } from './auto_OTTO/auto-otto.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ChatComponent } from '../components/chat/chat.component';
         MedicosComponent,
         MedicoComponent,
         MensajesComponent,
+        AutoOTTOComponent,
         ChatComponent,
         BusquedaComponent
 
