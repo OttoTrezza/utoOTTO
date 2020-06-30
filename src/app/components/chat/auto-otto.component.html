@@ -1,3 +1,70 @@
+<style>
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    .cube {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        margin: 30px auto;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+    
+    .face {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        font-size: 80px;
+        text-align: center;
+        line-height: 150px;
+        background-color: #999999;
+        box-shadow: inset 0 0 20px #333333;
+        opacity: 0.6;
+    }
+    
+    .cube .one {
+        -webkit-transform: translateZ(75px);
+        transform: translateZ(75px);
+    }
+    
+    .cube .two {
+        -webkit-transform: rotateY(90deg) translateZ(75px);
+        transform: rotateY(90deg) translateZ(75px);
+    }
+    
+    .cube .three {
+        -webkit-transform: rotateY(180deg) translateZ(75px);
+        transform: rotateY(180deg) translateZ(75px);
+    }
+    
+    .cube .four {
+        -webkit-transform: rotateY(-90deg) translateZ(75px);
+        transform: rotateY(-90deg) translateZ(75px);
+    }
+    
+    .cube .five {
+        -webkit-transform: rotateX(90deg) translateZ(75px);
+        transform: rotateX(90deg) translateZ(75px);
+    }
+    
+    .cube .six {
+        -webkit-transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
+        transform: rotateX(-90deg) translateZ(75px) rotate(0deg);
+    }
+    
+    .value {
+        font-weight: bold;
+    }
+    
+    .author {
+        display: block;
+        margin-top: 1em;
+    }
+</style>
 <div class="w3-container">
     <div class="row animated fadeIn">
         <div class="col-12">
@@ -101,6 +168,7 @@
         <h4 type="text" class="card-title">alpha1: {{ alpha1 }} </h4>
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="alpha1" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="alpha1 + '%'"></div>
         <br>
+        <div class="cube"></div>
         <!-- <h4 type="text" class="card-title">accelerationx {{ accelerationx }} </h4>
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="accelerationx" aria-valuenow="50" aria-valuemin="-180" aria-valuemax="360" [style.width]="accelerationx + '%'"></div>
         <h4 type="text" class="card-title">accelerationy {{ accelerationy }} </h4>
@@ -128,36 +196,28 @@
 <canvas id="myCanvas" width="360" height="450" style="border:1px solid #d3d3d3;">
 </canvas>
 <script>
-    function deviceOrientationListener(event) {
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
 
-        ctx.clearRect(0, 0, c.width, c.height);
-        ctx.fillStyle = "#FF7777";
-        ctx.font = "14px Verdana";
-        ctx.fillText("Alpha: " + Math.Round(event.alpha), 10, 20);
-        ctx.beginPath();
-        ctx.moveTo(180, 75);
-        ctx.lineTo(210, 75);
-        ctx.arc(180, 75, 60, 0, event.alpha * Math.PI / 180);
-        ctx.fill();
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.fillStyle = "#FF7777";
+    ctx.font = "14px Verdana";
+    ctx.fillText("Alpha: " + Math.Round(alpha1), 10, 20);
+    ctx.beginPath();
+    ctx.moveTo(180, 75);
+    ctx.lineTo(210, 75);
+    ctx.arc(180, 75, 60, 0, alpha1 * Math.PI / 180);
+    ctx.fill();
 
-        ctx.fillStyle = "#FF6600";
-        ctx.fillText("Beta: " + Math.round(event.beta), 10, 140);
-        ctx.beginPath();
-        ctx.fillRect(180, 150, event.beta, 90);
+    ctx.fillStyle = "#FF6600";
+    ctx.fillText("Beta: " + Math.round(beta1), 10, 140);
+    ctx.beginPath();
+    ctx.fillRect(180, 150, beta1, 90);
 
-        ctx.fillStyle = "#FF0000";
-        ctx.fillText("Gamma: " + Math.round(event.gamma), 10, 270);
-        ctx.beginPath();
-        ctx.fillRect(90, 340, 180, event.gamma);
-    }
-
-    if (window.DeviceOrientationEvent) {
-        window.addEventListener("deviceorientation", deviceOrientationListener);
-    } else {
-        alert("Sorry, your browser doesn't support Device Orientation");
-    }
+    ctx.fillStyle = "#FF0000";
+    ctx.fillText("Gamma: " + Math.round(gamma1), 10, 270);
+    ctx.beginPath();
+    ctx.fillRect(90, 340, 180, gamma1);
 </script>
 <!-- <script>
 var s$ = function(e) {

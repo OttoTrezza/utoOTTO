@@ -30,52 +30,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
-
-      this.beta1 = Math.round(event.beta);
-      this.gamma1 = Math.round(event.gamma);
-      this.alpha1 = Math.round(event.alpha);
-      // console.log('beta, gamma, alpha: ', this.beta1, this.gamma1, this.alpha1);
-      this._chatService.sendElSarmiento('juegos', this.beta1, this.gamma1, this.alpha1, (resp: any) => {
-        this.msg = resp;
-        console.log('this.msg = ', this.msg);
-      });
-
-    });
-
-
-    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
-
-       let acceleGral: any = event.acceleration;
-      // console.log('acceleration x', event.acceleration.x);
-       this.accelerationx = acceleGral.x;
-       this.accelerationy = acceleGral.y;
-       this.accelerationz = acceleGral.z;
-
-      // let acelgrav: any = event.accelerationincludinggravity;
-      // console.log('accelerationincludinggravity x', event.accelerationincludinggravity.x);
-      // this.accelerationincludinggravityx = acelgrav.x ;
-      // this.accelerationincludinggravityy = acelgrav.y ;
-      // this.accelerationincludinggravityz = acelgrav.z ;
-
-      // let rotrat: any = event.rotationrate;
-      // console.log('rotationrate beta',  event.rotationrate.beta);
-      // this.rotationrategamma =  rotrat.gamma;
-      // this.rotationratebeta =  rotrat.beta;
-      // this.rotationratealpha =  rotrat.alpha;
-
-    });
-
-    // this.ElSarmientoSubscription = this._chatService.getElSarmiento()
-    // .subscribe( (msg: any) => {
-    //   console.log('ESPmsgasaxsxsxsxsx', msg);
-    //    let de: string = msg.de;
-    //   this.graficos.grafico1.leyenda = de;
-    //   this.beta = msg.beta1;
-    //   this.gamma = msg.gamma1;
-    //   this.alpha = msg.alpha1;
-    //   this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-    // });
 
     this.elemento = document.getElementById('divChatbox');
 

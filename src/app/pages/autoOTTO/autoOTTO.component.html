@@ -1,4 +1,18 @@
 <div class="row">
+
+
+
+
+
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+
+                <app-auto-otto></app-auto-otto>
+
+            </div>
+        </div>
+    </div>
     <div class="col-3">
         <div class="card">
             <div id="divChat-auto" class="card-body">
@@ -26,13 +40,13 @@
                             </td>
 
                             <!-- <td>   ACA LA IDEA ES SELECCIONAR USUARIOS PARA ESCRIBILES, TAMBIEN MEDICOS Y HOSPITALES
-                          <button [routerLink]="['/medico', medico._id]" class="btn btn-primary">
-                          <i class="fa fa-edit"></i>
+                        <button [routerLink]="['/medico', medico._id]" class="btn btn-primary">
+                        <i class="fa fa-edit"></i>
+                      </button>
+                        <button (click)="borrarMedico( medico )" class="btn btn-primary">
+                          <i class="fa fa-trash-o"></i>
                         </button>
-                          <button (click)="borrarMedico( medico )" class="btn btn-primary">
-                            <i class="fa fa-trash-o"></i>
-                          </button>
-                          </td> -->
+                        </td> -->
                         </tr>
                     </tbody>
                 </table>
@@ -43,29 +57,16 @@
 
             <div class="form-group">
                 <select (change)="cambioSala( $event.target.value )" [(ngModel)]="sala" name="sala" class="form-control" required>
-                        <option value="">Selecione la sala</option>
-                        <option *ngFor="let sala of salas" [value]="sala">{{sala}}</option>
-                      </select>
+                      <option value="">Selecione la sala</option>
+                      <option *ngFor="let sala of salas" [value]="sala">{{sala}}</option>
+                    </select>
             </div>
 
             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
-                    Guardar
-                  <i class="fa fa-save"></i>
-          </button>
+                  Guardar
+                <i class="fa fa-save"></i>
+        </button>
             <!-- <a routerLink="/medicos" class="btn btn-inverse waves-effect waves-light">Cancelar</a> -->
         </form>
-    </div>
-
-
-
-
-    <div class="col-9">
-        <div class="card">
-            <div class="card-body">
-
-                <app-auto-otto></app-auto-otto>
-
-            </div>
-        </div>
     </div>
 </div>
