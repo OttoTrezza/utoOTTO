@@ -17,6 +17,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   mensajesSubscription: Subscription;
   usuario: Usuario;
   mensajes: any[] = [];
+  mensaje: any;
   msg: any;
   fecha: Date;
   hora: any;
@@ -72,7 +73,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.mensajesSubscription.unsubscribe();
-   // this.mensajespSubscription.unsubscribe();
   }
   mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios', id );

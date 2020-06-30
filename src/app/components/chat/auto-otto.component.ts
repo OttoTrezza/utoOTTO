@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef , ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
@@ -48,7 +48,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
     public _usuarioService: UsuarioService,
     public _modalUploadService: ModalUploadService,
     private renderer: Renderer2,
-    private renderer1: Renderer2
+    // private renderer1: Renderer2
     ) { }
 // tslint:disable-next-line:max-line-length
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
@@ -123,28 +123,28 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       });
 
 
-      this.mensajespSubscription = this._chatService.getMessagesp()
-      .subscribe( (msg: any) => {
-        console.log('ESPmsg', msg);
-        let sala: string = msg.sala;
-       // if (sala === this._usuarioService.usuario.sala) {
-        let de: string = msg.de;
-        let cuerpo: string = msg.cuerpo;
-        if ( msg.de === 'ignacio1' ) {
-          console.log('ignacio1');
-          this.progreso1 = msg.cuerpo;
-          this.progreso1r = msg.cuerpo1;
-        }
-        if ( msg.de === 'ignacio2' ) {
-          console.log('ignacio2');
-          this.progreso2 = msg.cuerpo;
-          this.progreso2r = msg.cuerpo1;
-        }
-       });
+      // this.mensajespSubscription = this._chatService.getMessagesp()
+      // .subscribe( (msg: any) => {
+      //   console.log('ESPmsg', msg);
+      //   let sala: string = msg.sala;
+      //  // if (sala === this._usuarioService.usuario.sala) {
+      //   let de: string = msg.de;
+      //   let cuerpo: string = msg.cuerpo;
+      //   if ( msg.de === 'ignacio1' ) {
+      //     console.log('ignacio1');
+      //     this.progreso1 = msg.cuerpo;
+      //     this.progreso1r = msg.cuerpo1;
+      //   }
+      //   if ( msg.de === 'ignacio2' ) {
+      //     console.log('ignacio2');
+      //     this.progreso2 = msg.cuerpo;
+      //     this.progreso2r = msg.cuerpo1;
+      //   }
+      //  });
 
     this.autoOTTOSubscription = this._chatService.getMessagesAuto()
          .subscribe( (msg: any) => {
-           let de: string = msg.de;
+          // let de: string = msg.de;
            let cuerpo: string = msg.cuerpo;
            if ( cuerpo === 'Auto conectado a la red') {
            this.estado = 'CONECTADO';
@@ -155,9 +155,8 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
 
 }
   ngOnDestroy() {
-   // this.mensajesSubscription.unsubscribe();
-   this.mensajespSubscription.unsubscribe();
    this.mensajesAutoOTTOSubscription.unsubscribe();
+   this.autoOTTOSubscription.unsubscribe();
   }
 
   enviar() {
