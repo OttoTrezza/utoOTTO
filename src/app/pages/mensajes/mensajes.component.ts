@@ -91,7 +91,8 @@ export class MensajesComponent implements OnInit, OnDestroy {
 //    });
 //  }
   ngOnDestroy() {
-  //  this.usuariosSubscription.unsubscribe();
+      this.salasSubscription.unsubscribe();
+      this.usuariosActivosSubscription.unsubscribe();
    // this.salasSubscription.unsubscribe();
    }
 
