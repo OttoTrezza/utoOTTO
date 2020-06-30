@@ -15,15 +15,10 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   // @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   // @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
   [x: string]: any;
+  textoUser = '';
+  texto = '';
   estado: string = 'DESCONECTADO';
-  frecuencia: number;
-  dir: number;
-  sen: number;
-  LongPulse: number;
-  progreso1: number = 0;
-  progreso2: number = 0;
-  progreso1r: number = 0;
-  progreso2r: number = 0;
+
   usuariosSubscription: Subscription;
   mensajesAutoOTTOSubscription: Subscription;
   mensajespSubscription: Subscription;
@@ -37,15 +32,15 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   beta1: number = 1;
   gamma1: number = 0;
   alpha1: number = 0;
-  accelerationx: number = 0;
-  accelerationy: number = 0;
-  accelerationz: number = 0;
-  accelerationincludinggravityx: number = 0;
-  accelerationincludinggravityy: number = 0;
-  accelerationincludinggravityz: number = 0;
-  rotationratebeta: number = 0;
-  rotationrategamma: number = 0;
-  rotationratealpha: number = 0;
+  // accelerationx: number = 0;
+  // accelerationy: number = 0;
+  // accelerationz: number = 0;
+  // accelerationincludinggravityx: number = 0;
+  // accelerationincludinggravityy: number = 0;
+  // accelerationincludinggravityz: number = 0;
+  // rotationratebeta: number = 0;
+  // rotationrategamma: number = 0;
+  // rotationratealpha: number = 0;
   listener: any;
 
   constructor(
@@ -73,20 +68,20 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
     });
 
 
-    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
-    console.log('eventdevicemmotion', event);
-    console.log('eventdevicemmotion.accele', event.acceleration);
-    console.log('eventdevicemmotion.accele.x', event.acceleration.x);
-     this.accelerationx = Math.round(event.acceleration.x);
-     this.accelerationy = Math.round(event.acceleration.y);
-     this.accelerationz = Math.round(event.acceleration.z);
-     this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
-     this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
-     this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
-     this.rotationratebeta = Math.round(event.rotationrate.beta);
-     this.rotationrategamma = Math.round(event.rotationrate.gamma);
-     this.rotationratealpha = Math.round(event.rotationrate.alpha);
-    });
+    // this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
+    // console.log('eventdevicemmotion', event);
+    // console.log('eventdevicemmotion.accele', event.acceleration);
+    // console.log('eventdevicemmotion.accele.x', event.acceleration.x);
+    //  this.accelerationx = Math.round(event.acceleration.x);
+    //  this.accelerationy = Math.round(event.acceleration.y);
+    //  this.accelerationz = Math.round(event.acceleration.z);
+    //  this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
+    //  this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
+    //  this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
+    //  this.rotationratebeta = Math.round(event.rotationrate.beta);
+    //  this.rotationrategamma = Math.round(event.rotationrate.gamma);
+    //  this.rotationratealpha = Math.round(event.rotationrate.alpha);
+    // });
 
 
 

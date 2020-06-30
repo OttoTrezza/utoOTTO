@@ -17,8 +17,9 @@ export class MensajesComponent implements OnInit, OnDestroy {
   [x: string]: any;
 
   textoUser = '';
-  usuariosSubscription: Subscription;
-  elemento: HTMLElement;
+  usuariosActivosSubscription: Subscription;
+  salasSubscription: Subscription;
+  // elemento: HTMLElement;
   usuarios: Usuario[] = [];
   usuario: Usuario ;
   usuariosala: Usuario ;
@@ -54,7 +55,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
 
     this.usuariosala = this._usuarioService.usuario;
     this._chatService.emitirSalasActivas();
-    this.usuariosSubscription = this._chatService.getSalasActivas()
+    this.salasSubscription = this._chatService.getSalasActivas()
           .subscribe( (respu: any) => {
           this.salas = respu;
 
@@ -63,10 +64,10 @@ export class MensajesComponent implements OnInit, OnDestroy {
     } );
 
 
-    this.elemento = document.getElementById('chat-usuarios');
+    // this.elemento = document.getElementById('chat-usuarios');
 
     this._chatService.emitirUsuariosActivos(this.sala);
-    this.usuariosSubscription = this._chatService.getUsuariosActivos()
+    this.usuariosActivosSubscription = this._chatService.getUsuariosActivos()
           .subscribe( (respu: Usuario[]= []) => {
             this.usuarios = respu;
             console.log('usuarios en mens.comp', this.usuarios);
@@ -90,7 +91,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
 //    });
 //  }
   ngOnDestroy() {
-   this.usuariosSubscription.unsubscribe();
+  //  this.usuariosSubscription.unsubscribe();
    // this.salasSubscription.unsubscribe();
    }
 
