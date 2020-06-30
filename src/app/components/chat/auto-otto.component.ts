@@ -96,7 +96,6 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
        let cuerpo: string = msg.cuerpo;
        let fecha = new Date(msg.fecha);
        let img: string = msg.img;
-        console.log('clg de usuaSrevice.nombre', this._usuarioService.usuario.nombre);
        if ( msg.de === this._usuarioService.usuario.nombre ) {
         de = 'yo';
        }
@@ -114,43 +113,29 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
         };
 
         this.mensajes.push( this.msg );
-        console.log('mensaje1', this.msg);
-
         // this.scrollBottom();
         setTimeout(() => {
        // this.elemento.scrollTop = this.elemento.scrollHeight;
         }, 50);
       });
 
-
-      // this.mensajespSubscription = this._chatService.getMessagesp()
-      // .subscribe( (msg: any) => {
-      //   console.log('ESPmsg', msg);
-      //   let sala: string = msg.sala;
-      //  // if (sala === this._usuarioService.usuario.sala) {
-      //   let de: string = msg.de;
-      //   let cuerpo: string = msg.cuerpo;
-      //   if ( msg.de === 'ignacio1' ) {
-      //     console.log('ignacio1');
-      //     this.progreso1 = msg.cuerpo;
-      //     this.progreso1r = msg.cuerpo1;
-      //   }
-      //   if ( msg.de === 'ignacio2' ) {
-      //     console.log('ignacio2');
-      //     this.progreso2 = msg.cuerpo;
-      //     this.progreso2r = msg.cuerpo1;
-      //   }
-      //  });
-
     this.autoOTTOSubscription = this._chatService.getMessagesAuto()
          .subscribe( (msg: any) => {
-          // let de: string = msg.de;
+           let de: string = msg.de;
            let cuerpo: string = msg.cuerpo;
            if ( cuerpo === 'Auto conectado a la red') {
-           this.estado = 'CONECTADO';
+           this.estado = de + 'CONECTADO';
            } else if ( cuerpo === 'Auto desconectado a la red') {
             this.estado = 'DESCONECTADO';
            }
+         } );
+         this.autoOTTOLOGSubscription = this._chatService.getMessagesAutoLOG()
+         .subscribe( (msg: any) => {
+           let de: string = msg.nombre;
+           let beta: string = msg.bet;
+           let gamma: string = msg.gamm;
+           let motor: string = msg.MOTOR;
+           console.log('log de auto', de, beta, gamma, motor);
          } );
 
 }

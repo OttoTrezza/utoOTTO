@@ -157,6 +157,9 @@ img: string;
     getMessagesAuto() {
       return this.wsService.listen( 'mensaje-auto' );
   }
+  getMessagesAutoLOG() {
+    return this.wsService.listen( 'mensaje-auto-log' );
+}
     getMessagesp() {
       return this.wsService.listen( 'mensajesp-nuevo' );
   }
