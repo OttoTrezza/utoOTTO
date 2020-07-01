@@ -18,12 +18,13 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   textoUser = '';
   texto = '';
   estado: string = 'DESCONECTADO';
-  codEv: number;
+  codEv: number = 0;
 
   usuariosSubscription: Subscription;
   mensajesAutoOTTOSubscription: Subscription;
   mensajespSubscription: Subscription;
   autoOTTOSubscription: Subscription;
+  ElSarmientoSubscription: Subscription;
   elemento: HTMLElement;
   usuario: Usuario;
   mensajes: any[] = [];
@@ -124,7 +125,8 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
          .subscribe( (msg: any) => {
            let de: string = msg.de;
            let cuerpo: string = msg.cuerpo;
-           this.codev = msg.codEv;
+           let codevv = msg.codEv;
+           this.codEv = codevv;
            this.estado = de + cuerpo;
          });
          this.autoOTTOLOGSubscription = this._chatService.getMessagesAutoLOG()
