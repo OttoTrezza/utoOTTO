@@ -18,28 +18,28 @@ export class Graficas1Component implements OnInit, OnDestroy {
 
   graficos: any = {
     'grafico1': {
-      'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
+      'labels': ['beta', 'gamma', 'alpha'],
       'data':  [10, 20, 30],
       'type': 'doughnut',
-      'leyenda': 'Orientacion'
+      'leyenda': 'MI DISPOSITIVO - sin datos'
     },
     'grafico2': {
-      'labels': ['Hombres', 'Mujeres'],
-      'data':  [4500, 6000],
+      'labels': ['beta', 'gamma', 'alpha'],
+      'data':  [10, 20, 30],
       'type': 'doughnut',
-      'leyenda': 'Movimiento'
+      'leyenda': 'Otros Dispositivos - sin datos'
     },
     'grafico3': {
-      'labels': ['Si', 'No'],
-      'data':  [95, 5],
+      'labels': ['beta', 'gamma', 'alpha'],
+      'data':  [10, 20, 30],
       'type': 'doughnut',
-      'leyenda': '¿Le dan gases los frijoles?'
+      'leyenda': 'Otros Dispositivos - sin datos'
     },
     'grafico4': {
-      'labels': ['No', 'Si'],
-      'data':  [85, 15],
+      'labels': ['beta', 'gamma', 'alpha'],
+      'data':  [10, 20, 30],
       'type': 'doughnut',
-      'leyenda': '¿Le importa que le den gases?'
+      'leyenda': 'Otros Dispositivos - sin datos'
     },
   };
 
@@ -69,14 +69,14 @@ export class Graficas1Component implements OnInit, OnDestroy {
         console.log('ESPaaaaaaaaaaaa', msg);
          let de: string = msg.de;
          if ( msg.de === this._usuarioService.usuario.nombre) {
-          this.graficos.grafico1.leyenda = de;
+          this.graficos.grafico1.leyenda = 'MI DISPOSITIVO ' + de;
           this.beta = msg.beta1;
           this.gamma = msg.gamma1;
           this.alpha = msg.alpha1;
           this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
          } else {
         // let cuerpo: string = msg.cuerpo;
-        this.graficos.grafico2.leyenda = de;
+        this.graficos.grafico2.leyenda = 'Otros Dispositivos ' + de;
         this.beta = msg.beta1;
         this.gamma = msg.gamma1;
         this.alpha = msg.alpha1;
