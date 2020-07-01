@@ -61,39 +61,7 @@ export class Graficas1Component implements OnInit, OnDestroy {
       console.log('ESPaaaaaaaaaaaa', msg);
        let de: string = msg.de;
        let cuerpo: string = msg.cuerpo;
-       if (cuerpo.includes('*') ) {
-        let be = cuerpo.indexOf('*', 0);
-        let ga = cuerpo.indexOf('*', 1);
-        let al = cuerpo.indexOf('*', 2);
-        this.graficos.grafico1.leyenda = de;
-        this.beta = be;
-        this.gamma = ga;
-        this.alpha = al;
-        this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
-       } else {
-        this.graficos.grafico1.leyenda = de;
-        this.beta = 0;
-        this.gamma = 0;
-        this.alpha = 0;
-        this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
-       }
-
-
-       let codEv: string = msg.codEv;
-       if ( de === this._usuarioService.usuario.nombre ) {
-        this.graficos.grafico1.leyenda = de;
-        this.beta = msg.beta1;
-        this.gamma = msg.gamma1;
-        this.alpha = msg.alpha1;
-        this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-       } else {
-        this.graficos.grafico1.leyenda = de;
-        this.beta = msg.beta1;
-        this.gamma = msg.gamma1;
-        this.alpha = msg.alpha1;
-        this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
-       }
-
+      console.log('begaal', de, cuerpo);
     });
 
     this.ElSarmientoSubscription = this._chatService.getElSarmiento()
