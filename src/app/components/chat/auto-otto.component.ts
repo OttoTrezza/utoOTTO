@@ -130,7 +130,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
            this.estado = de + cuerpo;
            if ( msg.cuerpo === 'Movimiento-1') {
             window.navigator.vibrate(200); // vibrate for 200ms
-            window.navigator.share(msg.cuerpo); // vibrate for 200ms
+            // window.navigator.share(msg.cuerpo); // vibrate for 200ms
            }
 
          });
