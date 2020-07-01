@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChatService } from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
-import { UsuarioService } from 'src/app/services/service.index';
+import { UsuarioService } from '../../services/service.index';
 
 @Component({
   selector: 'app-graficas1',
