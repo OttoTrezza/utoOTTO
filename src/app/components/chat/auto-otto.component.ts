@@ -128,6 +128,11 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
            let codevv = msg.codEv;
            this.codEv = codevv;
            this.estado = de + cuerpo;
+           if ( msg.cuerpo === 'Movimiento-1') {
+            window.navigator.vibrate(200); // vibrate for 200ms
+            window.navigator.share(msg.cuerpo); // vibrate for 200ms
+           }
+
          });
          this.autoOTTOLOGSubscription = this._chatService.getMessagesAutoLOG()
          .subscribe( (msg: any) => {
