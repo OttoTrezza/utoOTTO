@@ -9,11 +9,9 @@ import { UsuarioService } from '../../services/service.index';
   styles: []
 })
 export class Graficas1Component implements OnInit, OnDestroy {
-  ElSarmientoSubscription: Subscription;
+  // ElSarmientoSubscription: Subscription;
   autoChotaSubscription: Subscription;
   Dispo1Subscription: Subscription;
-  Dispo2Subscription: Subscription;
-  Dispo3Subscription: Subscription;
   // ElSarmiento1Subscription: Subscription;
   beta: number;
   gamma: number;
@@ -94,43 +92,25 @@ export class Graficas1Component implements OnInit, OnDestroy {
           this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
          }
     });
-    this.Dispo1Subscription = this._chatService.getDispo2()
-    .subscribe( (msg: any) => {
-      let de: string = msg.de;
-      this.graficos.grafico2.leyenda = 'Otros Dispositivos ' + de;
-      this.beta = msg.beta1;
-      this.gamma = msg.gamma1;
-      this.alpha = msg.alpha1;
-      this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
-    });
-    this.Dispo1Subscription = this._chatService.getDispo3()
-    .subscribe( (msg: any) => {
-      let de: string = msg.de;
-      this.graficos.grafico3.leyenda = 'Otros Dispositivos ' + de;
-      this.beta = msg.beta1;
-      this.gamma = msg.gamma1;
-      this.alpha = msg.alpha1;
-      this.graficos.grafico3.data = [this.beta, this.gamma, this.alpha];
-    });
-
-    this.ElSarmientoSubscription = this._chatService.getElSarmiento()
-      .subscribe( (msg: any) => {
-        console.log('ESPaaaaaaaaaaaa', msg);
-         let de: string = msg.de;
-         if ( msg.de === this._usuarioService.usuario.nombre) {
-          this.graficos.grafico1.leyenda = 'MI DISPOSITIVO ' + de;
-          this.beta = msg.beta1;
-          this.gamma = msg.gamma1;
-          this.alpha = msg.alpha1;
-          this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-         } else {
-        // let cuerpo: string = msg.cuerpo;
-        this.graficos.grafico2.leyenda = 'Otros Dispositivos ' + de;
-        this.beta = msg.beta1;
-        this.gamma = msg.gamma1;
-        this.alpha = msg.alpha1;
-        this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
-         }
+  }
+    // this.ElSarmientoSubscription = this._chatService.getElSarmiento()
+    //   .subscribe( (msg: any) => {
+    //     console.log('ESPaaaaaaaaaaaa', msg);
+    //      let de: string = msg.de;
+    //      if ( msg.de === this._usuarioService.usuario.nombre) {
+    //       this.graficos.grafico1.leyenda = 'MI DISPOSITIVO ' + de;
+    //       this.beta = msg.beta1;
+    //       this.gamma = msg.gamma1;
+    //       this.alpha = msg.alpha1;
+    //       this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
+    //      } else {
+    //     // let cuerpo: string = msg.cuerpo;
+    //     this.graficos.grafico2.leyenda = 'Otros Dispositivos ' + de;
+    //     this.beta = msg.beta1;
+    //     this.gamma = msg.gamma1;
+    //     this.alpha = msg.alpha1;
+    //     this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
+    //      }
         // let accelerationx: number = msg.accelerationx;
         // let accelerationy: number = msg.accelerationy;
         // let accelerationz: number = msg.accelerationz;
@@ -157,15 +137,14 @@ export class Graficas1Component implements OnInit, OnDestroy {
         //   this.progreso2 = msg.cuerpo;
         //   this.progreso2r = msg.cuerpo1;
         // }
-       });
   //      this.ElSarmiento1Subscription = this._chatService.getElSarmiento1()
   //      .subscribe( (msg1: any) => {
   //        console.log('Elsarmiento1', msg1);
   //  this.elsar1 = msg1.Sarmiento;
   //      });
-  }
+
   ngOnDestroy() {
-    this.ElSarmientoSubscription.unsubscribe();
+    this.Dispo1Subscription.unsubscribe();
    // this.ElSarmiento1Subscription.unsubscribe();
   }
 }
