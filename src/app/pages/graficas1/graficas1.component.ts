@@ -68,23 +68,14 @@ export class Graficas1Component implements OnInit, OnDestroy {
     .subscribe( (msg: any) => {
       let de: string = msg.de;
          if ( msg.de === this._usuarioService.usuario.nombre) {
+
           this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + de;
           this.beta = msg.beta1;
           this.gamma = msg.gamma1;
           this.alpha = msg.alpha1;
           this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-          this.graficos.grafico2.leyenda = ' Otros Dispositivos ';
-          this.beta = 0;
-          this.gamma = 0;
-          this.alpha = 0;
-          this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
 
          } else {
-          this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + 'sin datos';
-          this.beta = 0;
-          this.gamma = 0;
-          this.alpha = 0;
-          this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
           this.graficos.grafico2.leyenda = ' Otros Dispositivos ' + de;
           this.beta = msg.beta1;
           this.gamma = msg.gamma1;
