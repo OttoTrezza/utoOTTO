@@ -64,6 +64,8 @@ export class Graficas1Component implements OnInit, OnDestroy {
        let cuerpo: string = msg.cuerpo;
       console.log('begaal', de, cuerpo);
     });
+
+
     this.Dispo1Subscription = this._chatService.getDispo1()
     .subscribe( (msg: any) => {
       let de: string = msg.de;
