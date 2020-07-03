@@ -65,8 +65,8 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
-
-      this.sendElSarmiento(this.beta1, this.gamma1, this.alpha1);
+      this.pos = 0;
+      this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1);
     });
 
 

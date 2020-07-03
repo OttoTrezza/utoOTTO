@@ -118,10 +118,10 @@ img: string;
 
 
       // tslint:disable-next-line:max-line-length
-      sendElSarmiento(pos: number, sala: string, beta1: number, gamma1: number, alpha1: number, callback: any) { // , accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any
+      sendElSarmiento(pos1: number, sala: string, beta1: number, gamma1: number, alpha1: number, callback: any) { // , accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
-          pos,
+          pos1,
           de: this.name,
           sala: sala,
           beta1,
