@@ -127,15 +127,6 @@ img: string;
           beta1,
           gamma1,
           alpha1
-          // accelerationx1: accelerationx1,
-          // accelerationy1: accelerationy1,
-          // accelerationz1: accelerationz1,
-          // accelerationincludinggravityx1: accelerationincludinggravityx1,
-          // accelerationincludinggravityy1: accelerationincludinggravityy1,
-          // accelerationincludinggravityz1: accelerationincludinggravityz1,
-          // rotationratebeta1: rotationratebeta1,
-          // rotationrategamma1: rotationrategamma1,
-          // rotationratealpha1: rotationratealpha1,
           };
         this.wsService.emit( 'ElSarmiento' , payload, (resp: any) => {
           callback(resp);

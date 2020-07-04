@@ -25,7 +25,6 @@ import { AutoOTTOComponent } from './autoOTTO/autoOTTO.component';
 const pagesRoutes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent, canActivate: [VerificatokenGuard], data: { titulo: 'Dashboard' } },
-    // { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
     { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },
     { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
     { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },

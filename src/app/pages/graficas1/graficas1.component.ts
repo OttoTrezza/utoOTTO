@@ -59,20 +59,18 @@ export class Graficas1Component implements OnInit, OnDestroy {
 
     this.autoChotaSubscription = this._chatService.getMessagesAuto()
     .subscribe( (msg: any) => {
-      console.log('ESPaaaaaaaaaaaa', msg);
        let de: string = msg.de;
        let cuerpo: string = msg.cuerpo;
-      console.log('begaal', de, cuerpo);
+       console.log('ESP de cuerpo', de, cuerpo);
     });
-
 
     this.Dispo1Subscription = this._chatService.getDispo1()
     .subscribe( (msg: any) => {
       let de: string = msg.de;
       let pos: number = msg.pos1;
-         if ( msg.de === this._usuarioService.usuario.nombre) {
+         if ( de === this._usuarioService.usuario.nombre) {
             pos = 99;
-          } else {
+         } else {
           switch (pos) {
             case 99: this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + de;
             this.beta = msg.beta1;
@@ -80,25 +78,26 @@ export class Graficas1Component implements OnInit, OnDestroy {
             this.alpha = msg.alpha1;
             this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
                 break;
-              case 1: this.graficos.grafico2.leyenda = ' Otros Dispositivos ' + de;
+              case 0: this.graficos.grafico2.leyenda = ' Otros Dispositivos ' + de;
               this.beta = msg.beta1;
               this.gamma = msg.gamma1;
               this.alpha = msg.alpha1;
               this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
                   break;
-              case 2: this.graficos.grafico3.leyenda = ' Otros Dispositivos ' + de;
+              case 1: this.graficos.grafico3.leyenda = ' Otros Dispositivos ' + de;
               this.beta = msg.beta1;
               this.gamma = msg.gamma1;
               this.alpha = msg.alpha1;
               this.graficos.grafico3.data = [this.beta, this.gamma, this.alpha];
                   break;
-              case 3: this.graficos.grafico4.leyenda = ' Otros Dispositivos ' + de;
+              case 2: this.graficos.grafico4.leyenda = ' Otros Dispositivos ' + de;
               this.beta = msg.beta1;
               this.gamma = msg.gamma1;
               this.alpha = msg.alpha1;
               this.graficos.grafico4.data = [this.beta, this.gamma, this.alpha];
                   break;
           }
+
          }
     });
   }
@@ -154,6 +153,7 @@ export class Graficas1Component implements OnInit, OnDestroy {
   //      });
 
   ngOnDestroy() {
+    this.autoChotaSubscription.unsubscribe();
     this.Dispo1Subscription.unsubscribe();
    // this.ElSarmiento1Subscription.unsubscribe();
   }
