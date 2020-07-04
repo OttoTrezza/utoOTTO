@@ -118,7 +118,7 @@ img: string;
 
 
       // tslint:disable-next-line:max-line-length
-      sendElSarmiento(pos1: number, sala: string, beta1: number, gamma1: number, alpha1: number, callback: any) {
+      sendElSarmiento(pos1: number, sala: string, beta1: number, gamma1: number, alpha1: number, accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any, callback: any) {
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
           pos1,
@@ -126,21 +126,7 @@ img: string;
           sala: sala,
           beta1,
           gamma1,
-          alpha1
-          };
-        this.wsService.emit( 'ElSarmiento' , payload, (resp: any) => {
-          callback(resp);
-         // console.log(resp
-        });
-      }
-
-      // tslint:disable-next-line:max-line-length
-      sendElSarmientoGravity(pos1: number, sala: string, accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any, callback: any) {
-        this.name = this.usuarioService.usuario.nombre;
-        const payloadGravity = {
-          pos1,
-          de: this.name,
-          sala: sala,
+          alpha1,
           accelerationx1: accelerationx1,
           accelerationy1: accelerationy1,
           accelerationz1: accelerationz1,
@@ -149,14 +135,15 @@ img: string;
           accelerationincludinggravityz1: accelerationincludinggravityz1,
           rotationratebeta1: rotationratebeta1,
           rotationrategamma1: rotationrategamma1,
-          rotationratealpha1: rotationratealpha1,
+          rotationratealpha1: rotationratealpha1
           };
-        this.wsService.emit( 'ElSarmientoGravity' , payloadGravity, (resp: any) => {
+        this.wsService.emit( 'ElSarmiento' , payload, (resp: any) => {
           callback(resp);
          // console.log(resp
         });
       }
-    getDispo1() {
+
+      getDispo1() {
        return this.wsService.listen( 'Dispo1' );
       }
       getDispo2() {

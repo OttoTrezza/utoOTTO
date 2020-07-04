@@ -68,7 +68,8 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
-      this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1);
+      // tslint:disable-next-line:max-line-length
+      this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
       this.accelerationx1 = Math.round(event.acceleration.x);
@@ -78,7 +79,8 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
         this.beta1 = Math.round(event.accelerationIncludingGravity.x);
         this.gamma1 = Math.round(event.accelerationIncludingGravity.y);
         this.alpha1 = Math.round(event.accelerationIncludingGravity.z);
-        this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1);
+        // tslint:disable-next-line:max-line-length
+        this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
       }
       this.accelerationincludinggravityx1 = Math.round(event.accelerationIncludingGravity.x);
       this.accelerationincludinggravityy1 = Math.round(event.accelerationIncludingGravity.y);
@@ -87,7 +89,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
       this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
        // tslint:disable-next-line:max-line-length
-      this.sendElSarmientoGravity(this.pos1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+       this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
 
     this.elemento = document.getElementById('divChatbox1');
@@ -149,8 +151,10 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
 
 }
   ngOnDestroy() {
+  this.usuariosSubscription.unsubscribe();
    this.mensajesAutoOTTOSubscription.unsubscribe();
    this.autoOTTOSubscription.unsubscribe();
+   this.ElSarmientoSubscription.unsubscribe();
    this.ElSarmientoGravitySubscription.unsubscribe();
   }
   vibrar() {
@@ -171,25 +175,17 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
      this.texto = '';
 
   }
-  sendElSarmiento(pos1: number, beta1: number, gamma1: number, alpha1: number) {
+  // tslint:disable-next-line:max-line-length
+  sendElSarmiento(pos1: number, beta1: number, gamma1: number, alpha1: number, accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number) {
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( pos1, 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this._chatService.sendElSarmiento( pos1, 'juegos', beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1, (resp: any) => {
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
    });
   }
 
-  // tslint:disable-next-line:max-line-length
-  sendElSarmientoGravity(pos1: number, accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number) {
-    // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmientoGravity( pos1, 'juegos', accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1, (resp: any) => {
-    this.msg = resp;
-    console.log('this.msg = ', this.msg);
-//    this.scrollBottom();
-   });
-  }
-//   cambiarValor1( valor: number ) {
+  //   cambiarValor1( valor: number ) {
 
 //     this.txtProgress.nativeElement.value = this.progreso;
 //     if ( this.progreso >= 600 && valor > 0 ) {
