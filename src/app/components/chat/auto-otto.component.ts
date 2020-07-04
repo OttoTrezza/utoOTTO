@@ -46,6 +46,8 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   rotationratealpha1: number = 0;
   listener: any;
   listener1: any;
+  listener2: any;
+  listener3: any;
   vibrate: boolean = false;
   constructor(
     public _chatService: ChatService,
@@ -53,6 +55,8 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
     public _modalUploadService: ModalUploadService,
     private renderer: Renderer2,
     private renderer1: Renderer2,
+    private renderer2: Renderer2,
+    private renderer3: Renderer2,
     ) {  }
 // tslint:disable-next-line:max-line-length
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
@@ -61,39 +65,39 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
 
     this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
 
-      console.log('eventdeviceorientation', event);
-      console.log('eventdeviceorientationbets', event.beta);
-      console.log('eventdeviceorientationgammalph', event.gamma, event.alpha);
+      // console.log('eventdeviceorientation', event);
+      console.log('eventdeviceorientationbets', window);
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
       this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1);
     });
-
-
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
-    console.log('eventdevicemmotion', event);
-    console.log('eventdevicemmotion.accele', event.acceleration);
-    console.log('eventdevicemmotion.accele.x', event.acceleration.x);
-     this.accelerationx1 = Math.round(event.acceleration.x);
-     this.accelerationy1 = Math.round(event.acceleration.y);
-     this.accelerationz1 = Math.round(event.acceleration.z);
+      this.accelerationx1 = Math.round(event.acceleration.x);
+      this.accelerationy1 = Math.round(event.acceleration.y);
+      this.accelerationz1 = Math.round(event.acceleration.z);
+    });
+      this.listener2 = this.renderer2.listen( window , 'accelerationincludinggravity', (event) => {
      this.accelerationincludinggravityx1 = Math.round(event.accelerationincludinggravity.x);
      this.accelerationincludinggravityy1 = Math.round(event.accelerationincludinggravity.y);
      this.accelerationincludinggravityz1 = Math.round(event.accelerationincludinggravity.z);
+     // tslint:disable-next-line:max-line-length
+     this.sendElSarmientoGravity(this.pos1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+      });
+
+    this.listener3 = this.renderer3.listen( window , 'devicerotation', (event) => {
+
      this.rotationratebeta1 = Math.round(event.rotationrate.beta);
      this.rotationrategamma1 = Math.round(event.rotationrate.gamma);
      this.rotationratealpha1 = Math.round(event.rotationrate.alpha);
-
-     // tslint:disable-next-line:max-line-length
-     this.sendElSarmientoGravity( this.pos1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
+     // tslint:disable-next-line:max-line-length
 
     this.elemento = document.getElementById('divChatbox1');
 
     this.mensajesAutoOTTOSubscription = this._chatService.getMessagesAutoOTTO()
      .subscribe( (msg: any) => {
-       console.log('En Subscribe', msg);
+      // console.log('En Subscribe', msg);
        let sala: string = msg.sala;
       // if (sala === this._usuarioService.usuario.sala) {
        let de: string = msg.de;
@@ -131,7 +135,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
            this.codEv = codevv;
            this.estado = de + cuerpo;
            if ( msg.cuerpo === 'Movimiento-1') {
-             if (this.vibrate = true) { window.navigator.vibrate(200); // vibrate for 200ms
+             if (this.vibrate === true) { window.navigator.vibrate(200); // vibrate for 200ms
              }
 
             // window.navigator.share(msg.cuerpo); // vibrate for 200ms
@@ -143,7 +147,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
            let beta: string = msg.bet;
            let gamma: string = msg.gamm;
            let motor: string = msg.MOTOR;
-           console.log('log de auto', de, beta, gamma, motor);
+         //  console.log('log de auto', de, beta, gamma, motor);
          } );
 
 }
