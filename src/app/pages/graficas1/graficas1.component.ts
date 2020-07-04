@@ -69,20 +69,36 @@ export class Graficas1Component implements OnInit, OnDestroy {
     this.Dispo1Subscription = this._chatService.getDispo1()
     .subscribe( (msg: any) => {
       let de: string = msg.de;
+      let pos: number = msg.pos1;
          if ( msg.de === this._usuarioService.usuario.nombre) {
-
-          this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + de;
-          this.beta = msg.beta1;
-          this.gamma = msg.gamma1;
-          this.alpha = msg.alpha1;
-          this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-
-         } else {
-          this.graficos.grafico2.leyenda = ' Otros Dispositivos ' + de;
-          this.beta = msg.beta1;
-          this.gamma = msg.gamma1;
-          this.alpha = msg.alpha1;
-          this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
+            pos = 99;
+          } else {
+          switch (pos) {
+            case 99: this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + de;
+            this.beta = msg.beta1;
+            this.gamma = msg.gamma1;
+            this.alpha = msg.alpha1;
+            this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
+                break;
+              case 1: this.graficos.grafico2.leyenda = ' Otros Dispositivos ' + de;
+              this.beta = msg.beta1;
+              this.gamma = msg.gamma1;
+              this.alpha = msg.alpha1;
+              this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
+                  break;
+              case 2: this.graficos.grafico3.leyenda = ' Otros Dispositivos ' + de;
+              this.beta = msg.beta1;
+              this.gamma = msg.gamma1;
+              this.alpha = msg.alpha1;
+              this.graficos.grafico3.data = [this.beta, this.gamma, this.alpha];
+                  break;
+              case 3: this.graficos.grafico4.leyenda = ' Otros Dispositivos ' + de;
+              this.beta = msg.beta1;
+              this.gamma = msg.gamma1;
+              this.alpha = msg.alpha1;
+              this.graficos.grafico4.data = [this.beta, this.gamma, this.alpha];
+                  break;
+          }
          }
     });
   }
