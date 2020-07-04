@@ -54,9 +54,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
     public _usuarioService: UsuarioService,
     public _modalUploadService: ModalUploadService,
     private renderer: Renderer2,
-    private renderer1: Renderer2,
-    private renderer2: Renderer2,
-    private renderer3: Renderer2,
+    private renderer1: Renderer2
     ) {  }
 // tslint:disable-next-line:max-line-length
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
@@ -76,7 +74,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.accelerationx1 = Math.round(event.acceleration.x);
       this.accelerationy1 = Math.round(event.acceleration.y);
       this.accelerationz1 = Math.round(event.acceleration.z);
-      if (this.beta1 === 2000) {
+      if (this.beta1 === 0) {
         this.beta1 = Math.round(event.accelerationIncludingGravity.x);
         this.gamma1 = Math.round(event.accelerationIncludingGravity.y);
         this.alpha1 = Math.round(event.accelerationIncludingGravity.z);
