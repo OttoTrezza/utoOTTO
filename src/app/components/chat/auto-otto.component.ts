@@ -75,13 +75,14 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.accelerationx1 = Math.round(event.acceleration.x);
       this.accelerationy1 = Math.round(event.acceleration.y);
       this.accelerationz1 = Math.round(event.acceleration.z);
-      if (this.beta1 === 0) {
-        this.beta1 = Math.round(event.accelerationIncludingGravity.x);
-        this.gamma1 = Math.round(event.accelerationIncludingGravity.y);
-        this.alpha1 = Math.round(event.accelerationIncludingGravity.z);
-        // tslint:disable-next-line:max-line-length
-        this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
-      }
+      // if (this.beta1 === 0) {
+      //   this.beta1 = Math.round(event.accelerationIncludingGravity.x);
+      //   this.gamma1 = Math.round(event.accelerationIncludingGravity.y);
+      //   this.alpha1 = Math.round(event.accelerationIncludingGravity.z);
+      //   // tslint:disable-next-line:max-line-length
+      // tslint:disable-next-line:max-line-length
+      //   this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+      // }
       this.accelerationincludinggravityx1 = Math.round(event.accelerationIncludingGravity.x);
       this.accelerationincludinggravityy1 = Math.round(event.accelerationIncludingGravity.y);
       this.accelerationincludinggravityz1 = Math.round(event.accelerationIncludingGravity.z);
@@ -151,11 +152,11 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
 
 }
   ngOnDestroy() {
-  this.usuariosSubscription.unsubscribe();
+    // this.usuariosSubscription.unsubscribe();
    this.mensajesAutoOTTOSubscription.unsubscribe();
    this.autoOTTOSubscription.unsubscribe();
    this.ElSarmientoSubscription.unsubscribe();
-   this.ElSarmientoGravitySubscription.unsubscribe();
+   // this.ElSarmientoGravitySubscription.unsubscribe();
   }
   vibrar() {
     this.vibrate = !this.vibrate;

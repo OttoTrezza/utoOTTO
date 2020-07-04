@@ -16,28 +16,36 @@ export class Graficas1Component implements OnInit, OnDestroy {
   beta: number;
   gamma: number;
   alpha: number;
-
-  graficos: any = {
+  accelerationx1: number;
+  accelerationy1: number;
+  accelerationz1: number;
+  accelerationincludinggravityx1: number;
+  accelerationincludinggravityy1: number;
+  accelerationincludinggravityz1: number;
+  rotationratebeta1: number;
+  rotationrategamma1: number;
+  rotationratealpha1: number;
+ graficos: any = {
     'grafico1': {
-      'labels': ['beta', 'gamma', 'alpha'],
+      'labels': ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'],
       'data':  [10, 20, 30],
       'type': 'doughnut',
       'leyenda': 'MI DISPOSITIVO - sin datos'
     },
     'grafico2': {
-      'labels': ['beta', 'gamma', 'alpha'],
+      'labels': ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'],
       'data':  [10, 20, 30],
       'type': 'doughnut',
       'leyenda': 'Otros Dispositivos - sin datos'
     },
     'grafico3': {
-      'labels': ['beta', 'gamma', 'alpha'],
+      'labels': ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'],
       'data':  [10, 20, 30],
       'type': 'doughnut',
       'leyenda': 'Otros Dispositivos - sin datos'
     },
     'grafico4': {
-      'labels': ['beta', 'gamma', 'alpha'],
+      'labels': ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'],
       'data':  [10, 20, 30],
       'type': 'doughnut',
       'leyenda': 'Otros Dispositivos - sin datos'
@@ -51,10 +59,14 @@ export class Graficas1Component implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha'];
-    this.graficos.grafico2.labels = ['beta', 'gamma', 'alpha'];
-    this.graficos.grafico3.labels = ['beta', 'gamma', 'alpha'];
-    this.graficos.grafico4.labels = ['beta', 'gamma', 'alpha'];
+    // tslint:disable-next-line:max-line-length
+    this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
+    // tslint:disable-next-line:max-line-length
+    this.graficos.grafico2.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
+    // tslint:disable-next-line:max-line-length
+    this.graficos.grafico3.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
+    // tslint:disable-next-line:max-line-length
+    this.graficos.grafico4.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
 
 
     this.autoChotaSubscription = this._chatService.getMessagesAuto()
@@ -68,34 +80,38 @@ export class Graficas1Component implements OnInit, OnDestroy {
     .subscribe( (msg: any) => {
       let de: string = msg.de;
       let pos: number = msg.pos1;
+      this.beta = msg.beta1;
+      this.gamma = msg.gamma1;
+      this.alpha = msg.alpha1;
+      this.accelerationx1 = msg.accelerationx1;
+      this.accelerationy1 = msg.accelerationy1;
+      this.accelerationz1 = msg.accelerationz1;
+      this.accelerationincludinggravityx1 = msg.accelerationincludinggravityx1;
+      this.accelerationincludinggravityy1 = msg.accelerationincludinggravityy1;
+      this.accelerationincludinggravityz1 = msg.accelerationincludinggravityz1;
+      this.rotationratebeta1 = msg.rotationratebeta1;
+      this.rotationrategamma1 = msg.rotationrategamma1;
+      this.rotationratealpha1 = msg.rotationratealpha1;
          if ( de === this._usuarioService.usuario.nombre) {
             pos = 99;
          } else {
           switch (pos) {
-            case 99: this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + de;
-            this.beta = msg.beta1;
-            this.gamma = msg.gamma1;
-            this.alpha = msg.alpha1;
-            this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha];
-                break;
+              case 99: this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + de;
+              // tslint:disable-next-line:max-line-length
+              this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
+              break;
               case 0: this.graficos.grafico2.leyenda = ' Otros Dispositivos ' + de;
-              this.beta = msg.beta1;
-              this.gamma = msg.gamma1;
-              this.alpha = msg.alpha1;
-              this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha];
-                  break;
+              // tslint:disable-next-line:max-line-length
+              this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
+              break;
               case 1: this.graficos.grafico3.leyenda = ' Otros Dispositivos ' + de;
-              this.beta = msg.beta1;
-              this.gamma = msg.gamma1;
-              this.alpha = msg.alpha1;
-              this.graficos.grafico3.data = [this.beta, this.gamma, this.alpha];
-                  break;
+              // tslint:disable-next-line:max-line-length
+              this.graficos.grafico3.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
+              break;
               case 2: this.graficos.grafico4.leyenda = ' Otros Dispositivos ' + de;
-              this.beta = msg.beta1;
-              this.gamma = msg.gamma1;
-              this.alpha = msg.alpha1;
-              this.graficos.grafico4.data = [this.beta, this.gamma, this.alpha];
-                  break;
+              // tslint:disable-next-line:max-line-length
+              this.graficos.grafico4.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
+              break;
           }
 
          }

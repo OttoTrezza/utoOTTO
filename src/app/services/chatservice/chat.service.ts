@@ -146,12 +146,7 @@ img: string;
       getDispo1() {
        return this.wsService.listen( 'Dispo1' );
       }
-      getDispo2() {
-        return this.wsService.listen( 'Dispo2' );
-       }
-       getDispo3() {
-        return this.wsService.listen( 'Dispo3' );
-       }
+
       getElSarmiento() {
         return this.wsService.listen( 'ElSarmiento-nuevo' );
        }
