@@ -146,6 +146,9 @@
         <br>
         <h4 class="card-title">codEvento = {{ codEv }} </h4>
         <br>
+        <label form="customRange16">vibrar</label>
+        <button type="button" (click)="vibrar()" class="btn btn-secondary"> {{vibrar}}</button>
+        <!-- <input #Vibrar type="button" (click)="vibrar()" type="button" class="btn btn-secondary" [(ngModel)]="vibrar" (ngModelChange)="onVibrar($event)" id="customRange16">Vibrar</button> -->
         <!--
         <label form="customRange1">Frecuencia</label>
         <input #txtFrecuencia type="range" class="striped" min="45" max="150" value="frecuencia" step="1" name="frecuencia" [(ngModel)]="frecuencia" (ngModelChange)="onChanges($event)" id="customRange1">

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
@@ -10,7 +10,6 @@ import { Usuario } from '../../models/usuario.model';
   styleUrls: ['./auto-otto.component.css']
 })
 export class AutoOTTOChatComponent implements OnInit, OnDestroy {
-  // @ViewChild('txtFrecuencia', {static: false}) txtFrecuencia: ElementRef;
   // @ViewChild('txtDir', {static: false}) txtDir: ElementRef;
   // @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   // @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
@@ -46,14 +45,15 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   rotationrategamma: number = 0;
   rotationratealpha: number = 0;
   listener: any;
-
+  listener1: any;
+  vibrate: boolean = false;
   constructor(
     public _chatService: ChatService,
     public _usuarioService: UsuarioService,
     public _modalUploadService: ModalUploadService,
     private renderer: Renderer2,
-    private renderer1: Renderer2
-    ) { }
+    private renderer1: Renderer2,
+    ) {  }
 // tslint:disable-next-line:max-line-length
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
 
@@ -88,8 +88,6 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
      // tslint:disable-next-line:max-line-length
      this.sendElSarmientoGravity( this.pos1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
-
-
 
     this.elemento = document.getElementById('divChatbox1');
 
@@ -133,10 +131,11 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
            this.codEv = codevv;
            this.estado = de + cuerpo;
            if ( msg.cuerpo === 'Movimiento-1') {
-            window.navigator.vibrate(200); // vibrate for 200ms
-            // window.navigator.share(msg.cuerpo); // vibrate for 200ms
-           }
+             if (this.vibrate = true) { window.navigator.vibrate(200); // vibrate for 200ms
+             }
 
+            // window.navigator.share(msg.cuerpo); // vibrate for 200ms
+         }
          });
          this.autoOTTOLOGSubscription = this._chatService.getMessagesAutoLOG()
          .subscribe( (msg: any) => {
@@ -153,7 +152,9 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
    this.autoOTTOSubscription.unsubscribe();
    this.ElSarmientoGravitySubscription.unsubscribe();
   }
-
+  vibrar() {
+    this.vibrate = !this.vibrate;
+}
   enviar() {
 
     if ( this.texto.trim().length === 0 ) {
