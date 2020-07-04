@@ -25,24 +25,26 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   mensajespSubscription: Subscription;
   autoOTTOSubscription: Subscription;
   ElSarmientoSubscription: Subscription;
+  ElSarmientoGravitySubscription: Subscription;
   elemento: HTMLElement;
   usuario: Usuario;
   mensajes: any[] = [];
   msg: any;
   fecha: Date;
   hora: any;
+  pos1: number = 0;
   beta1: number = 1;
   gamma1: number = 0;
   alpha1: number = 0;
-  // accelerationx: number = 0;
-  // accelerationy: number = 0;
-  // accelerationz: number = 0;
-  // accelerationincludinggravityx: number = 0;
-  // accelerationincludinggravityy: number = 0;
-  // accelerationincludinggravityz: number = 0;
-  // rotationratebeta: number = 0;
-  // rotationrategamma: number = 0;
-  // rotationratealpha: number = 0;
+  accelerationx: number = 0;
+  accelerationy: number = 0;
+  accelerationz: number = 0;
+  accelerationincludinggravityx: number = 0;
+  accelerationincludinggravityy: number = 0;
+  accelerationincludinggravityz: number = 0;
+  rotationratebeta: number = 0;
+  rotationrategamma: number = 0;
+  rotationratealpha: number = 0;
   listener: any;
 
   constructor(
@@ -50,7 +52,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
     public _usuarioService: UsuarioService,
     public _modalUploadService: ModalUploadService,
     private renderer: Renderer2,
-    // private renderer1: Renderer2
+    private renderer1: Renderer2
     ) { }
 // tslint:disable-next-line:max-line-length
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
@@ -65,25 +67,27 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
-      this.pos = 0;
-      this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1);
+      this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1);
     });
 
 
-    // this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
-    // console.log('eventdevicemmotion', event);
-    // console.log('eventdevicemmotion.accele', event.acceleration);
-    // console.log('eventdevicemmotion.accele.x', event.acceleration.x);
-    //  this.accelerationx = Math.round(event.acceleration.x);
-    //  this.accelerationy = Math.round(event.acceleration.y);
-    //  this.accelerationz = Math.round(event.acceleration.z);
-    //  this.accelerationincludinggravityx = Math.round(event.accelerationincludinggravity.x);
-    //  this.accelerationincludinggravityy = Math.round(event.accelerationincludinggravity.y);
-    //  this.accelerationincludinggravityz = Math.round(event.accelerationincludinggravity.z);
-    //  this.rotationratebeta = Math.round(event.rotationrate.beta);
-    //  this.rotationrategamma = Math.round(event.rotationrate.gamma);
-    //  this.rotationratealpha = Math.round(event.rotationrate.alpha);
-    // });
+    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
+    console.log('eventdevicemmotion', event);
+    console.log('eventdevicemmotion.accele', event.acceleration);
+    console.log('eventdevicemmotion.accele.x', event.acceleration.x);
+     this.accelerationx1 = Math.round(event.acceleration.x);
+     this.accelerationy1 = Math.round(event.acceleration.y);
+     this.accelerationz1 = Math.round(event.acceleration.z);
+     this.accelerationincludinggravityx1 = Math.round(event.accelerationincludinggravity.x);
+     this.accelerationincludinggravityy1 = Math.round(event.accelerationincludinggravity.y);
+     this.accelerationincludinggravityz1 = Math.round(event.accelerationincludinggravity.z);
+     this.rotationratebeta1 = Math.round(event.rotationrate.beta);
+     this.rotationrategamma1 = Math.round(event.rotationrate.gamma);
+     this.rotationratealpha1 = Math.round(event.rotationrate.alpha);
+
+     // tslint:disable-next-line:max-line-length
+     this.sendElSarmientoGravity( this.pos1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+    });
 
 
 
@@ -147,6 +151,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
    this.mensajesAutoOTTOSubscription.unsubscribe();
    this.autoOTTOSubscription.unsubscribe();
+   this.ElSarmientoGravitySubscription.unsubscribe();
   }
 
   enviar() {
@@ -164,15 +169,24 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
      this.texto = '';
 
   }
-  sendElSarmiento(pos: number, beta1: number, gamma1: number, alpha1: number) {
+  sendElSarmiento(pos1: number, beta1: number, gamma1: number, alpha1: number) {
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( pos, 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
+    this._chatService.sendElSarmiento( pos1, 'juegos', beta1, gamma1, alpha1, (resp: any) => { // this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1,
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
    });
   }
 
+  // tslint:disable-next-line:max-line-length
+  sendElSarmientoGravity(pos1: number, accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number) {
+    // tslint:disable-next-line:max-line-length
+    this._chatService.sendElSarmientoGravity( pos1, 'juegos', accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1, (resp: any) => {
+    this.msg = resp;
+    console.log('this.msg = ', this.msg);
+//    this.scrollBottom();
+   });
+  }
 //   cambiarValor1( valor: number ) {
 
 //     this.txtProgress.nativeElement.value = this.progreso;

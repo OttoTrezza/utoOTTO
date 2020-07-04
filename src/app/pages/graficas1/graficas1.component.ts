@@ -86,6 +86,9 @@ export class Graficas1Component implements OnInit, OnDestroy {
          }
     });
   }
+  //  let accelerationincludinggravityx: number = msg.accelerationincludinggravityx;
+  //       let accelerationincludinggravityy: number = msg.accelerationincludinggravityy;
+  //       let accelerationincludinggravityz: number = msg.accelerationincludinggravityz;
     // this.ElSarmientoSubscription = this._chatService.getElSarmiento()
     //   .subscribe( (msg: any) => {
     //     console.log('ESPaaaaaaaaaaaa', msg);
@@ -107,9 +110,7 @@ export class Graficas1Component implements OnInit, OnDestroy {
         // let accelerationx: number = msg.accelerationx;
         // let accelerationy: number = msg.accelerationy;
         // let accelerationz: number = msg.accelerationz;
-        // let accelerationincludinggravityx: number = msg.accelerationincludinggravityx;
-        // let accelerationincludinggravityy: number = msg.accelerationincludinggravityy;
-        // let accelerationincludinggravityz: number = msg.accelerationincludinggravityz;
+
         // let rotationratebeta: number = msg.rotationratebeta;
         // let rotationrategamma: number = msg.rotationrategamma;
         // let rotationratealpha: number = msg.rotationratealpha;

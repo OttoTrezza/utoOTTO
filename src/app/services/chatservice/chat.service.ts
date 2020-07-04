@@ -118,7 +118,7 @@ img: string;
 
 
       // tslint:disable-next-line:max-line-length
-      sendElSarmiento(pos1: number, sala: string, beta1: number, gamma1: number, alpha1: number, callback: any) { // , accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any
+      sendElSarmiento(pos1: number, sala: string, beta1: number, gamma1: number, alpha1: number, callback: any) {
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
           pos1,
@@ -142,6 +142,29 @@ img: string;
          // console.log(resp
         });
       }
+
+      // tslint:disable-next-line:max-line-length
+      sendElSarmientoGravity(pos1: number, sala: string, accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any, callback: any) {
+        this.name = this.usuarioService.usuario.nombre;
+        const payloadGravity = {
+          pos1,
+          de: this.name,
+          sala: sala,
+          accelerationx1: accelerationx1,
+          accelerationy1: accelerationy1,
+          accelerationz1: accelerationz1,
+          accelerationincludinggravityx1: accelerationincludinggravityx1,
+          accelerationincludinggravityy1: accelerationincludinggravityy1,
+          accelerationincludinggravityz1: accelerationincludinggravityz1,
+          rotationratebeta1: rotationratebeta1,
+          rotationrategamma1: rotationrategamma1,
+          rotationratealpha1: rotationratealpha1,
+          };
+        this.wsService.emit( 'ElSarmientoGravity' , payloadGravity, (resp: any) => {
+          callback(resp);
+         // console.log(resp
+        });
+      }
     getDispo1() {
        return this.wsService.listen( 'Dispo1' );
       }
@@ -154,6 +177,9 @@ img: string;
       getElSarmiento() {
         return this.wsService.listen( 'ElSarmiento-nuevo' );
        }
+      //  getElSarmientoGravity() {
+      //   return this.wsService.listen( 'ElSarmientoGravity-nuevo' );
+      //  }
 
     getMessages() {
         return this.wsService.listen( 'mensaje-nuevo' );
