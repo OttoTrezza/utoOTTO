@@ -32,7 +32,7 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   fecha: Date;
   hora: any;
   pos1: number = 0;
-  beta1: number = 1;
+  beta1: number = 2000;
   gamma1: number = 0;
   alpha1: number = 0;
   accelerationx1: number = 0;
@@ -76,22 +76,21 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.accelerationx1 = Math.round(event.acceleration.x);
       this.accelerationy1 = Math.round(event.acceleration.y);
       this.accelerationz1 = Math.round(event.acceleration.z);
+      if (this.beta1 === 2000) {
+        this.beta1 = Math.round(event.accelerationIncludingGravity.x);
+        this.gamma1 = Math.round(event.accelerationIncludingGravity.y);
+        this.alpha1 = Math.round(event.accelerationIncludingGravity.z);
+        this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1);
+      }
+      this.accelerationincludinggravityx1 = Math.round(event.accelerationIncludingGravity.x);
+      this.accelerationincludinggravityy1 = Math.round(event.accelerationIncludingGravity.y);
+      this.accelerationincludinggravityz1 = Math.round(event.accelerationIncludingGravity.z);
+      this.rotationratebeta1 = Math.round(event.rotationRate.beta);
+      this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
+      this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
+       // tslint:disable-next-line:max-line-length
+      this.sendElSarmientoGravity(this.pos1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
-      this.listener2 = this.renderer2.listen( window , 'accelerationincludinggravity', (event) => {
-     this.accelerationincludinggravityx1 = Math.round(event.accelerationincludinggravity.x);
-     this.accelerationincludinggravityy1 = Math.round(event.accelerationincludinggravity.y);
-     this.accelerationincludinggravityz1 = Math.round(event.accelerationincludinggravity.z);
-     // tslint:disable-next-line:max-line-length
-     this.sendElSarmientoGravity(this.pos1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
-      });
-
-    this.listener3 = this.renderer3.listen( window , 'devicerotation', (event) => {
-
-     this.rotationratebeta1 = Math.round(event.rotationrate.beta);
-     this.rotationrategamma1 = Math.round(event.rotationrate.gamma);
-     this.rotationratealpha1 = Math.round(event.rotationrate.alpha);
-    });
-     // tslint:disable-next-line:max-line-length
 
     this.elemento = document.getElementById('divChatbox1');
 
