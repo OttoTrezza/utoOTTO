@@ -170,7 +170,7 @@ export class Graficas1Component implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.autoChotaSubscription.unsubscribe();
-    this.Dispo1Subscription.unsubscribe();
+  //  this.Dispo1Subscription.unsubscribe();
    // this.ElSarmiento1Subscription.unsubscribe();
   }
 }
