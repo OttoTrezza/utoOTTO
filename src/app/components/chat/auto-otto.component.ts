@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { ChatService, ModalUploadService} from '../../services/service.index';
 import { Subscription } from 'rxjs/Subscription';
 import { UsuarioService } from '../../services/usuario/usuario.service';
@@ -9,7 +9,7 @@ import { Usuario } from '../../models/usuario.model';
   templateUrl: './auto-otto.component.html',
   styleUrls: ['./auto-otto.component.css']
 })
-export class AutoOTTOChatComponent implements OnInit, OnDestroy {
+export class AutoOTTOChatComponent implements OnInit {
   // @ViewChild('txtDir', {static: false}) txtDir: ElementRef;
   // @ViewChild('txtSen', {static: false}) txtSen: ElementRef;
   // @ViewChild('txtLongPulse', {static: false}) txtLongPulse: ElementRef;
@@ -24,15 +24,15 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
   mensajespSubscription: Subscription;
   autoOTTOSubscription: Subscription;
   ElSarmientoSubscription: Subscription;
-  ElSarmientoGravitySubscription: Subscription;
+  Dispo1Subscription: Subscription;
   elemento: HTMLElement;
   usuario: Usuario;
   mensajes: any[] = [];
   msg: any;
   fecha: Date;
   hora: any;
-  pos1: number = 0;
-  beta1: number = 2000;
+  pos1: number = 999;
+  beta1: number = 0;
   gamma1: number = 0;
   alpha1: number = 0;
   accelerationx1: number = 0;
@@ -68,6 +68,12 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
+
+      this.Dispo1Subscription = this._chatService.getDispo1()
+      .subscribe( (msg: any) => {
+        let pos: number = msg.pos1;
+        this.pos1 = pos;
+      });
       // tslint:disable-next-line:max-line-length
       this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
@@ -75,22 +81,19 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
       this.accelerationx1 = Math.round(event.acceleration.x);
       this.accelerationy1 = Math.round(event.acceleration.y);
       this.accelerationz1 = Math.round(event.acceleration.z);
-      if (this.beta1 === 2000) {
-        this.beta1 = Math.round(event.accelerationIncludingGravity.x);
-        this.gamma1 = Math.round(event.accelerationIncludingGravity.y);
-        this.alpha1 = Math.round(event.accelerationIncludingGravity.z);
-        // tslint:disable-next-line:max-line-length
-        this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
-      }
-
       this.accelerationincludinggravityx1 = Math.round(event.accelerationIncludingGravity.x);
       this.accelerationincludinggravityy1 = Math.round(event.accelerationIncludingGravity.y);
       this.accelerationincludinggravityz1 = Math.round(event.accelerationIncludingGravity.z);
       this.rotationratebeta1 = Math.round(event.rotationRate.beta);
       this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
       this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
+      this.Dispo1Subscription = this._chatService.getDispo1()
+      .subscribe( (msg: any) => {
+        let pos: number = msg.pos1;
+        this.pos1 = pos;
+      });
        // tslint:disable-next-line:max-line-length
-       this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+       this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityz1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
 
     this.elemento = document.getElementById('divChatbox1');
@@ -151,13 +154,13 @@ export class AutoOTTOChatComponent implements OnInit, OnDestroy {
          } );
 
 }
-  ngOnDestroy() {
-    // this.usuariosSubscription.unsubscribe();
-  // this.mensajesAutoOTTOSubscription.unsubscribe();
-   this.autoOTTOSubscription.unsubscribe();
- //  this.ElSarmientoSubscription.unsubscribe();
-   // this.ElSarmientoGravitySubscription.unsubscribe();
-  }
+//   ngOnDestroy() {
+//     // this.usuariosSubscription.unsubscribe();
+//   // this.mensajesAutoOTTOSubscription.unsubscribe();
+//    this.autoOTTOSubscription.unsubscribe();
+//  //  this.ElSarmientoSubscription.unsubscribe();
+//    // this.ElSarmientoGravitySubscription.unsubscribe();
+//   }
   vibrar() {
     this.vibrate = !this.vibrate;
 }

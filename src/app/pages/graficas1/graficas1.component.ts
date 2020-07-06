@@ -98,20 +98,56 @@ export class Graficas1Component implements OnInit, OnDestroy {
           switch (pos) {
               case 99: this.graficos.grafico1.leyenda = ' MI DISPOSITIVO ' + de;
               // tslint:disable-next-line:max-line-length
-              this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
-              break;
+                if ( this.beta === 0 ) {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico1.labels = [ 'accelerationincludinggravityx1', 'accelerationincludinggravityy1', 'accelerationincludinggravityz1' ];
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico1.data = [this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1];
+              } else {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico1.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico1.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
+
+              }
+                break;
               case 0: this.graficos.grafico2.leyenda = ' Otros Dispositivos ' + de;
+              if ( this.beta === 0 ) {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico2.labels = [ 'accelerationincludinggravityx1', 'accelerationincludinggravityy1', 'accelerationincludinggravityz1' ];
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico2.data = [this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1];
+              } else {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico2.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
               // tslint:disable-next-line:max-line-length
               this.graficos.grafico2.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
+            }
               break;
               case 1: this.graficos.grafico3.leyenda = ' Otros Dispositivos ' + de;
+              if ( this.beta === 0 ) {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico3.labels = [ 'accelerationincludinggravityx1', 'accelerationincludinggravityy1', 'accelerationincludinggravityz1' ];
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico3.data = [this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1];
+              } else {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico3.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
               // tslint:disable-next-line:max-line-length
               this.graficos.grafico3.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
-              break;
+            }break;
               case 2: this.graficos.grafico4.leyenda = ' Otros Dispositivos ' + de;
+              if ( this.beta === 0 ) {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico4.labels = [ 'accelerationincludinggravityx1', 'accelerationincludinggravityy1', 'accelerationincludinggravityz1' ];
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico4.data = [this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1];
+              } else {
+                // tslint:disable-next-line:max-line-length
+                this.graficos.grafico4.labels = ['beta', 'gamma', 'alpha',  'ax1', 'ay1', 'az1', 'acx1', 'accy1', 'accz1', 'rotationratebeta1', 'rgamma1', 'ralpha1'];
               // tslint:disable-next-line:max-line-length
               this.graficos.grafico4.data = [this.beta, this.gamma, this.alpha, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1];
-              break;
+            }break;
           }
 
          }
