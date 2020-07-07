@@ -21,9 +21,7 @@ export class AutoOTTOChatComponent implements OnInit {
 
   usuariosSubscription: Subscription;
   mensajesAutoOTTOSubscription: Subscription;
-  mensajespSubscription: Subscription;
   autoOTTOSubscription: Subscription;
-  ElSarmientoSubscription: Subscription;
   Dispo1Subscription: Subscription;
   elemento: HTMLElement;
   usuario: Usuario;
@@ -31,6 +29,7 @@ export class AutoOTTOChatComponent implements OnInit {
   msg: any;
   fecha: Date;
   hora: any;
+  pos: number;
   pos1: number = 999;
   beta1: number = 0;
   gamma1: number = 0;
@@ -60,24 +59,23 @@ export class AutoOTTOChatComponent implements OnInit {
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
 
   ngOnInit() {
-
+this.pos1 = 999;
+this.Dispo1Subscription = this._chatService.getDispo1()
+.subscribe( (msg: any) => {
+ this.pos = msg.pos1;
+});
     this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
 
-      // console.log('eventdeviceorientation', event);
+      console.log('eventdeviceorientation', event);
       console.log('eventdeviceorientationbets', window);
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
       this.alpha1 = Math.round(event.alpha);
-
-      this.Dispo1Subscription = this._chatService.getDispo1()
-      .subscribe( (msg: any) => {
-        let pos: number = msg.pos1;
-        this.pos1 = pos;
-      });
       // tslint:disable-next-line:max-line-length
-      this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+      this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
+      console.log('eventdevicedevicemotion', event);
       this.accelerationx1 = Math.round(event.acceleration.x);
       this.accelerationy1 = Math.round(event.acceleration.y);
       this.accelerationz1 = Math.round(event.acceleration.z);
@@ -87,13 +85,8 @@ export class AutoOTTOChatComponent implements OnInit {
       this.rotationratebeta1 = Math.round(event.rotationRate.beta);
       this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
       this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
-      this.Dispo1Subscription = this._chatService.getDispo1()
-      .subscribe( (msg: any) => {
-        let pos: number = msg.pos1;
-        this.pos1 = pos;
-      });
        // tslint:disable-next-line:max-line-length
-       this.sendElSarmiento(this.pos1, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityz1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+       this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityz1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
     });
 
     this.elemento = document.getElementById('divChatbox1');
@@ -154,13 +147,16 @@ export class AutoOTTOChatComponent implements OnInit {
          } );
 
 }
-//   ngOnDestroy() {
-//     // this.usuariosSubscription.unsubscribe();
-//   // this.mensajesAutoOTTOSubscription.unsubscribe();
-//    this.autoOTTOSubscription.unsubscribe();
-//  //  this.ElSarmientoSubscription.unsubscribe();
-//    // this.ElSarmientoGravitySubscription.unsubscribe();
-//   }
+//    ngOnDestroy() {
+//    // this._chatService.sendMessageAutoOTTO( 'salirDsala', this._usuarioService.usuario.sala, (resp: any) => {
+//     //  this.msg = resp;
+//       console.log('this.msg = '); // , this.msg
+//   //    this.scrollBottom();
+//    //  });
+// //     // this.usuariosSubscription.unsubscribe();
+// //   // this.mensajesAutoOTTOSubscription.unsubscribe();
+// //    this.autoOTTOSubscription.unsubscribe();
+//    }
   vibrar() {
     this.vibrate = !this.vibrate;
 }

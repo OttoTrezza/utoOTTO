@@ -18,12 +18,13 @@ export class WebsocketService {
   public socketStatus = false;
   public usuario: Usuario = null;
   public usuarios: Usuario[] = null;
-  public _usuarioService: UsuarioService;
+
   // router: any;
 
 
   constructor(
-    public socket: Socket
+    public socket: Socket,
+    public _usuarioService: UsuarioService
   ) {
      this.checkStatus();
      this.cargarStorage();
@@ -41,17 +42,19 @@ export class WebsocketService {
         console.log('Conectado al servidor111');
         this.socketStatus = true;
         this.cargarStorage();
-//         this.socket.emit('connect', this.usuario, () => {
+        let name = this._usuarioService.usuario;
+         this.socket.emit('conectar', name, () => {
 // console.log('Conected');
-//         });
+        });
       });
 
       this.socket.on('disconnect', () => {
         console.log('Desconectado del servidor');
         this.socketStatus = false;
-        // this.emit('disconnect', () => {
+        let name = this._usuarioService.usuario;
+         this.emit('desconectar', this.usuario, () => {
         // console.log('Ahora si desconectado');
-        //  });
+          });
       });
     }
     emit( evento: string, payload?: any, callback?: Function ) {
