@@ -52,7 +52,7 @@ export class WebsocketService {
         console.log('Desconectado del servidor');
         this.socketStatus = false;
         let name = this._usuarioService.usuario;
-         this.emit('desconectar', this.usuario, () => {
+         this.emit('desconectar', name, () => {
         // console.log('Ahora si desconectado');
           });
       });
