@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit} from '@angular/core'; // , OnDestroy
 import { ChatService } from '../../services/service.index';
 import { UsuarioService, ModalUploadService } from '../../services/service.index';
 import { Usuario } from '../../models/usuario.model';
@@ -13,17 +13,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './autoOTTO.component.html',
   styleUrls: []
 })
-export class AutoOTTOComponent implements OnInit, OnDestroy {
+export class AutoOTTOComponent implements OnInit { // , OnDestroy
 
   [x: string]: any;
-  usuariosSubscription: Subscription;
+  usuariosActivosSubscription: Subscription;
+  salasActivasSubscription: Subscription;
   elemento: HTMLElement;
   usuarios: Usuario[] = [];
   usuario: Usuario ;
   usuariosala: Usuario ;
   nombre: string;
   sala: string;
-  salas: [];
+  salas = [];
   img: string;
   cargando: boolean = true;
   totalRegistros: number = 0;
@@ -52,9 +53,9 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
 
     this.usuariosala = this._usuarioService.usuario;
     this._chatService.emitirSalasActivas();
-    this.usuariosSubscription = this._chatService.getSalasActivas()
+    this.salasActivasSubscription = this._chatService.getSalasActivas()
           .subscribe( (respu: any) => {
-          this.salas = respu;
+          this.salas.push(respu);
 
           console.log('salas en mens.comp', this.salas);
     } );
@@ -63,7 +64,7 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
     this.elemento = document.getElementById('divChat-auto');
 
     this._chatService.emitirUsuariosActivos(this.sala);
-    this.usuariosSubscription = this._chatService.getUsuariosActivos()
+    this.usuariosActivosSubscription = this._chatService.getUsuariosActivos()
           .subscribe( (respu: Usuario[]= []) => {
             this.usuarios = respu;
             console.log('usuarios en mens.comp', this.usuarios);
@@ -72,9 +73,9 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnDestroy() {
-   this.usuariosSubscription.unsubscribe();
-   }
+  // ngOnDestroy() {
+  //  this.usuariosSubscription.unsubscribe();
+  //  }
 
    mostrarModal( id: string) {
     this._modalUploadService.mostrarModal( 'usuarios1', id );
@@ -91,12 +92,12 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
   }
 
     seleccionSala(f1: NgForm) {
-      console.log( f1.value );
+    //  console.log( f1.value );
 
       if ( !f1.value ) {
         return;
       }
-      console.log('this.usuariosala', this.usuariosala);
+      // console.log('this.usuariosala', this.usuariosala);
       this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f1.value.sala })
             .subscribe( (sala: any) => {
               this.sala = sala;
@@ -107,7 +108,7 @@ export class AutoOTTOComponent implements OnInit, OnDestroy {
   cambioSala( sala: string ) {
     console.log('Usuarios de sala:', sala );
     this._chatService.emitirUsuariosActivos(sala);
-    this.usuariosSubscription = this._chatService.getUsuariosActivos()
+    this.usuariosActivosSubscription = this._chatService.getUsuariosActivos()
           .subscribe( (respu: Usuario[]= []) => {
             this.usuarios = respu;
             console.log('usuarios', this.usuarios);

@@ -25,7 +25,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
   usuariosala: Usuario ;
   nombre: string;
   sala: string;
-  salas: {};
+  salas = [];
   img: string;
   cargando: boolean = true;
   totalRegistros: number = 0;

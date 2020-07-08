@@ -53,7 +53,7 @@ export class Graficas1Component implements OnInit {
 
   constructor(
     public _chatService: ChatService,
-    private _usuarioService: UsuarioService
+    public _usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
