@@ -112,17 +112,17 @@ export class MensajesComponent implements OnInit, OnDestroy {
 
   }
 
-    seleccionSala(f: NgForm) {
-      console.log( f.value );
+    seleccionSala(f1: NgForm) {
+      console.log( f1.value );
 
-      if ( !f.value ) {
+      if ( !f1.value ) {
         return;
       }
       console.log('this.usuariosala', this.usuariosala);
-      this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f.value.sala })
+      this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f1.value.sala })
             .subscribe( (sala: any) => {
               this.sala = sala;
-              console.log('sañla:', this.sala, f.value.sala);
+              console.log('sañla:', this.sala, f1.value.sala);
             });
 
   }
@@ -134,9 +134,7 @@ export class MensajesComponent implements OnInit, OnDestroy {
             this.usuarios = respu;
             console.log('usuarios', this.usuarios);
           } );
-
-  }
-
+}
 
 // obtenerUsuario( id: string ) {
 //   this._usuarioService.obtenerUsuario( id )

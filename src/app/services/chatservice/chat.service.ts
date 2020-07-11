@@ -57,85 +57,27 @@ img: string;
       });
       }
 
-      // sendFrecuencia( frecuencia: number, sala: string, callback: any ) {
-      //   this.name = this.usuarioService.usuario.nombre;
-      // // this.name = this.wsService.getUsuario().nombre;
-      // const payload = {
-      //   de: this.name,
-      //   frec: frecuencia,
-      //   sala: sala
-      //   };
-      // this.wsService.emit( 'frecuencia' , payload, (resp: any) => {
-      //   callback(resp);
-      //  // console.log(resp);
-      // });
-      // }
-
-
-      // sendLongPulse( LongPulse: number, sala: string, callback: any ) {
-      //   this.name = this.usuarioService.usuario.nombre;
-      // // this.name = this.wsService.getUsuario().nombre;
-      // const payload = {
-      //   de: this.name,
-      //   LongP: LongPulse,
-      //   sala: sala
-      //   };
-      // this.wsService.emit( 'LongPulse' , payload, (resp: any) => {
-      //   callback(resp);
-      //  // console.log(resp);
-      // });
-      // }
-
-
-      // sendDir( dir: number, sala: string, callback: any ) {
-      //   this.name = this.usuarioService.usuario.nombre;
-      // // this.name = this.wsService.getUsuario().nombre;
-      // const payload = {
-      //   de: this.name,
-      //   dir: dir,
-      //   sala: sala
-      //   };
-      // this.wsService.emit( 'dir' , payload, (resp: any) => {
-      //   callback(resp);
-      //  // console.log(resp);
-      // });
-      // }
-
-
-      // sendSen( sen: number, sala: string, callback: any ) {
-      //   this.name = this.usuarioService.usuario.nombre;
-      // // this.name = this.wsService.getUsuario().nombre;
-      // const payload = {
-      //   de: this.name,
-      //   sen: sen,
-      //   sala: sala
-      //   };
-      // this.wsService.emit( 'sen' , payload, (resp: any) => {
-      //   callback(resp);
-      //  // console.log(resp);
-      // });
-      // }
 
 
       // tslint:disable-next-line:max-line-length
-      sendElSarmiento(pos1: number, sala: string, beta1: number, gamma1: number, alpha1: number, accelerationx1: any, accelerationy1: any, accelerationz1: any, accelerationincludinggravityx1: any, accelerationincludinggravityy1: any, accelerationincludinggravityz1: any, rotationratebeta1: any, rotationrategamma1: any, rotationratealpha1: any, callback: any) {
+      sendElSarmiento(pos1: number, sala: string, alpha1: number, beta1: number, gamma1: number, callback: any) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
           pos1,
           de: this.name,
           sala: sala,
-          beta1,
-          gamma1,
           alpha1,
-          accelerationx1: accelerationx1,
-          accelerationy1: accelerationy1,
-          accelerationz1: accelerationz1,
-          accelerationincludinggravityx1: accelerationincludinggravityx1,
-          accelerationincludinggravityy1: accelerationincludinggravityy1,
-          accelerationincludinggravityz1: accelerationincludinggravityz1,
-          rotationratebeta1: rotationratebeta1,
-          rotationrategamma1: rotationrategamma1,
-          rotationratealpha1: rotationratealpha1
+          beta1,
+          gamma1 // ,
+          // accelerationx1,
+          // accelerationy1,
+          // accelerationz1,
+          // accelerationincludinggravityx1,
+          // accelerationincludinggravityy1,
+          // accelerationincludinggravityz1,
+          // rotationratebeta1,
+          // rotationrategamma1,
+          // rotationratealpha1
           };
         this.wsService.emit( 'ElSarmiento' , payload, (resp: any) => {
           callback(resp);
@@ -215,3 +157,61 @@ img: string;
     }
 
 }
+      // sendFrecuencia( frecuencia: number, sala: string, callback: any ) {
+      //   this.name = this.usuarioService.usuario.nombre;
+      // // this.name = this.wsService.getUsuario().nombre;
+      // const payload = {
+      //   de: this.name,
+      //   frec: frecuencia,
+      //   sala: sala
+      //   };
+      // this.wsService.emit( 'frecuencia' , payload, (resp: any) => {
+      //   callback(resp);
+      //  // console.log(resp);
+      // });
+      // }
+
+
+      // sendLongPulse( LongPulse: number, sala: string, callback: any ) {
+      //   this.name = this.usuarioService.usuario.nombre;
+      // // this.name = this.wsService.getUsuario().nombre;
+      // const payload = {
+      //   de: this.name,
+      //   LongP: LongPulse,
+      //   sala: sala
+      //   };
+      // this.wsService.emit( 'LongPulse' , payload, (resp: any) => {
+      //   callback(resp);
+      //  // console.log(resp);
+      // });
+      // }
+
+
+      // sendDir( dir: number, sala: string, callback: any ) {
+      //   this.name = this.usuarioService.usuario.nombre;
+      // // this.name = this.wsService.getUsuario().nombre;
+      // const payload = {
+      //   de: this.name,
+      //   dir: dir,
+      //   sala: sala
+      //   };
+      // this.wsService.emit( 'dir' , payload, (resp: any) => {
+      //   callback(resp);
+      //  // console.log(resp);
+      // });
+      // }
+
+
+      // sendSen( sen: number, sala: string, callback: any ) {
+      //   this.name = this.usuarioService.usuario.nombre;
+      // // this.name = this.wsService.getUsuario().nombre;
+      // const payload = {
+      //   de: this.name,
+      //   sen: sen,
+      //   sala: sala
+      //   };
+      // this.wsService.emit( 'sen' , payload, (resp: any) => {
+      //   callback(resp);
+      //  // console.log(resp);
+      // });
+      // }

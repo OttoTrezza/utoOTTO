@@ -92,12 +92,12 @@ export class AutoOTTOComponent implements OnInit { // , OnDestroy
   }
 
     seleccionSala(f1: NgForm) {
-    //  console.log( f1.value );
+      console.log( f1.value );
 
       if ( !f1.value ) {
         return;
       }
-      // console.log('this.usuariosala', this.usuariosala);
+      console.log('this.usuariosala', this.usuariosala);
       this._usuarioService.seleccionSala({ usuario: this.usuariosala, sala: f1.value.sala })
             .subscribe( (sala: any) => {
               this.sala = sala;
@@ -108,7 +108,7 @@ export class AutoOTTOComponent implements OnInit { // , OnDestroy
   cambioSala( sala: string ) {
     console.log('Usuarios de sala:', sala );
     this._chatService.emitirUsuariosActivos(sala);
-    this.usuariosActivosSubscription = this._chatService.getUsuariosActivos()
+    this.usuariosSubscription = this._chatService.getUsuariosActivos()
           .subscribe( (respu: Usuario[]= []) => {
             this.usuarios = respu;
             console.log('usuarios', this.usuarios);

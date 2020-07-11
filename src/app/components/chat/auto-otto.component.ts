@@ -30,23 +30,24 @@ export class AutoOTTOChatComponent implements OnInit {
   fecha: Date;
   hora: any;
   pos: number;
-  pos1: number = 999;
+  pos1: number = 99;
+  alpha1: number = 0;
   beta1: number = 0;
   gamma1: number = 0;
-  alpha1: number = 0;
-  accelerationx1: number = 0;
-  acceleration1: number = 0;
-  accelerationz1: number = 0;
+
+  // accelerationx1: number = 0;
+  // accelerationy1: number = 0;
+  // accelerationz1: number = 0;
   accelerationincludinggravityx1: number = 0;
   accelerationincludinggravityy1: number = 0;
   accelerationincludinggravityz1: number = 0;
-  rotationratebeta1: number = 0;
-  rotationrategamma1: number = 0;
-  rotationratealpha1: number = 0;
+  // rotationratebeta1: number = 0;
+  // rotationrategamma1: number = 0;
+  // rotationratealpha1: number = 0;
   listener: any;
   listener1: any;
-  listener2: any;
-  listener3: any;
+  // listener2: any;
+  // listener3: any;
   vibrate: boolean = false;
   constructor(
     public _chatService: ChatService,
@@ -54,40 +55,67 @@ export class AutoOTTOChatComponent implements OnInit {
     public _modalUploadService: ModalUploadService,
     private renderer: Renderer2,
     private renderer1: Renderer2
+   // private renderer2: Renderer2,
+   // private renderer3: Renderer2
     ) {  }
 // tslint:disable-next-line:max-line-length
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
 
   ngOnInit() {
-this.pos1 = 999;
 this.Dispo1Subscription = this._chatService.getDispo1()
 .subscribe( (msg: any) => {
  this.pos = msg.pos1;
 });
-    this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
+// this.listener = this.renderer3.listen( window , 'deviceorientationabsolute', (event) => {
+
+//   console.log('eventdeviceorientationabso', event);
+//   console.log('eventdeviceorientationbets', window);
+//   this.beta1 = Math.round(event.beta);
+//   this.gamma1 = Math.round(event.gamma);
+//   this.alpha1 = Math.round(event.alpha);
+//    tslint:disable-next-line:max-line-length
+//   this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+// });
+// this.listener = this.renderer2.listen( window , 'ondeviceorientation', (event) => {
+
+//   console.log('eventdeviceorientation', event);
+//   console.log('eventdeviceorientationbets', window);
+//   this.beta1 = Math.round(event.beta);
+//   this.gamma1 = Math.round(event.gamma);
+//   this.alpha1 = Math.round(event.alpha);
+//    tslint:disable-next-line:max-line-length
+//   this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+// });
+    this.listener = this.renderer.listen( window , 'deviceorientationabsolute', (event) => {
 
       console.log('eventdeviceorientation', event);
       console.log('eventdeviceorientationbets', window);
+      this.alpha1 = Math.round(event.alpha);
       this.beta1 = Math.round(event.beta);
       this.gamma1 = Math.round(event.gamma);
-      this.alpha1 = Math.round(event.alpha);
       // tslint:disable-next-line:max-line-length
-      this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
+      this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
     });
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
       console.log('eventdevicedevicemotion', event);
-      this.accelerationx1 = Math.round(event.acceleration.x);
-      this.accelerationy1 = Math.round(event.acceleration.y);
-      this.accelerationz1 = Math.round(event.acceleration.z);
+      // this.accelerationx1 = Math.round(event.acceleration.x);
+      // this.accelerationy1 = Math.round(event.acceleration.y);
+      // this.accelerationz1 = Math.round(event.acceleration.z);
       this.accelerationincludinggravityx1 = Math.round(event.accelerationIncludingGravity.x);
       this.accelerationincludinggravityy1 = Math.round(event.accelerationIncludingGravity.y);
       this.accelerationincludinggravityz1 = Math.round(event.accelerationIncludingGravity.z);
-      this.rotationratebeta1 = Math.round(event.rotationRate.beta);
-      this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
-      this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
-       // tslint:disable-next-line:max-line-length
-       this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityz1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
-    });
+      // this.rotationratebeta1 = Math.round(event.rotationRate.beta);
+      // this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
+      // this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
+
+       if (this.beta1 = 0) {
+        this.alpha1 = this.accelerationincludinggravityx1;
+        this.beta1 = this.accelerationincludinggravityy1;
+        this.gamma1 = this.accelerationincludinggravityz1;
+         // tslint:disable-next-line:max-line-length
+       this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
+      }
+      });
 
     this.elemento = document.getElementById('divChatbox1');
 
@@ -176,9 +204,9 @@ this.Dispo1Subscription = this._chatService.getDispo1()
 
   }
   // tslint:disable-next-line:max-line-length
-  sendElSarmiento(pos1: number, beta1: number, gamma1: number, alpha1: number, accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number) {
+  sendElSarmiento(pos1: number, alpha1: number, beta1: number, gamma1: number) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( pos1, 'juegos', beta1, gamma1, alpha1, accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1, (resp: any) => {
+    this._chatService.sendElSarmiento( pos1, 'juegos', alpha1, beta1, gamma1, (resp: any) => {  // , accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1/
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
