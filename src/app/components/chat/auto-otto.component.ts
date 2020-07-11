@@ -87,7 +87,7 @@ this.Dispo1Subscription = this._chatService.getDispo1()
 //   this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
 // });
     this.listener = this.renderer.listen( window , 'deviceorientationabsolute', (event) => {
-
+      if (event.beta) {
       console.log('eventdeviceorientation', event);
       console.log('eventdeviceorientationbets', window);
       this.alpha1 = Math.round(event.alpha);
@@ -95,6 +95,7 @@ this.Dispo1Subscription = this._chatService.getDispo1()
       this.gamma1 = Math.round(event.gamma);
       // tslint:disable-next-line:max-line-length
       this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
+      }
     });
     this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
       console.log('eventdevicedevicemotion', event);
@@ -108,7 +109,7 @@ this.Dispo1Subscription = this._chatService.getDispo1()
       // this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
       // this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
 
-       if (this.beta1 = 0) {
+       if (this.beta1 === 0) {
         this.alpha1 = this.accelerationincludinggravityx1;
         this.beta1 = this.accelerationincludinggravityy1;
         this.gamma1 = this.accelerationincludinggravityz1;
