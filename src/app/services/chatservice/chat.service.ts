@@ -14,7 +14,6 @@ img: string;
 
   constructor(
     public wsService: WebsocketService,
-    // public http: HttpClient,
     public usuarioService: UsuarioService,
     public router: Router
     ) { }
@@ -56,13 +55,13 @@ img: string;
         callback(resp);
       });
       }
-      sendmousePos(xpos: number, ypos: number, sala: string, callback: any) {
+      sendmousePos(sala: string, posX: number, posY: number, callback: any) {
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
           de: this.name,
           sala: sala,
-          xpos,
-          ypos
+          posX,
+          posY
           };
         this.wsService.emit( 'mousePos' , payload, (resp: any) => {
           callback(resp);
@@ -72,10 +71,9 @@ img: string;
 
 
       // tslint:disable-next-line:max-line-length
-      sendElSarmiento(pos1: number, sala: string, alpha1: number, beta1: number, gamma1: number, callback: any) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
+      sendElSarmiento( sala: string, alpha1: number, beta1: number, gamma1: number, callback: any) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
-          pos1,
           de: this.name,
           sala: sala,
           alpha1,

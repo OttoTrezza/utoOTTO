@@ -64,10 +64,10 @@ export class AutoOTTOChatComponent implements OnInit {
 // gamma1, alpha1, accelerationx, accelerationy, accelerationz, accelerationincludinggravityx, accelerationincludinggravityY, accelerationincludinggravityZ, rotationratebeta, rotationrategamma, rotationratealpha
 
   ngOnInit() {
-this.Dispo1Subscription = this._chatService.getDispo1()
-.subscribe( (msg: any) => {
- this.pos = msg.pos1;
-});
+// this.Dispo1Subscription = this._chatService.getDispo1()
+// .subscribe( (msg: any) => {
+//  this.pos = msg.pos1;
+// });
 // this.listener = this.renderer3.listen( window , 'deviceorientationabsolute', (event) => {
 
 //   console.log('eventdeviceorientationabso', event);
@@ -94,7 +94,7 @@ this.listener2 = this.renderer2.listen( window , 'mousemove', (event) => {
         this.beta1 = Math.round(event.beta);
         this.gamma1 = Math.round(event.gamma);
         // tslint:disable-next-line:max-line-length
-        this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
+        this.sendElSarmiento(this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
       } else {
         this.noorientation = true;
       }
@@ -109,7 +109,7 @@ this.listener2 = this.renderer2.listen( window , 'mousemove', (event) => {
         this.beta1 = Math.round(event.accelerationIncludingGravity.y);
         this.gamma1 = Math.round(event.accelerationIncludingGravity.z);
         // tslint:disable-next-line:max-line-length
-        this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
+        this.sendElSarmiento(this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
         }
         // this.rotationratebeta1 = Math.round(event.rotationRate.beta);
         // this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
@@ -211,9 +211,9 @@ this.listener2 = this.renderer2.listen( window , 'mousemove', (event) => {
 
   }
   // tslint:disable-next-line:max-line-length
-  sendElSarmiento(pos1: number, alpha1: number, beta1: number, gamma1: number) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
+  sendElSarmiento(alpha1: number, beta1: number, gamma1: number) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendElSarmiento( pos1, 'juegos', alpha1, beta1, gamma1, (resp: any) => {  // , accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1/
+    this._chatService.sendElSarmiento('juegos', alpha1, beta1, gamma1, (resp: any) => {  // , accelerationx1, accelerationy1, accelerationz1, accelerationincludinggravityx1, accelerationincludinggravityy1, accelerationincludinggravityz1, rotationratebeta1, rotationrategamma1, rotationratealpha1/
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
@@ -221,7 +221,7 @@ this.listener2 = this.renderer2.listen( window , 'mousemove', (event) => {
   }
   sendmousePos(posX: number, posY: number) {
     // tslint:disable-next-line:max-line-length
-    this._chatService.sendmousePos( posX, posY, 'juegos', (resp: any) => {
+    this._chatService.sendmousePos('juegos', posX, posY, (resp: any) => {
     this.msg = resp;
     console.log('this.msg = ', this.msg);
 //    this.scrollBottom();
