@@ -56,7 +56,19 @@ img: string;
         callback(resp);
       });
       }
-
+      sendmousePos(xpos: number, ypos: number, sala: string, callback: any) {
+        this.name = this.usuarioService.usuario.nombre;
+        const payload = {
+          de: this.name,
+          sala: sala,
+          xpos,
+          ypos
+          };
+        this.wsService.emit( 'mousePos' , payload, (resp: any) => {
+          callback(resp);
+         // console.log(resp
+        });
+      }
 
 
       // tslint:disable-next-line:max-line-length

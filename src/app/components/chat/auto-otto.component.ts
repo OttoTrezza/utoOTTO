@@ -34,7 +34,8 @@ export class AutoOTTOChatComponent implements OnInit {
   alpha1: number = 0;
   beta1: number = 0;
   gamma1: number = 0;
-
+  positionX:  number = 0;
+  positionY:  number = 0;
   // accelerationx1: number = 0;
   // accelerationy1: number = 0;
   // accelerationz1: number = 0;
@@ -46,16 +47,17 @@ export class AutoOTTOChatComponent implements OnInit {
   // rotationratealpha1: number = 0;
   listener: any;
   listener1: any;
-  // listener2: any;
+  listener2: any;
   // listener3: any;
   vibrate: boolean = false;
+  noorientation: boolean = false;
   constructor(
     public _chatService: ChatService,
     public _usuarioService: UsuarioService,
     public _modalUploadService: ModalUploadService,
     private renderer: Renderer2,
-    private renderer1: Renderer2
-   // private renderer2: Renderer2,
+    private renderer1: Renderer2,
+    private renderer2: Renderer2
    // private renderer3: Renderer2
     ) {  }
 // tslint:disable-next-line:max-line-length
@@ -76,46 +78,43 @@ this.Dispo1Subscription = this._chatService.getDispo1()
 //    tslint:disable-next-line:max-line-length
 //   this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
 // });
-// this.listener = this.renderer2.listen( window , 'ondeviceorientation', (event) => {
+this.listener2 = this.renderer2.listen( window , 'mousemove', (event) => {
 
-//   console.log('eventdeviceorientation', event);
-//   console.log('eventdeviceorientationbets', window);
-//   this.beta1 = Math.round(event.beta);
-//   this.gamma1 = Math.round(event.gamma);
-//   this.alpha1 = Math.round(event.alpha);
-//    tslint:disable-next-line:max-line-length
-//   this.sendElSarmiento(this.pos, this.beta1, this.gamma1, this.alpha1, this.accelerationx1, this.accelerationy1, this.accelerationz1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1, this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1);
-// });
-    this.listener = this.renderer.listen( window , 'deviceorientationabsolute', (event) => {
+    this.positionX = event.clientX ;
+    this.positionY = event.clientY ;
+      console.log(' this.position X e Y', this.positionX, this.positionY);
+
+      this.sendmousePos(this.positionX, this.positionY);
+});
+    this.listener = this.renderer.listen( window , 'deviceorientation', (event) => {
       if (event.beta) {
-      console.log('eventdeviceorientation', event);
-      console.log('eventdeviceorientationbets', window);
-      this.alpha1 = Math.round(event.alpha);
-      this.beta1 = Math.round(event.beta);
-      this.gamma1 = Math.round(event.gamma);
-      // tslint:disable-next-line:max-line-length
-      this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
+        this.noorientation = true;
+        console.log('eventdeviceorientation', event);
+        this.alpha1 = Math.round(event.alpha);
+        this.beta1 = Math.round(event.beta);
+        this.gamma1 = Math.round(event.gamma);
+        // tslint:disable-next-line:max-line-length
+        this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
+      } else {
+        this.noorientation = true;
       }
     });
-    this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
-      console.log('eventdevicedevicemotion', event);
-      // this.accelerationx1 = Math.round(event.acceleration.x);
-      // this.accelerationy1 = Math.round(event.acceleration.y);
-      // this.accelerationz1 = Math.round(event.acceleration.z);
-      this.accelerationincludinggravityx1 = Math.round(event.accelerationIncludingGravity.x);
-      this.accelerationincludinggravityy1 = Math.round(event.accelerationIncludingGravity.y);
-      this.accelerationincludinggravityz1 = Math.round(event.accelerationIncludingGravity.z);
-      // this.rotationratebeta1 = Math.round(event.rotationRate.beta);
-      // this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
-      // this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
+      this.listener1 = this.renderer1.listen( window , 'devicemotion', (event) => {
+        console.log('eventdevicedevicemotion', event);
+        // this.accelerationx1 = Math.round(event.acceleration.x);
+        // this.accelerationy1 = Math.round(event.acceleration.y);
+        // this.accelerationz1 = Math.round(event.acceleration.z);
+        if (this.noorientation === true) {
+        this.alpha1 = Math.round(event.accelerationIncludingGravity.x);
+        this.beta1 = Math.round(event.accelerationIncludingGravity.y);
+        this.gamma1 = Math.round(event.accelerationIncludingGravity.z);
+        // tslint:disable-next-line:max-line-length
+        this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
+        }
+        // this.rotationratebeta1 = Math.round(event.rotationRate.beta);
+        // this.rotationrategamma1 = Math.round(event.rotationRate.gamma);
+        // this.rotationratealpha1 = Math.round(event.rotationRate.alpha);
 
-       if (this.beta1 === 0) {
-        this.alpha1 = this.accelerationincludinggravityx1;
-        this.beta1 = this.accelerationincludinggravityy1;
-        this.gamma1 = this.accelerationincludinggravityz1;
-         // tslint:disable-next-line:max-line-length
-       this.sendElSarmiento(this.pos, this.alpha1, this.beta1, this.gamma1); // this.accelerationx1, this.accelerationy1, this.accelerationz1, , this.rotationratebeta1, this.rotationrategamma1, this.rotationratealpha1, this.accelerationincludinggravityx1, this.accelerationincludinggravityy1, this.accelerationincludinggravityz1
-      }
       });
 
     this.elemento = document.getElementById('divChatbox1');
@@ -153,17 +152,20 @@ this.Dispo1Subscription = this._chatService.getDispo1()
       });
 
     this.autoOTTOSubscription = this._chatService.getMessagesAuto()
-         .subscribe( (msg: any) => {
-           let de: string = msg.de;
-           let cuerpo: string = msg.cuerpo;
-           let codevv = msg.codEv;
-           this.codEv = codevv;
+         .subscribe( (pay: any) => {
+           let de: string = pay.de;
+           let cuerpo: string = pay.cuerpo;
            this.estado = de + cuerpo;
-           if ( msg.cuerpo === 'Movimiento-1') {
-             if (this.vibrate === true) { window.navigator.vibrate(200); // vibrate for 200ms
+           if ( de === this._usuarioService.usuario.nombre ) {
+             if ( cuerpo === 'Movimiento-1') {
+               this.codEv = 1;
+             if (this.vibrate === true) {
+                window.navigator.vibrate(200); // vibrate for 200ms
              }
 
-            // window.navigator.share(msg.cuerpo); // vibrate for 200ms
+           } else if ( cuerpo === 'sin magicMoves') {
+            this.codEv = 2;
+           }
          }
          });
          this.autoOTTOLOGSubscription = this._chatService.getMessagesAutoLOG()
@@ -187,7 +189,11 @@ this.Dispo1Subscription = this._chatService.getDispo1()
 // //    this.autoOTTOSubscription.unsubscribe();
 //    }
   vibrar() {
-    this.vibrate = !this.vibrate;
+   if (this.vibrate === true) {
+    this.vibrate = false;
+   } else {
+    this.vibrate = true;
+   }
 }
   enviar() {
 
@@ -213,6 +219,15 @@ this.Dispo1Subscription = this._chatService.getDispo1()
 //    this.scrollBottom();
    });
   }
+  sendmousePos(posX: number, posY: number) {
+    // tslint:disable-next-line:max-line-length
+    this._chatService.sendmousePos( posX, posY, 'juegos', (resp: any) => {
+    this.msg = resp;
+    console.log('this.msg = ', this.msg);
+//    this.scrollBottom();
+   });
+  }
+
 
   //   cambiarValor1( valor: number ) {
 
