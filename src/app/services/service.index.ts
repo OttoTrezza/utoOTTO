@@ -6,7 +6,7 @@ export { LoginGuardGuard } from './guards/login-guard.guard';
 export { VerificatokenGuard } from './guards/verificatoken.guard';
 
 
-//
+// asdwdw
 export { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
 export { SubirArchivoService } from './subir-archivo/subir-archivo.service';

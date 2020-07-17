@@ -7,11 +7,11 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs-compat/operator/map';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Router } from '@angular/router';
+import { Timestamp } from 'rxjs/internal-compatibility';
 @Injectable()
 export class ChatService {
 name: string;
 img: string;
-
   constructor(
     public wsService: WebsocketService,
     public usuarioService: UsuarioService,
@@ -55,13 +55,14 @@ img: string;
         callback(resp);
       });
       }
-      sendmousePos(sala: string, posX: number, posY: number, callback: any) {
+      sendmousePos(sala: string, posX: number, posY: number, tiempo: number, callback: any) {
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
           de: this.name,
           sala: sala,
           posX,
-          posY
+          posY,
+          tiempo
           };
         this.wsService.emit( 'mousePos' , payload, (resp: any) => {
           callback(resp);
@@ -71,14 +72,15 @@ img: string;
 
 
       // tslint:disable-next-line:max-line-length
-      sendElSarmiento( sala: string, alpha1: number, beta1: number, gamma1: number, callback: any) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
+      sendElSarmiento( sala: string, alpha1: number, beta1: number, gamma1: number, tiempo: number, callback: any) { // , accelerationx1: number, accelerationy1: number, accelerationz1: number, accelerationincludinggravityx1: number, accelerationincludinggravityy1: number, accelerationincludinggravityz1: number, rotationratebeta1: number, rotationrategamma1: number, rotationratealpha1: number
         this.name = this.usuarioService.usuario.nombre;
         const payload = {
           de: this.name,
           sala: sala,
           alpha1,
           beta1,
-          gamma1 // ,
+          gamma1,
+          tiempo // ,
           // accelerationx1,
           // accelerationy1,
           // accelerationz1,
